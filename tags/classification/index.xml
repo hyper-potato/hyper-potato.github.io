@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>classification on Hyper Potato&#39;s Blog</title>
+    <link>https://hyper-potato.github.io/tags/classification/</link>
+    <description>Recent content in classification on Hyper Potato&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 06 Oct 2019 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hyper-potato.github.io/tags/classification/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Predictive models on used car evaluation</title>
+      <link>https://hyper-potato.github.io/2019-10-06-car-evaluation-using-machine-learning/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2019-10-06-car-evaluation-using-machine-learning/</guid>
+      <description>In this post, I will deploy decision tree, k-NN, logistic regression, NB, SVM to predict the evaluation of the cars based on their characteristics.
+More specifically, I will explore how well these techniques perform for several different parameter values.
+Present a brief overview of the predictive modeling process, explorations, and discuss my results. Then I will present the final model and discuss its performance in a comprehensive manner (overall accuracy; per-class performance, i.</description>
+    </item>
+    
+  </channel>
+</rss>

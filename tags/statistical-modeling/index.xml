@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>statistical modeling on Hyper Potato&#39;s Blog</title>
+    <link>https://hyper-potato.github.io/tags/statistical-modeling/</link>
+    <description>Recent content in statistical modeling on Hyper Potato&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 17 Feb 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hyper-potato.github.io/tags/statistical-modeling/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Effectiveness of Online Advertising</title>
+      <link>https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/</guid>
+      <description>Summary Background Star Digital, a large multichannel video service provider, spends a large portion of their budget on advertising. As the technological environment changed, so did Star Digital&amp;rsquo;s advertising strategy as they began to invest more heavily in online advertising such as banner ads. In order to get the most out of their budget, they actively evaluate the return on investment (RoI) of each ad medium. In evaluating the effectiveness of an online advertising campaign, Star Digital has designed a controlled experiment.</description>
+    </item>
+    
+  </channel>
+</rss>

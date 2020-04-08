@@ -1,0 +1,35 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Hyper Potato&#39;s Blog | Hyper Potato&#39;s Blog</title>
+        <link>https://hyper-potato.github.io/</link>
+        <description>Hyper Potato&#39;s Blog | Hyper Potato&#39;s Blog</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 02 Apr 2020 20:00:29 -0500</lastBuildDate><atom:link href="https://hyper-potato.github.io/" rel="self" type="application/rss+xml" /><item>
+                <title>Posts</title>
+                <link>https://hyper-potato.github.io/posts/</link>
+                <pubDate>Sun, 05 Apr 2020 00:00:00 &#43;0000</pubDate><guid>https://hyper-potato.github.io/posts/</guid>
+                <description></description>
+            </item><item>
+                <title>About</title>
+                <link>https://hyper-potato.github.io/about/</link>
+                <pubDate>Thu, 02 Apr 2020 20:00:29 -0500</pubDate><guid>https://hyper-potato.github.io/about/</guid>
+                <description>&lt;h1 id=&#34;nina&#34;&gt;Nina.&lt;/h1&gt;
+&lt;p&gt;I&amp;rsquo;m a student from University of Minnesota. This blog is for document my data science 🎒 journey, and most importantly, shower thoughts.&lt;/p&gt;
+&lt;br&gt;
+&lt;p&gt;&lt;strong&gt;May the blessing of Bayes be upon you.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;pi.jpeg&#34; width=&#34;300&#34; &gt;
+&lt;del&gt;Roaming around.&lt;/del&gt;&lt;/p&gt;
+&lt;h2 id=&#34;find-me-on-&#34;&gt;find me on 🖖&lt;/h2&gt;
+&lt;p&gt;💻&lt;a href=&#34;https://github.com/hyper-potato&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;github&lt;/a&gt;
+
+🐦&lt;a href=&#34;https://twitter.com/mandy_nii&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;twitter&lt;/a&gt;
+
+👬&lt;a href=&#34;https://www.facebook.com/hypergorillaz&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;facebook&lt;/a&gt;
+
+💼&lt;a href=&#34;https://www.linkedin.com/in/xue-nina/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreffer&#34;&gt;linkedin&lt;/a&gt;
+
+📧xueni.nina@gmail.com&lt;/p&gt;
+&lt;br&gt;
+&lt;br&gt;
+</description>
+            </item></channel>
+</rss>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Hyper Potato&#39;s Blog</title>
+    <link>https://hyper-potato.github.io/posts/</link>
+    <description>Recent content in Posts on Hyper Potato&#39;s Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 05 Apr 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="https://hyper-potato.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A boring look into my Spotify playlist</title>
+      <link>https://hyper-potato.github.io/when-we-are-under-quarantine/</link>
+      <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/when-we-are-under-quarantine/</guid>
+      <description>Sit tight and listen to music
+For the past weeks, I’ve taken breaks from staring blankly into the middle distance to dip deeper into my playlists than I have in years.
+I’m using Spotify only since last year here and there, most of time I use apple music as the main source of music. I like the feature of adding songs to library on apple music. By innertion I’m still using the library to save songs that I like.</description>
+    </item>
+    
+    <item>
+      <title>Change category colour across plots in Seaborn</title>
+      <link>https://hyper-potato.github.io/2020-03-18-change-category-colour-across-plots/</link>
+      <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-03-18-change-category-colour-across-plots/</guid>
+      <description>Self-quarantine gets me nerd-out on small things that I usally googled again and again.
+For example, very often I need to plot multiple plots sharing the same category, where it&amp;rsquo;s better to keep color match is consistent across plots.
+The easiest solution to make sure to have the same colors for the same categories in different plots would be to manually specify the colors at plot creation.
+We can use a list of colors or a dictionary to mao colors onto categories.</description>
+    </item>
+    
+    <item>
+      <title>What happened if the sample size is very large?</title>
+      <link>https://hyper-potato.github.io/2020-03-02-sample-size-reflection/</link>
+      <pubDate>Mon, 02 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-03-02-sample-size-reflection/</guid>
+      <description>Risk of a large sample size Typically we don&amp;rsquo;t worry about sample size being too large, because that means we have more power, we can detect smaller effect with more significance.
+It&amp;rsquo;s not a problem because of technical reasons but human motivation and interpretations.
+Warning: Huge Samples Can Make the Insignificant&amp;hellip;Significant When sample size is too large, unless the effect is truly not there, unless the coefficient is truly zero, it doesn&amp;rsquo;t matter how small the beta is, we will find it significant.</description>
+    </item>
+    
+    <item>
+      <title>Swimmer Performance vs Lane Placement</title>
+      <link>https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/</link>
+      <pubDate>Sat, 29 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/</guid>
+      <description>[TOC]
+INTRODUCTION Unfair Competitive Advantage When watching competitive swimming, it seems like the swimmers in the middle lanes always win the race. Although this is partly by design, as the fastest qualifiers are placed in the innermost lanes, there is great debate amongst the swimming world whether there is additional advantage unintentionally given to these swimmers. In this project, we hope to address whether lane placement leads to an unfair competitive advantage.</description>
+    </item>
+    
+    <item>
+      <title>Effectiveness of Online Advertising</title>
+      <link>https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/</link>
+      <pubDate>Mon, 17 Feb 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/</guid>
+      <description>Summary Background Star Digital, a large multichannel video service provider, spends a large portion of their budget on advertising. As the technological environment changed, so did Star Digital&amp;rsquo;s advertising strategy as they began to invest more heavily in online advertising such as banner ads. In order to get the most out of their budget, they actively evaluate the return on investment (RoI) of each ad medium. In evaluating the effectiveness of an online advertising campaign, Star Digital has designed a controlled experiment.</description>
+    </item>
+    
+    <item>
+      <title>Cats vs Dogs Classification</title>
+      <link>https://hyper-potato.github.io/2019-11-28-cat-or-dog-classification-dnn/</link>
+      <pubDate>Thu, 28 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2019-11-28-cat-or-dog-classification-dnn/</guid>
+      <description>Image classification exercise I&amp;rsquo;m not gonna lie. I&amp;rsquo;m more of a dog person. Better know how to tell the difference. 😂 Here we go.
+Introduction This is an Image classification exercise. I will play with an expired Kaggle competition. The code is available in a jupyter notebook here. You will need to download the data from the Kaggle competition. https://www.kaggle.com/c/dogs-vs-cats/. The dataset contains 25,000 images of dogs and cats (12,500 from each class).</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://hyper-potato.github.io/2019-12-18-money-ball-with-arules/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2019-12-18-money-ball-with-arules/</guid>
+      <description>{:toc}
+Summary The Business Problem Borussia Dortmund is one of the top teams in German Soccer League. But in some of the past seasons they have had inconsistent performances. Our objective is to help the team stay consistent with their performance and win the German League.
+Our analysis is directed to help the coach of Borussia Dortmund take strategic decisions and make sure that team becomes the champion in the next season.</description>
+    </item>
+    
+    <item>
+      <title>Predicting Visitors for Restaurants</title>
+      <link>https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/</guid>
+      <description>#For Suckers for Sashimi Like Me!
+1. Project Definition &amp;amp; Introduction When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.
+If restaurants can predict how many visitors will be in one day, it&amp;rsquo;s easier for them to make the arrangement.</description>
+    </item>
+    
+    <item>
+      <title>The Good Bad Ugly of R-Square</title>
+      <link>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</link>
+      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</guid>
+      <description>MSE  Sensitive to outliers Has the same units as the response variable. Lower values of MSE indicate better fit. Actually, it’s hard to realize if our model is good or not by looking at the absolute values of MSE or MSE. We would probably want to measure how much our model is better than the constant baseline.  Disadvantage of MSE  If we make a single very bad prediction, taking the square will make the error even worse and  it may skew the metric towards overestimating the model’s badness.</description>
+    </item>
+    
+    <item>
+      <title>Predictive models on used car evaluation</title>
+      <link>https://hyper-potato.github.io/2019-10-06-car-evaluation-using-machine-learning/</link>
+      <pubDate>Sun, 06 Oct 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2019-10-06-car-evaluation-using-machine-learning/</guid>
+      <description>In this post, I will deploy decision tree, k-NN, logistic regression, NB, SVM to predict the evaluation of the cars based on their characteristics.
+More specifically, I will explore how well these techniques perform for several different parameter values.
+Present a brief overview of the predictive modeling process, explorations, and discuss my results. Then I will present the final model and discuss its performance in a comprehensive manner (overall accuracy; per-class performance, i.</description>
+    </item>
+    
+    <item>
+      <title>Hi there</title>
+      <link>https://hyper-potato.github.io/2019-08-27-hi-there/</link>
+      <pubDate>Tue, 27 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2019-08-27-hi-there/</guid>
+      <description>Hey there ![joy](/images/joy division.png)
+Here is Xue Ni. I go by Nina.
+I suck at writing bios.
+Because repeating myself sucks.</description>
+    </item>
+    
+  </channel>
+</rss>

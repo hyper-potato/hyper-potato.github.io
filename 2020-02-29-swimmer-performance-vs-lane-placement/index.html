@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Swimmer Performance vs Lane Placement | Hyper Potato&#39;s Blog</title>
+        <meta name="Description" content="Causal Inference Using Mataching Technology"><meta property="og:title" content="Swimmer Performance vs Lane Placement" />
+<meta property="og:description" content="Causal Inference Using Mataching Technology" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" />
+<meta property="article:published_time" content="2020-02-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-02-29T00:00:00+00:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Swimmer Performance vs Lane Placement"/>
+<meta name="twitter:description" content="Causal Inference Using Mataching Technology"/>
+<meta name="theme-color" content="#ffffff">
+<meta name="msapplication-TileColor" content="#da532c">
+<link rel="canonical" href="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" />
+<link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="prev" href="https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/" /><link rel="next" href="https://hyper-potato.github.io/2020-03-02-sample-size-reflection/" /><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Swimmer Performance vs Lane Placement",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hyper-potato.github.io\/2020-02-29-swimmer-performance-vs-lane-placement\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/hyper-potato.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "causality, matching","wordcount":  2462 ,
+        "url": "https:\/\/hyper-potato.github.io\/2020-02-29-swimmer-performance-vs-lane-placement\/","datePublished": "2020-02-29","dateModified": "2020-02-29","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/hyper-potato.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "Nina"
+            },"description": "Causal Inference Using Mataching Technology"
+    }
+    </script></head>
+    <body><script>
+            if (!window.localStorage || !window.localStorage.getItem('theme')) {window.isDark = 'light' === 'dark';} else {
+                window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
+            }
+            window.isDark && document.body.classList.add('dark-theme');
+        </script><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/">Hyper Potato&#39;s Blog</a>
+        </div>
+        <div class="menu"><a class="menu-item" href="/posts/" rel="noopener noreffer">Posts</a><a class="menu-item" href="/tags/" rel="noopener noreffer">Tags</a><a class="menu-item" href="/about/" rel="noopener noreffer">About</a><span class="menu-item">|</span>
+            <a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="header-title">
+                <a href="/">Hyper Potato&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><a class="menu-item" href="/posts/" title="" rel="noopener noreffer">Posts</a><a class="menu-item" href="/tags/" title="" rel="noopener noreffer">Tags</a><a class="menu-item" href="/about/" title="" rel="noopener noreffer">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+
+<script>
+    window.desktopHeaderMode = "fixed";
+    window.mobileHeaderMode = "auto";
+</script>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Swimmer Performance vs Lane Placement</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
+</span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-29>2020-02-29</time>&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 2462 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>12 min&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-sizes="auto"
+        data-srcset="/images/post-swim.jpg, /images/post-swim.jpg 1.5x, /images/post-swim.jpg 2x"
+        data-src="/images/post-swim.jpg"
+        alt="Causal Inference Using Mataching Technology"
+        title="Causal Inference Using Mataching Technology" /></div><div class="content" id="content"><p>[TOC]</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.small.min.svg"
+        data-sizes="auto"
+        data-srcset="/assets/img/post-swim.jpg,  1.5x,  2x"
+        data-src=""
+        alt=""
+        title="" /></p>
+<h2 id="introduction">INTRODUCTION</h2>
+<h3 id="unfair-competitive-advantage">Unfair Competitive Advantage</h3>
+<p>When watching competitive swimming, it seems like the swimmers in the middle lanes always win the race. Although this is partly by design, as the fastest qualifiers are placed in the innermost lanes, there is great debate amongst the swimming world whether there is additional advantage unintentionally given to these swimmers. In this project, we hope to address whether lane placement leads to an unfair competitive advantage.</p>
+<p><img src="https://i.loli.net/2020/03/08/NpWAuq8PF4VYlkg.png" alt="image.png" style="zoom:50%;" /></p>
+<p>To illustrate this notion, take the example of Michael Phelps, widely regarded as the greatest swimmer of all time. In the 2012 Olympic Games, Phelps barely qualified for the finals of the 400 IM. As the slowest qualifier, he was placed in one of the outermost positions, lane 1. Unphased, Phelps didn’t think much of it. “The only thing that matters is getting a spot” he rationalized, “you can’t get a gold medal from the morning.” In retrospect, it’s understandable that Phelps was this confident despite having the slowest prelims time amongst qualifiers; he was, after all, the reigning gold medalist and world record holder in the event. However, he was not able to defend his title when swimming from an outside lane. As a matter of fact, he failed to medal at all, placing 4th in the event and adding over 5 seconds to his time from the prior Olympics. To put this in perspective, out of the 30 Olympic events that Phelps swam, the only other time he didn’t medal was at the age of 15.</p>
+<p>Although this example gives some credence to the claim that lane placement may affect performance, it is quite anecdotal. To determine if similar research has been done, we turned to the internet. In 2016, Wall Street Journal, Washington Post, and Quartz all published articles detailing quantitative research on lane advantages in swimming. Unfortunately, these studies were all specific to the Olympic pool in Rio de Janeiro regarding design concerns. As our interest lies with competitive swimming in general, our question is left unanswered. A more generalized article on the subject was published by BBC, however, it is entirely theoretical. In our study, we will use real competition data to assess the effect of lane placement on performance.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.small.min.svg"
+        data-sizes="auto"
+        data-srcset="https://i.loli.net/2020/03/08/RSmW8fswJOYb3G7.png,  1.5x,  2x"
+        data-src=""
+        alt="image.png"
+        title="image.png" /></p>
+<h3 id="possible-reasons-of-the-effect">Possible Reasons of the Effect</h3>
+<p>Before we begin our analysis, it is important to establish some intuition as to why an effect may be plausible.</p>
+<p>First, there are physical reasons. Swimming in an outside lane typically means swimming with a wall directly to one side of you. When waves form, they crash off these walls and can cause turbulence or currents in the water with the greatest impact on those closest to the wall.</p>
+<p>Next, there are psychological factors at play. Being placed in a center lane implies that you are a favorite to win the heat whereas swimmers in the outside lanes are expected to finish last. Mentally, this could go two ways.</p>
+<p>Lastly, there are visual reasons that lane advantages could exist. Because they are swimming against a wall, swimmers in outside lanes do not have a clear view of their competition. As a matter of fact, they can only see competitors to one side of them and are multiple lanes away from the top seeded swimmers. In contrast, swimmers in the inside lanes can see other top competitors right next to them on either side. It’s possible that this could affect pacing significantly.</p>
+<h3 id="ideal-experiment">Ideal Experiment</h3>
+<p>In order to determine the effect of lane placement conclusively, we would ideally conduct an experiment. This would involve gathering a sufficiently large group of swimmers, randomly assigning them to inside or outside lanes, subjecting both groups to the exact same preparation (e.g. bedtime, wake-up time, meals, warm-up, etc.), and having the swimmers race, recording the times.</p>
+<p>Then, results of the swimmers in inside and outside lanes could be compared to estimate an effect. Alas, we had neither the time nor the resources to conduct a proper experiment. Instead, we will be performing an observational study.</p>
+<h2 id="data-overview">DATA OVERVIEW</h2>
+<p>The data used for our analysis comprises of meet results from conference championship meets in the California Community College Athletic Association between 2017 and 2019, scraped from SwimPhone.com. Each meet included in our dataset took place at the end of the season in either April or May, was swam in an 8 lane pool, and follows the same championship meet format with prelims of an event in the morning and the top 16 qualifiers racing again in the evening for finals. To simplify our analysis, we restrict the scope to events of 100 yards, the most common distance. Each unit of observation is a finalist in a specific event. The dependent variable we will be modeling is the finals time while the treatment is the lane placement in finals. Lanes 4 and 5 are considered inside lanes while lanes 1 and 8 are considered outside lanes. Other covariates included are the prelims time, the improvement from seed time to prelims time, the gender of the swimmer, and the stroke of the event.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://i.loli.net/2020/03/08/znx6EItUGLT54Wj.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;Figure 1: Continuous Data Distributions&#34;</span><span class="p">/&gt;</span>
+  <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Figure 1: Continuous Data Distributions<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>When examining the distributions of the time variables (Figure 1), there are several characteristics of note. It appears that both prelims time and finals time follow similar right skewed distributions.</p>
+<p>Most of the data is around 60 seconds with a few observations reaching 80 or even over 100 seconds but no extreme outliers. Additionally, the finals time seems to be slightly more concentrated at lower values. The time improvement from seed to prelims is centered above 0, indicating that most finalists improved upon their in-season seed time in prelims. This distribution is fairly symmetric with some outliers gaining more than 10 seconds or improving by over 20 seconds.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.small.min.svg"
+        data-sizes="auto"
+        data-srcset="https://i.loli.net/2020/03/08/LwWZuE1ihopaKNT.png,  1.5x,  2x"
+        data-src=""
+        alt="image.png"
+        title="image.png" /></p>
+<p><strong>Figure 2</strong>: Discrete Data Distributions</p>
+<br>
+<p>Looking at the distributions of categorical variables (Figure 2), we see some interesting characteristics. As the data collected consists of the 100 yard races of each stroke across 22 meets, it is unsurprising that gender is quite evenly distributed.</p>
+<p>However, the distributions of stroke and lane are somewhat unexpected. Because there was an equal number of events scraped for each stroke, we would expect a balanced number of observations for each stroke. The dominance of freestyle in our dataset implies that swimmers were more likely to scratch out of finals in non-free strokes or some events did not have enough participants to fill two finals heats.</p>
+<p>Similar rationale might explain why our dataset is weighted more heavily towards inside lanes. Those who are expected to finish last in their heat may be more likely to scratch the event or, since lanes are seeded progressively slower towards the outside, events without enough participants for two full heats would result in empty outside lanes.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.small.min.svg"
+        data-sizes="auto"
+        data-srcset="https://i.loli.net/2020/03/08/YhmsFeDJbILp6ln.png,  1.5x,  2x"
+        data-src=""
+        alt="image.png"
+        title="image.png" /></p>
+<p><strong>Figure 3</strong>: Relationships Amongst Variables</p>
+<p><br>To better understand the variables that will be used in our analysis, we examined some relationships present (Figure 3).</p>
+<p>Intuitively, a swimmer’s performance in prelims is a very strong indicator of his or her performance in finals, as indicated by a nearly perfect correlation between the two times. In addition, we see that male swimmers’ times are typically faster and less varied than those of female swimmers. In terms of strokes, it’s evident that freestyle is the fastest stroke with the least variance, followed by butterfly, backstroke, and breaststroke, in that order. Now that we have a clearer picture of the data that we will be using, we can conduct our analyses.</p>
+<h2 id="main-analysis">MAIN ANALYSIS</h2>
+<h3 id="naive-regression">Naïve Regression</h3>
+<p>Before applying any econometric techniques to make causal inference in an observational setting, we ran a naïve regression model regressing finals time on prelims time, stroke, gender, time improvement, and lane. However, as discussed previously, lane placement for finals is not randomly assigned and there is clear endogeneity present. Therefore, we are unable to imply causality in our interpretation of the treatment effect. Results of this regression are shown below (Table 1). To be concise, insignificant predictors are excluded from this discussion.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Estimate</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prelims Time</td>
+<td>.9847</td>
+<td>&lt; 2e-16</td>
+</tr>
+<tr>
+<td>Improvement</td>
+<td>.1447</td>
+<td>&lt; 2e-16</td>
+</tr>
+<tr>
+<td>Lane (Treatment)</td>
+<td><strong>.2830</strong></td>
+<td><strong>.000215</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 1</strong>: Naïve Regression Results</p>
+<br>
+<p>We observe that for a one second increase in a swimmer’s prelims time, we would expect his or her finals time to increase by .9847 seconds, holding all other variables constant. Unsurprisingly, this indicates that swimmers are typically faster in finals heats than in prelims heats. Next, we can see that for each additional second of improvement between seed time and prelims time, we expect an increase in finals time by .1447 seconds, holding all else constant. Again, this makes sense. Swimmers who have improved significantly from their seed time likely do not have more effort to give for further improvement, whereas those who did not improve greatly from their in-season time may have more to give in finals. Next, we observe that swimmers in outside lanes swim, on average, .2830 seconds slower in finals than those in inside lanes, all else equal.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.small.min.svg"
+        data-sizes="auto"
+        data-srcset="https://i.loli.net/2020/03/08/ZVBNcpCuqGhiPlo.png,  1.5x,  2x"
+        data-src=""
+        alt="image.png"
+        title="image.png" /></p>
+<p><strong>Figure 4</strong>: Covariate Imbalance Before Matching</p>
+<br>
+<p>As alluded to before, since treatment groups are not randomly assigned, we see significant differences between the two groups (Figure 4). Because lane placement is determined by prelims time, we see that swimmers in inside lanes are an average of around 5 seconds faster than those in outside lanes. Additionally, those in outside lanes had an average improvement in prelims of about half a second more than those in inside lanes. Last but not least, if the groups were truly similar, they should have a nearly identical distribution of propensity scores. A propensity score is a measure of the predicted probability of being placed in an outside lane based on all other factors. Intuitively, it can be thought of as a measure encompassing all covariates such that two observations with the same propensity score would have virtually the same characteristics. As we can see in the graphs above, it’s clear that this observational data cannot be treated like a randomized controlled trial.</p>
+<h3 id="propensity-score-matching">Propensity Score Matching</h3>
+<p>To address this non-random lane assignment, we employed an econometric technique called propensity score matching. This method finds swimmers in outside lanes with very similar propensity scores to swimmers placed in inside lanes and matches them. Those without a good match are discarded. The resulting dataset should eliminate covariate imbalance and recover treatment assignment as good as random, post hoc.</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading.small.min.svg"
+        data-sizes="auto"
+        data-srcset="https://i.loli.net/2020/03/08/wrz6dX1hYNoSP7x.png,  1.5x,  2x"
+        data-src=""
+        alt="image.png"
+        title="image.png" /></p>
+<p>After matching, it is evident that the characteristics of swimmers in outside and inside lanes are much more similar. Statistical tests confirm that there are not significant differences between the two groups in prelims time or time improvement. Moreover, we can see that the distribution of propensity scores is essential identical between those placed in inside or outside lanes. Now that we have obtained a dataset that simulates a randomly assigned treatment, we can refit a regression model of finals time based on prelims time, stroke, gender, time improvement, and lane placement. Results of this model are shown below (Table 2).</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Estimate</th>
+<th>p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prelims Time</td>
+<td>.9945</td>
+<td>&lt; 2e-16</td>
+</tr>
+<tr>
+<td>Improvement</td>
+<td>.1347</td>
+<td>1.25e-11</td>
+</tr>
+<tr>
+<td>Lane (Treatment)</td>
+<td><strong>.3342</strong></td>
+<td><strong>.000114</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 2</strong>: Matched Regression Results</p>
+<br>
+<p>The significant predictors and estimates are quite similar to those before matching. Here, we see that for each additional second of time in prelims, we expect the time in finals to increase by .9945 seconds, holding all other variables constant. Again, we observe an expected increase in finals time of .1347 seconds for each incremental second of improvement from seed to prelims while controlling other predictors. Finally, we are able to estimate the effect of lane placement. All else equal, we estimate that swimming in an outside lane increases time by .3342 seconds. For reference, the difference between 1st place and 4th place of the men’s 100 meter freestyle in the 2016 Olympics was .30 seconds.</p>
+<h2 id="conclusion">CONCLUSION</h2>
+<h3 id="policy-implications">Policy Implications</h3>
+<p>Moving forward, there are a few things that can be done to level the playing field. Recall the three reasons we may see an effect of lane placement upon performance (physical, psychological, visual). Barring a radical redesign of the competition pool, we can only address two of these potential reasons: physical and mental factors.</p>
+<p>To combat the physical disadvantages of swimming in an outside lane, we first recommend ensuring that high level competitions have buffer lanes on the outside. This is already done in many top competitions. By having an extra lane against the wall, competitors will no longer be subject to waves crashing against the wall.</p>
+<p>In addition, there are a couple pool design characteristics that should be considered. There are gutters and lane lines that are specifically designed to disperse turbulence in the water. Investment in these technologies can help ensure that nobody is given an unfair advantage. Also, pools of greater depth reduce the likelihood of currents forming. This should be taken into consideration when building new competition pools. To address psychological factors that impair swimmers in the outside lanes, we propose random assignment of lanes to finalists. This could help eliminate the stigma and expectation of losing the race simply because of lane placement.</p>
+<p><img src="https://images.unsplash.com/photo-1492831864098-9eebe0b9243e?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1650&amp;q=80" style="zoom: 33%;" /></p>
+<h3 id="limitations">Limitations</h3>
+<p>There are several threats to causal inference that may bias our estimates.</p>
+<p>First, there is significant selection bias as we use a convenience sample. Since we are simply using data that was easily accessible, we do not have a random sample and it may not necessarily be representative of all competitive swimmers. Because of this, our findings may not generalize.</p>
+<p>Next, the key assumption of matching is that lane placement is fully determined by observed variables. Although lane placement is directly based on prelims time, there are a number of omitted variables that may affect both finals time and treatment. Unobservable characteristics such as energy level, motivation, and strategic decisions may all influence performance in prelims (and therefore, lane placement) and finals. Another variable we do not capture is the quality of competition swimsuit. Swimmers who are confident they will qualify for finals may save a faster suit for finals, biasing their speed in prelims and lane placement.</p>
+<p>Lastly, amount of competitive experience and age may be related to lane placement and performance.</p>
+<p>From a more technical perspective, the functional form of logistic regression used for matching is quite arbitrary. However, sensitivity analyses varying functional form, matching algorithm, parameter values, and model specifications show our results are quite robust.</p>
+<p>Finally, we are unable to account for differing lanes in the prelims swim. When including this as a covariate, we would essentially be estimating the treatment effect of lane placement twice. This would lead to a difficult to interpret and fairly unreliable estimate.</p>
+<p><img src="https://images.unsplash.com/photo-1461567933755-6c82be2197da?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1789&amp;q=80" style="zoom:33%;" /></p>
+<p>REFERENCES</p>
+<ul>
+<li>
+<p>Various articles referenced in the introduction section.</p>
+<ul>
+<li><a href="https://www.wsj.com/articles/did-the-olympic-pool-give-some-swimmers-an-advantage-1471470741">https://www.wsj.com/articles/did-the-olympic-pool-give-some-swimmers-an-advantage-1471470741</a></li>
+<li><a href="https://www.washingtonpost.com/news/wonk/wp/2016/09/01/these-charts-clearly-show-how-some-olympic-swimmers-may-have-gotten-an-unfair-advantage/">https://www.washingtonpost.com/news/wonk/wp/2016/09/01/these-charts-clearly-show-how-some-olympic-swimmers-may-have-gotten-an-unfair-advantage/</a></li>
+<li><a href="https://qz.com/761280/researchers-believe-certain-lanes-in-the-olympic-pool-may-have-given-some-swimmers-an-advantage/">https://qz.com/761280/researchers-believe-certain-lanes-in-the-olympic-pool-may-have-given-some-swimmers-an-advantage/</a></li>
+<li><a href="http://www.bbc.co.uk/newsbeat/article/37083059/are-there-lane-advantages-in-athletics-swimming-and-track-cycling">http://www.bbc.co.uk/newsbeat/article/37083059/are-there-lane-advantages-in-athletics-swimming-and-track-cycling</a></li>
+</ul>
+</li>
+<li>
+<p>All data used for analysis was retrieved via SwimPhone.com from CCCAA meets.</p>
+<ul>
+<li><a href="https://www.swimphone.com/">https://www.swimphone.com/</a></li>
+<li><a href="https://www.cccaasports.org">https://www.cccaasports.org</a></li>
+</ul>
+</li>
+<li>
+<p>Olympic swimming data was provided by Sports Reference.</p>
+<ul>
+<li><a href="https://www.sports-reference.com/olympics">https://www.sports-reference.com/olympics</a></li>
+</ul>
+</li>
+</ul>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>The article was updated on 2020-02-29</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2020-02-29-swimmer-performance-vs-lane-placement/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" data-title="Swimmer Performance vs Lane Placement" data-hashtags="causality,matching"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" data-hashtag="causality"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" data-title="Swimmer Performance vs Lane Placement" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" data-description="Causal Inference Using Mataching Technology" data-image="/images/post-swim.jpg"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" data-title="Swimmer Performance vs Lane Placement"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/causality">causality</a>,&nbsp;<a href="/tags/matching">matching</a></section>
+        <section>
+            <span><a href="javascript:window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020-02-17-effectiveness-of-online-advertising/" class="prev" rel="prev" title="Effectiveness of Online Advertising"><i class="fas fa-angle-left fa-fw"></i>Effectiveness of Online Advertising</a>
+            <a href="/2020-03-02-sample-size-reflection/" class="next" rel="next" title="What happened if the sample size is very large?">What happened if the sample size is very large?<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div class="comment"><div id="disqus_thread"></div><noscript>
+            Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript></div>
+    </article></div>
+            </main><footer class="footer">
+
+
+        <div class="copyright-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Nina</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+    </div>
+</footer>
+</div><a href="#" class="dynamic-to-top animated faster" id="dynamic-to-top">
+            <i class="fas fa-chevron-up fa-fw"></i>
+        </a><script>
+        document.addEventListener('DOMContentLoaded', function () {
+            lightGallery(document.getElementById('content'), {
+                selector: '.lightgallery',
+                speed: 400,
+                hideBarsDelay: 2000,
+                thumbnail: true,
+                exThumbImage: 'data-thumbnail',
+                thumbWidth: 80,
+                thumbContHeight: 80,
+            });
+        });
+    </script><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><script defer src="https://xueni-me.disqus.com/embed.js"></script><script src="/lib/smooth-scroll/smooth-scroll.polyfills.min.js"></script><script src="/lib/sharer/sharer.min.js"></script><script src="/lib/lazysizes/lazysizes.min.js"></script><script src="/lib/lightgallery/lightgallery.min.js"></script><script src="/lib/lightgallery/lg-thumbnail.min.js"></script><script src="/lib/lightgallery/lg-zoom.min.js"></script><script src="/js/theme.min.js"></script></body>
+</html>
