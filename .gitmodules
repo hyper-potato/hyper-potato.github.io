@@ -4,4 +4,4 @@
 
 [submodule "public"]
   path = public
-  url = https://github.com/hyper-potato/hyper-potato.github.io/tree/hugo
+  url = https://github.com/hyper-potato/hyper-potato.github.io
