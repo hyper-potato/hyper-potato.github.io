@@ -37,7 +37,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "classification, machine learning","wordcount":  3788 ,
+            },"genre": "posts","keywords": "classification, machine learning","wordcount":  3348 ,
         "url": "https:\/\/hyper-potato.github.io\/2019-10-06-car-evaluation-using-machine-learning\/","datePublished": "2019-10-06","dateModified": "2019-10-06","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -93,8 +93,8 @@
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-10-06>2019-10-06</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 3788 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>18 min&nbsp;</div>
+                <i class="fas fa-pencil-alt fa-fw"></i>about 3348 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>16 min&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -166,25 +166,7 @@
 <p>More specifically, I will explore how well these techniques perform for several different parameter values.</p>
 <p>Present a brief overview of the predictive modeling process, explorations, and discuss my results. Then I will present the final model and discuss its performance in a comprehensive manner (overall accuracy; per-class performance, i.e., whether this model predicts all classes equally well, or if there some classes for which it does much better than others; etc.)</p>
 <h2 id="data-exploration">Data Exploration</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Importing the basic libraries</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Importing the basic libraries</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
@@ -198,27 +180,10 @@
 <span class="kn">from</span> <span class="nn">warnings</span> <span class="kn">import</span> <span class="n">simplefilter</span>
 <span class="c1"># ignore all future warnings</span>
 <span class="n">simplefilter</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s1">&#39;ignore&#39;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">FutureWarning</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;car.data&#39;</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span>  <span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;doors&#39;</span><span class="p">,</span><span class="s1">&#39;capacity&#39;</span><span class="p">,</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">,</span><span class="s1">&#39;safety&#39;</span><span class="p">,</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Taking an overview of data</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;car.data&#39;</span><span class="p">,</span> <span class="n">names</span> <span class="o">=</span>  <span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;doors&#39;</span><span class="p">,</span><span class="s1">&#39;capacity&#39;</span><span class="p">,</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">,</span><span class="s1">&#39;safety&#39;</span><span class="p">,</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Taking an overview of data</span>
 <span class="n">cars</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div>
+</code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -349,25 +314,10 @@
   </tbody>
 </table>
 </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars</span><span class="o">.</span><span class="n">doors</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;5more&#39;</span><span class="p">),(</span><span class="s1">&#39;5&#39;</span><span class="p">),</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars</span><span class="o">.</span><span class="n">doors</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;5more&#39;</span><span class="p">),(</span><span class="s1">&#39;5&#39;</span><span class="p">),</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">cars</span><span class="o">.</span><span class="n">capacity</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;more&#39;</span><span class="p">),(</span><span class="s1">&#39;5&#39;</span><span class="p">),</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><div>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -442,31 +392,16 @@
 Yay!<br>
 Since we are dealing with categorical data, we are shown the distinct values in the unique column.</p>
 <p>The distribution of the acceptability of the cars.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Lets find out the number of cars in each evaluation category</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Lets find out the number of cars in each evaluation category</span>
 <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>unacc    1210
+</code></pre></div><pre><code>unacc    1210
 acc       384
 good       69
 vgood      65
 Name: class, dtype: int64
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -477,33 +412,14 @@ Name: class, dtype: int64
 <p>As we can see, our target varible is highly skewed</p>
 <h2 id="initial-feature-exploration">Initial Feature Exploration</h2>
 <p>So we need to predict the acceptability of the car given the 6 features. Let’s try to find the relationship between each feature variable with the target variable. I’ll use pandas crosstab to make a table showing the relationship and Plotly to plot an interactive graph for the same.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">buy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">buy</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
 <span class="n">maint</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;maint&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
 <span class="n">drs</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;doors&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
 <span class="n">prsn</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;capacity&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
 <span class="n">lb</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
 <span class="n">sfty</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">cars</span><span class="p">[</span><span class="s1">&#39;safety&#39;</span><span class="p">],</span> <span class="n">cars</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">])</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">buy</span>
-</code></pre></td></tr></table>
-</div>
-</div><div>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">buy</span>
+</code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
@@ -566,15 +482,8 @@ Name: class, dtype: int64
   </tbody>
 </table>
 </div>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">buy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">buy</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -582,15 +491,8 @@ Name: class, dtype: int64
         data-src=""
         alt="png"
         title="png" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">maint</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">maint</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -598,15 +500,8 @@ Name: class, dtype: int64
         data-src=""
         alt="png"
         title="png" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">drs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">drs</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -614,15 +509,8 @@ Name: class, dtype: int64
         data-src=""
         alt="png"
         title="png" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">sfty</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">sfty</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -634,45 +522,20 @@ Name: class, dtype: int64
 <p>We need to encode the categorical data
 There are two options, either we use label encoder or one hot encoder.
 Intuitively, predictors&rsquo; value in the dataset such as &lsquo;low, med, high&rsquo; introduce an underlying linear order itself, therefore, it&rsquo;s alright to transform data with ordinal encoder.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars1</span> <span class="o">=</span> <span class="n">cars</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cars1</span> <span class="o">=</span> <span class="n">cars</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">cars1</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;unacc&#39;</span><span class="p">,</span> <span class="s1">&#39;acc&#39;</span><span class="p">,</span> <span class="s1">&#39;good&#39;</span><span class="p">,</span> <span class="s1">&#39;vgood&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 <span class="n">cars1</span><span class="p">[</span><span class="s1">&#39;buying&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;vhigh&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 <span class="n">cars1</span><span class="p">[</span><span class="s1">&#39;maint&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;vhigh&#39;</span><span class="p">,</span> <span class="s1">&#39;high&#39;</span><span class="p">,</span> <span class="s1">&#39;med&#39;</span><span class="p">,</span> <span class="s1">&#39;low&#39;</span><span class="p">),</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">inplace</span> <span class="o">=</span> <span class="bp">True</span><span class="p">)</span>
 <span class="n">cars1</span><span class="p">[</span><span class="s1">&#39;lug_boot&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;small&#39;</span><span class="p">,</span><span class="s1">&#39;med&#39;</span><span class="p">,</span><span class="s1">&#39;big&#39;</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">cars1</span><span class="p">[</span><span class="s1">&#39;safety&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;med&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">),(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s2">&#34;Feature Correlation:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s2">&#34;Feature Correlation:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mf">6.0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="n">ax</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">cars1</span><span class="o">.</span><span class="n">corr</span><span class="p">(),</span><span class="n">center</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span><span class="n">vmax</span><span class="o">=.</span><span class="mi">3</span><span class="p">,</span><span class="n">cmap</span><span class="o">=</span><span class="s2">&#34;YlGnBu&#34;</span><span class="p">,</span>
             <span class="n">square</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">linewidths</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Feature Correlation:
+</code></pre></div><pre><code>Feature Correlation:
 </code></pre>
 <p><img
         class="lazyload"
@@ -684,42 +547,12 @@ Intuitively, predictors&rsquo; value in the dataset such as &lsquo;low, med, hig
         title="output_24_1.png" /></p>
 <p>Ignoring the diagonal values, it can be seen that most of the columns shows very weak correlation with &lsquo;class&rsquo;.
 &lsquo;safety&rsquo; column is having a correlation with &lsquo;class&rsquo;.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Dividing the dataframe into x features and y target variable</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Dividing the dataframe into x features and y target variable</span>
 <span class="n">X1</span> <span class="o">=</span> <span class="n">cars1</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">],</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y1</span> <span class="o">=</span> <span class="n">cars1</span><span class="p">[</span><span class="s1">&#39;class&#39;</span><span class="p">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="n">X1_train</span><span class="p">,</span> <span class="n">X1_test</span><span class="p">,</span> <span class="n">y1_train</span><span class="p">,</span> <span class="n">y1_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">X3</span> <span class="o">=</span> <span class="n">cars</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">],</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">X3</span> <span class="o">=</span> <span class="n">cars</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;class&#39;</span><span class="p">],</span><span class="n">axis</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 <span class="n">y3</span> <span class="o">=</span> <span class="n">y1</span>
 <span class="c1"># Using pandas dummies function to encode categorical data</span>
 
@@ -728,61 +561,14 @@ Intuitively, predictors&rsquo; value in the dataset such as &lsquo;low, med, hig
 <span class="n">X3</span><span class="p">[</span><span class="s1">&#39;safety&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">((</span><span class="s1">&#39;low&#39;</span><span class="p">,</span><span class="s1">&#39;med&#39;</span><span class="p">,</span><span class="s1">&#39;high&#39;</span><span class="p">),(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">),</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">X3_train</span><span class="p">,</span> <span class="n">X3_test</span><span class="p">,</span> <span class="n">y3_train</span><span class="p">,</span> <span class="n">y3_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X3</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">test_size</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span> <span class="o">=</span> <span class="mi">41</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><br>
+</code></pre></div><br>
 <h2 id="model-building">Model Building</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">warnings</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">warnings</span>
 <span class="kn">import</span> <span class="nn">sklearn.exceptions</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&#34;ignore&#34;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">sklearn</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">UndefinedMetricWarning</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="logistic-regression">Logistic Regression</h2>
+</code></pre></div><h2 id="logistic-regression">Logistic Regression</h2>
 <h3 id="tuning-parameter---gridsearchcv">Tuning parameter - GridSearchCV</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
@@ -814,9 +600,7 @@ Intuitively, predictors&rsquo; value in the dataset such as &lsquo;low, med, hig
 
     <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y1_test</span><span class="p">,</span> <span class="n">lg_gscv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X1_test</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code># Tuning hyper-parameters for precision
+</code></pre></div><pre><code># Tuning hyper-parameters for precision
 
 Best parameters set found on development set:
 
@@ -866,43 +650,14 @@ Grid scores on development set:
 ​        accuracy                           0.81       519
 ​       macro avg       0.71      0.54      0.59       519
 ​    weighted avg       0.80      0.81      0.80       519</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">validation_curve</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">validation_curve</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Cross-Validation Score :{0:.3f}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">lg_gscv</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">))))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Cross-Validation Score :0.778
+</code></pre></div><pre><code>Cross-Validation Score :0.778
 </code></pre>
 <p>For C value, use a wider range of np.logspace(-5, 6, 15) to get a rough value, which ends up with 19 in this case. Then zoom in to a narrower range of C = np.linspace(20,40, num=15) to find a better value. Let&rsquo;s look at the validation curve to find a final C in the model.</p>
 <h3 id="tuning-parameter---validation-curve">Tuning parameter - Validation curve</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">validation_curve</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">validation_curve</span>
 
 <span class="n">C</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
 <span class="n">curve</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span><span class="n">logistic</span><span class="p">,</span><span class="n">X1_train</span><span class="p">,</span><span class="n">y1_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">param_name</span><span class="o">=</span><span class="s1">&#39;C&#39;</span><span class="p">,</span><span class="n">param_range</span><span class="o">=</span><span class="n">C</span><span class="p">)</span>
@@ -918,9 +673,7 @@ Grid scores on development set:
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="o">=</span><span class="n">C</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;validation_curve with different C&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Text(0.5, 1.0, 'validation_curve with different C')
+</code></pre></div><pre><code>Text(0.5, 1.0, 'validation_curve with different C')
 </code></pre>
 <p><img
         class="lazyload"
@@ -931,26 +684,7 @@ Grid scores on development set:
         alt="png"
         title="png" /></p>
 <h3 id="fit-the-model">Fit the model</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span><span class="n">confusion_matrix</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_fscore_support</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span><span class="n">confusion_matrix</span>
 <span class="c1"># Multi-class</span>
 <span class="n">lgc</span><span class="o">=</span><span class="n">LogisticRegression</span><span class="p">(</span><span class="n">solver</span><span class="o">=</span><span class="s1">&#39;newton-cg&#39;</span><span class="p">,</span><span class="n">C</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
 <span class="n">lgc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span><span class="n">y1_train</span><span class="p">)</span>
@@ -965,9 +699,7 @@ Grid scores on development set:
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span> <span class="n">y1_pred</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">y1_pred</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Training Accuracy:  0.8354011579818031
+</code></pre></div><pre><code>Training Accuracy:  0.8354011579818031
 Testing Accuracy:  0.8111753371868978
 Cross-Validation Score :0.778
 [[340  14   2   2]
@@ -985,38 +717,7 @@ Cross-Validation Score :0.778
    macro avg       0.69      0.53      0.57       519
 weighted avg       0.80      0.81      0.80       519
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;Training examples&#34;</span><span class="p">)</span>
@@ -1043,9 +744,7 @@ weighted avg       0.80      0.81      0.80       519
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -1055,45 +754,7 @@ weighted avg       0.80      0.81      0.80       519
         title="png" /></p>
 <h2 id="k-nn">K-NN</h2>
 <h3 id="hypertuning-using-gridsearchcv">Hypertuning using GridSearchCV</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
@@ -1127,9 +788,7 @@ weighted avg       0.80      0.81      0.80       519
     <span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span> <span class="o">=</span> <span class="n">y1_test</span><span class="p">,</span> <span class="n">knn_gscv</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X1_test</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
     <span class="k">print</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code># Tuning hyper-parameters for precision
+</code></pre></div><pre><code># Tuning hyper-parameters for precision
 
 Best parameters set found on development set:
 
@@ -1180,25 +839,7 @@ weighted avg       0.94      0.94      0.94       519
 ​       macro avg       0.88      0.82      0.85       519
 ​    weighted avg       0.94      0.94      0.94       519</p>
 <p>​</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Plot K vs accuracy</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Plot K vs accuracy</span>
 <span class="n">avg_score</span><span class="o">=</span><span class="p">[]</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">15</span><span class="p">):</span>
     <span class="n">knn</span><span class="o">=</span><span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">k</span><span class="p">)</span>
@@ -1212,9 +853,7 @@ weighted avg       0.94      0.94      0.94       519
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;K value vs Accuracy Plot&#34;</span><span class="p">)</span>
 
 <span class="c1">#plt.xticks(range(2,30,2))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Text(0.5, 1.0, 'K value vs Accuracy Plot')
+</code></pre></div><pre><code>Text(0.5, 1.0, 'K value vs Accuracy Plot')
 </code></pre>
 <p><img
         class="lazyload"
@@ -1226,25 +865,7 @@ weighted avg       0.94      0.94      0.94       519
         title="png" /></p>
 <p>Both grid search cross validation and plot show that neighbor = 5 is a potential good hyperparameter.</p>
 <h3 id="fit-the-model-1">Fit the model</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Using KNN classifier,</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Using KNN classifier,</span>
 
 <span class="n">knn</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">metric</span> <span class="o">=</span> <span class="s1">&#39;minkowski&#39;</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">knn</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span> <span class="n">y1_train</span><span class="p">)</span>
@@ -1258,9 +879,7 @@ weighted avg       0.94      0.94      0.94       519
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span> <span class="n">y1_pred</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">cm</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">y1_pred</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Training Accuracy:  0.9818031430934657
+</code></pre></div><pre><code>Training Accuracy:  0.9818031430934657
 Testing Accuracy:  0.9421965317919075
 Cross-Validation Score :0.813
 
@@ -1282,52 +901,7 @@ weighted avg       0.94      0.94      0.94       519
 </code></pre>
 <h2 id="svm">SVM</h2>
 <h3 id="grid-search">Grid Search</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">classification_report</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
@@ -1368,9 +942,7 @@ weighted avg       0.94      0.94      0.94       519
     <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_true</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
     <span class="k">print</span><span class="p">()</span>
 
-</code></pre></td></tr></table>
-</div>
-</div><pre><code># Tuning hyper-parameters for precision
+</code></pre></div><pre><code># Tuning hyper-parameters for precision
 
 Best parameters set found on development set:
 
@@ -1423,25 +995,7 @@ Grid scores on development set:
 <p>​</p>
 <h3 id="fit-rbf-svc-model">Fit rbf SVC Model</h3>
 <p>From the GridSearch result, we find that with <code>kernel = 'rbf', C = 100, gamma = 0.1</code>, the model can achive best performance with respect to recall and accuracy. Since the unbalanced label of our target, I decide to go with recall, intuitively because we want to capture as many cars that will not be accepted as possible.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 
 <span class="n">svc_rbf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span> <span class="o">=</span> <span class="s1">&#39;rbf&#39;</span><span class="p">,</span> <span class="n">C</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">gamma</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">svc_rbf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span><span class="n">y1_train</span><span class="p">)</span>
@@ -1455,9 +1009,7 @@ Grid scores on development set:
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span> <span class="n">y1_pred</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">cm</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">y1_pred</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Training Accuracy:  0.9983457402812241
+</code></pre></div><pre><code>Training Accuracy:  0.9983457402812241
 Testing Accuracy:  0.9749518304431599
 Cross-Validation Score :0.877
 
@@ -1478,39 +1030,7 @@ Cross-Validation Score :0.877
 weighted avg       0.98      0.97      0.98       519
 </code></pre>
 <h3 id="learning-curve">Learning curve</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">learning_curve</span>
 <span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1538,9 +1058,7 @@ weighted avg       0.98      0.97      0.98       519
 
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -1549,41 +1067,13 @@ weighted avg       0.98      0.97      0.98       519
         alt="png"
         title="png" /></p>
 <h2 id="nb">NB</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Using NB classifier</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Using NB classifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="n">nb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">nb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span> <span class="n">y1_train</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>GaussianNB(priors=None, var_smoothing=1e-09)
+</code></pre></div><pre><code>GaussianNB(priors=None, var_smoothing=1e-09)
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
 <span class="n">gnb</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
 <span class="n">y1_pred</span> <span class="o">=</span> <span class="n">gnb</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span> <span class="n">y1_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X1_test</span><span class="p">)</span>
 <span class="n">f1_gnb</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">y1_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
@@ -1597,9 +1087,7 @@ weighted avg       0.98      0.97      0.98       519
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span> <span class="n">y1_pred</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">cm</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">y1_pred</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Number of mislabeled points out of a total 519 points :123
+</code></pre></div><pre><code>Number of mislabeled points out of a total 519 points :123
 Training Accuracy:  0.7766749379652605
 Testing Accuracy:  0.7630057803468208
 Cross-Validation Score :0.754
@@ -1622,32 +1110,7 @@ weighted avg       0.79      0.76      0.75       519
 </code></pre>
 <h2 id="decision-tree">Decision Tree</h2>
 <h3 id="find-hyperparameter">Find Hyperparameter</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Plot max_depth vs accuracy</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Plot max_depth vs accuracy</span>
 
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
 
@@ -1668,9 +1131,7 @@ weighted avg       0.79      0.76      0.75       519
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&#34;max_depth&#34;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&#34;accuracy&#34;</span><span class="p">)</span>
 
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Text(0, 0.5, 'accuracy')
+</code></pre></div><pre><code>Text(0, 0.5, 'accuracy')
 </code></pre>
 <p><img
         class="lazyload"
@@ -1682,39 +1143,17 @@ weighted avg       0.79      0.76      0.75       519
         title="png" /></p>
 <p>Max depth of 9 looks to be a balanced cutoff point</p>
 <h3 id="fit-the-model-2">Fit the model</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Trying decision tree classifier</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#Trying decision tree classifier</span>
 <span class="n">dtree</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="n">random_state</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">9</span><span class="p">)</span>
 <span class="n">dtree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span> <span class="n">y1_train</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=9,
+</code></pre></div><pre><code>DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=9,
                        max_features=None, max_leaf_nodes=None,
                        min_impurity_decrease=0.0, min_impurity_split=None,
                        min_samples_leaf=1, min_samples_split=2,
                        min_weight_fraction_leaf=0.0, presort=False,
                        random_state=0, splitter='best')
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">y1_pred</span> <span class="o">=</span> <span class="n">dtree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X1_test</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">y1_pred</span> <span class="o">=</span> <span class="n">dtree</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X1_test</span><span class="p">)</span>
 <span class="n">F1_dtree</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">y1_pred</span><span class="p">,</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Training Accuracy: &#34;</span><span class="p">,</span><span class="n">dtree</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span> <span class="n">y1_train</span><span class="p">))</span>
@@ -1723,9 +1162,7 @@ weighted avg       0.79      0.76      0.75       519
 <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span> <span class="n">y1_pred</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span><span class="n">cm</span><span class="p">,</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">y1_pred</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Training Accuracy:  0.9842845326716294
+</code></pre></div><pre><code>Training Accuracy:  0.9842845326716294
 Testing Accuracy:  0.9556840077071291
 
  [[352   6   0   0]
@@ -1746,20 +1183,7 @@ weighted avg       0.96      0.96      0.96       519
 </code></pre>
 <h2 id="random-forest">Random Forest</h2>
 <h3 id="try-a-basic-model">Try a Basic Model</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 
 <span class="n">rfc</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>
 
@@ -1768,35 +1192,12 @@ weighted avg       0.96      0.96      0.96       519
 
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Training Accuracy: &#34;</span><span class="p">,</span><span class="n">rfc</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span> <span class="n">y1_train</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Testing Accuracy: &#34;</span><span class="p">,</span> <span class="n">rfc</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X1_test</span><span class="p">,</span> <span class="n">y1_test</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Training Accuracy:  1.0
+</code></pre></div><pre><code>Training Accuracy:  1.0
 Testing Accuracy:  0.9402697495183044
 </code></pre>
 <p>So, the basic model of RFC is giving 94% accuracy, but training score is clearly overfit. Now, check the effect of n_estimators on the model</p>
 <h3 id="fine-tune-hyperparameter">Fine Tune Hyperparameter</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Plot number of trees vs accuracy</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Plot number of trees vs accuracy</span>
 <span class="n">n_tree</span><span class="o">=</span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="mi">25</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="mi">100</span><span class="p">]</span>
 <span class="n">curve</span> <span class="o">=</span> <span class="n">validation_curve</span><span class="p">(</span><span class="n">rfc</span><span class="p">,</span><span class="n">X1_train</span><span class="p">,</span><span class="n">y1_train</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span><span class="n">param_name</span><span class="o">=</span><span class="s1">&#39;n_estimators&#39;</span><span class="p">,</span>
                          <span class="n">param_range</span><span class="o">=</span><span class="n">n_tree</span><span class="p">)</span>
@@ -1813,9 +1214,7 @@ Testing Accuracy:  0.9402697495183044
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&#34;number of trees vs Accuracy Plot&#34;</span><span class="p">)</span>
 <span class="c1">#ax.set_ylim(0.8,1.1)</span>
 
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Text(0.5, 1.0, 'number of trees vs Accuracy Plot')
+</code></pre></div><pre><code>Text(0.5, 1.0, 'number of trees vs Accuracy Plot')
 </code></pre>
 <p><img
         class="lazyload"
@@ -1828,17 +1227,9 @@ Testing Accuracy:  0.9402697495183044
 <p>So, with the increasing n_estimators, test accuracy is increasing. Model is evaluating best at n_estimators=50. After n_estimators = 50, model starts overfitting.
 Now, we&rsquo;ve reached approx. 97.1% accuracy.</p>
 <p>Now, check how the model fits for various values of &lsquo;max_features&rsquo;</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">rfc</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>
 <span class="n">rfc</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span><span class="n">y1_train</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+</code></pre></div><pre><code>RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
                        max_depth=None, max_features='auto', max_leaf_nodes=None,
                        min_impurity_decrease=0.0, min_impurity_split=None,
                        min_samples_leaf=1, min_samples_split=2,
@@ -1846,24 +1237,7 @@ Now, we&rsquo;ve reached approx. 97.1% accuracy.</p>
                        n_jobs=None, oob_score=False, random_state=51, verbose=0,
                        warm_start=False)
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">param_range</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">param_range</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">X1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">curve</span><span class="o">=</span><span class="n">validation_curve</span><span class="p">(</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">51</span><span class="p">),</span><span class="n">X1_train</span><span class="p">,</span><span class="n">y1_train</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
     <span class="n">param_name</span><span class="o">=</span><span class="s1">&#39;max_features&#39;</span><span class="p">,</span><span class="n">param_range</span><span class="o">=</span><span class="n">param_range</span><span class="p">)</span>
 
@@ -1876,9 +1250,7 @@ Now, we&rsquo;ve reached approx. 97.1% accuracy.</p>
 <span class="c1">#ax.set_ylim(0.96,1.01)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;validation_curve of random forest with 50 trees&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Text(0.5, 1.0, 'validation_curve of random forest with 50 trees')
+</code></pre></div><pre><code>Text(0.5, 1.0, 'validation_curve of random forest with 50 trees')
 </code></pre>
 <p><img
         class="lazyload"
@@ -1891,24 +1263,7 @@ Now, we&rsquo;ve reached approx. 97.1% accuracy.</p>
 <p>From above graph, it is clear that model is giving best resut for max_features=5. Still the model is overfitting.</p>
 <p>Now we&rsquo;ve reached 97.2% accuracy approx.</p>
 <p>We can also check of other parameters like &lsquo;max_depth&rsquo;,&lsquo;criterion&rsquo;,etc using above code.Another simple way is to use GridSearch to get combination of best parameters. As this dataset is small, GridSearch will take less time to complete.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;criterion&#39;</span><span class="p">:[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span><span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">param_grid</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;criterion&#39;</span><span class="p">:[</span><span class="s1">&#39;gini&#39;</span><span class="p">,</span><span class="s1">&#39;entropy&#39;</span><span class="p">],</span>
            <span class="s1">&#39;max_depth&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">20</span><span class="p">],</span>
            <span class="s1">&#39;max_features&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="s1">&#39;auto&#39;</span><span class="p">],</span>
            <span class="s1">&#39;max_leaf_nodes&#39;</span><span class="p">:[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="bp">None</span><span class="p">],}</span>
@@ -1921,30 +1276,11 @@ Now, we&rsquo;ve reached approx. 97.1% accuracy.</p>
 <span class="k">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_params_</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">grid</span><span class="o">.</span><span class="n">best_score_</span><span class="p">)</span>
 <span class="n">F1_rfc</span> <span class="o">=</span> <span class="n">f1_score</span><span class="p">(</span><span class="n">y1_test</span><span class="p">,</span><span class="n">grid</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train</span><span class="p">,</span><span class="n">y1_train</span><span class="p">)</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X1_test</span><span class="p">),</span> <span class="n">average</span><span class="o">=</span><span class="s1">&#39;micro&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>{'criterion': 'entropy', 'max_depth': 20, 'max_features': 6, 'max_leaf_nodes': None}
+</code></pre></div><pre><code>{'criterion': 'entropy', 'max_depth': 20, 'max_features': 6, 'max_leaf_nodes': None}
 0.9859387923904053
 </code></pre>
 <p>So, with above parameters for random forest model, we&rsquo;ve reached 98.6% accuracy.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">curve</span><span class="o">=</span><span class="n">learning_curve</span><span class="p">(</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">curve</span><span class="o">=</span><span class="n">learning_curve</span><span class="p">(</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span>
                                          <span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span>
                                          <span class="n">max_features</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span>
                                          <span class="n">max_depth</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>
@@ -1957,9 +1293,7 @@ Now, we&rsquo;ve reached approx. 97.1% accuracy.</p>
 <span class="n">fig</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">train_score</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">size</span><span class="p">,</span><span class="n">test_score</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -1974,52 +1308,23 @@ Now, we&rsquo;ve reached approx. 97.1% accuracy.</p>
 <li>Reduce number of features</li>
 </ol>
 <h4 id="feature-reduction">Feature Reduction</h4>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">feature_import</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">rfc</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">X1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">feature_import</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">rfc</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">],</span> <span class="n">columns</span><span class="o">=</span><span class="n">X1</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">feature_import</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>     buying     maint     doors  capacity  lug_boot    safety
+</code></pre></div><pre><code>     buying     maint     doors  capacity  lug_boot    safety
 0  0.154819  0.151853  0.059702  0.251283  0.094677  0.287667
 </code></pre>
 <p>From feature importances, it is clear that &lsquo;doors&rsquo; feature is least important.
 So, train our model excluding that feature.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">X1_train_new</span><span class="p">,</span> <span class="n">X1_test_new</span><span class="p">,</span> <span class="n">y1_train_new</span><span class="p">,</span> <span class="n">y1_test_new</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">X1_train_new</span><span class="p">,</span> <span class="n">X1_test_new</span><span class="p">,</span> <span class="n">y1_train_new</span><span class="p">,</span> <span class="n">y1_test_new</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">X1</span><span class="p">[[</span><span class="s1">&#39;buying&#39;</span><span class="p">,</span> <span class="s1">&#39;maint&#39;</span><span class="p">,</span> <span class="s1">&#39;capacity&#39;</span><span class="p">,</span> <span class="s1">&#39;lug_boot&#39;</span><span class="p">,</span> <span class="s1">&#39;safety&#39;</span><span class="p">]],</span>
     <span class="n">y1</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">rfc1</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">rfc1</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;entropy&#39;</span><span class="p">,</span><span class="n">max_features</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="n">random_state</span><span class="o">=</span><span class="mi">51</span><span class="p">,</span>
     <span class="n">max_leaf_nodes</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
 <span class="n">rfc1</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X1_train_new</span><span class="p">,</span><span class="n">y1_train_new</span><span class="p">)</span>
 
 <span class="n">rfc1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X1_test_new</span><span class="p">,</span><span class="n">y1_test_new</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>0.930635838150289
+</code></pre></div><pre><code>0.930635838150289
 </code></pre>
 <p>Our data already has less features and even if we drop the least important feature, then also the accuracy is reducing to 93.06%</p>
 <p>So, dropping a feature is not an option to reduce variance in our model.The only option we are left with is to get more data.</p>
@@ -2032,27 +1337,14 @@ max_features: 4
 max_leaf_nodes: None</p>
 <p>We are able to achieve 98.6% accuracy with this model</p>
 <h2 id="model-evaluation">Model Evaluation</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rbf SVC&#39;</span><span class="p">,</span><span class="s1">&#39;Logistic Regression&#39;</span><span class="p">,</span><span class="s1">&#39;Decision Tree&#39;</span><span class="p">,</span><span class="s1">&#39;Naive Bayes&#39;</span><span class="p">,</span><span class="s1">&#39;Random Forest&#39;</span><span class="p">]</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">models</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;rbf SVC&#39;</span><span class="p">,</span><span class="s1">&#39;Logistic Regression&#39;</span><span class="p">,</span><span class="s1">&#39;Decision Tree&#39;</span><span class="p">,</span><span class="s1">&#39;Naive Bayes&#39;</span><span class="p">,</span><span class="s1">&#39;Random Forest&#39;</span><span class="p">]</span>
 <span class="n">f1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">f1_SVC_rbf</span><span class="p">,</span> <span class="n">f1_LR</span><span class="p">,</span> <span class="n">F1_dtree</span><span class="p">,</span><span class="n">f1_gnb</span><span class="p">,</span><span class="n">F1_rfc</span><span class="p">])</span>
 
 <span class="n">y_pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">models</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="n">f1</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">y_pos</span><span class="p">,</span> <span class="p">(</span><span class="s1">&#39;rbf SVC&#39;</span><span class="p">,</span><span class="s1">&#39;Logistic Regression&#39;</span><span class="p">,</span><span class="s1">&#39;Decision Tree&#39;</span><span class="p">,</span><span class="s1">&#39;Naive Bayes&#39;</span><span class="p">,</span><span class="s1">&#39;Random Forest&#39;</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img
+</code></pre></div><p><img
         class="lazyload"
         src="/svg/loading.small.min.svg"
         data-sizes="auto"
@@ -2060,17 +1352,9 @@ max_leaf_nodes: None</p>
         data-src=""
         alt="png"
         title="png" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">score</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">f1</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="n">models</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">score</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">f1</span><span class="p">],</span><span class="n">columns</span><span class="o">=</span><span class="n">models</span><span class="p">)</span>
 <span class="n">score</span>
-</code></pre></td></tr></table>
-</div>
-</div><div>
+</code></pre></div><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;

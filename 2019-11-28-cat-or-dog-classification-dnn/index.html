@@ -37,7 +37,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "machine learning, neural network","wordcount":  1637 ,
+            },"genre": "posts","keywords": "machine learning, neural network","wordcount":  1426 ,
         "url": "https:\/\/hyper-potato.github.io\/2019-11-28-cat-or-dog-classification-dnn\/","datePublished": "2019-11-28","dateModified": "2019-11-28","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -93,8 +93,8 @@
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-11-28>2019-11-28</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 1637 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>8 min&nbsp;</div>
+                <i class="fas fa-pencil-alt fa-fw"></i>about 1426 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>7 min&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -148,27 +148,7 @@
 <p>and more. Detailed explanation of some of these architectures can be found <a href="https://www.pyimagesearch.com/2017/03/20/imagenet-vggnet-resnet-inception-xception-keras/" target="_blank" rel="noopener noreffer">here</a>
 .</p>
 <h2 id="start-here">Start here</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span> <span class="nn">shutil</span>
 <span class="kn">import</span> <span class="nn">random</span>
@@ -184,39 +164,11 @@
 <span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
 <span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
 <span class="o">%</span><span class="n">config</span> <span class="n">InlineBackend</span><span class="o">.</span><span class="n">figure_format</span> <span class="o">=</span> <span class="s1">&#39;retina&#39;</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;../input/&#39;</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">PATH</span> <span class="o">=</span> <span class="s1">&#39;../input/&#39;</span>
 <span class="n">train_dir</span> <span class="o">=</span> <span class="s1">&#39;../input/train/&#39;</span>
 <span class="n">test_dir</span> <span class="o">=</span> <span class="s1">&#39;../input/test/&#39;</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="prepare-data">Prepare data</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">train_images</span> <span class="o">=</span> <span class="p">[]</span>
+</code></pre></div><h2 id="prepare-data">Prepare data</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">train_images</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">train_labels</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">train_dir</span><span class="p">):</span>
@@ -229,56 +181,22 @@
             <span class="n">train_labels</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;broken image&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>broken image
+</code></pre></div><pre><code>broken image
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">train_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">train_labels</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">train_images</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</code></pre></td></tr></table>
-</div>
-</div><img src='/images/cat-dog/output_7_1.png' width="200">
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;train_images&#39;</span><span class="p">:</span><span class="n">train_images</span><span class="p">,</span>
+</code></pre></div><img src='/images/cat-dog/output_7_1.png' width="200">
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span> <span class="s1">&#39;train_images&#39;</span><span class="p">:</span><span class="n">train_images</span><span class="p">,</span>
                          <span class="s1">&#39;train_labels&#39;</span><span class="p">:</span><span class="n">train_labels</span><span class="p">})</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">style</span><span class="o">=</span><span class="s2">&#34;darkgrid&#34;</span><span class="p">)</span>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">countplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&#34;train_labels&#34;</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">,</span><span class="n">palette</span><span class="o">=</span><span class="s2">&#34;Set3&#34;</span><span class="p">)</span>
 <span class="n">num_dogs</span> <span class="o">=</span> <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;train_labels&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;We have {} cats and {} dogs to train with.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">train_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">-</span><span class="n">num_dogs</span><span class="p">,</span><span class="n">num_dogs</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>We have 12500 cats and 12500 dogs to train with.
+</code></pre></div><pre><code>We have 12500 cats and 12500 dogs to train with.
 </code></pre>
 <img src='/images/cat-dog/output_8_1.png' width="200">
 <p>We have 12000 cats and 12000 dogs to train with, so the dataset is balanced.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">train_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">train_labels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">train_labels</span><span class="p">)</span>
 
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">train_images</span><span class="p">,</span> <span class="n">train_labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 
@@ -286,84 +204,28 @@
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Train Shape:{}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Test Shape:{}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Train Shape:(20000, 150, 150, 3)
+</code></pre></div><pre><code>Train Shape:(20000, 150, 150, 3)
 Test Shape:(5000, 150, 150, 3)
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Training data shape : {0}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Training label shape : {0}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Valid data shape : {0}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Valid label shape : {0}&#34;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y_test</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Training data shape : (20000, 150, 150, 3)
+</code></pre></div><pre><code>Training data shape : (20000, 150, 150, 3)
 Training label shape : (20000,)
 Valid data shape : (5000, 150, 150, 3)
 Valid label shape : (5000,)
 </code></pre>
 <h2 id="the-base-cnn-model">The base CNN model</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
 <span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">layers</span>
 <span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">optimizers</span>
 <span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
 <span class="kn">from</span> <span class="nn">keras.layers</span> <span class="kn">import</span> <span class="n">Dense</span><span class="p">,</span> <span class="n">Activation</span><span class="p">,</span> <span class="n">Dropout</span><span class="p">,</span> <span class="n">Conv2D</span><span class="p">,</span> <span class="n">MaxPooling2D</span><span class="p">,</span> <span class="n">Flatten</span><span class="p">,</span> <span class="n">BatchNormalization</span>
 <span class="kn">from</span> <span class="nn">keras.applications</span> <span class="kn">import</span> <span class="n">VGG16</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Creating the convnet model</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Creating the convnet model</span>
 <span class="k">def</span> <span class="nf">build_cnn</span><span class="p">():</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>
 
@@ -389,22 +251,11 @@ Valid label shape : (5000,)
     <span class="n">model</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;sigmoid&#39;</span><span class="p">))</span> <span class="c1"># 2 because we have cat and dog classes</span>
 
     <span class="k">return</span> <span class="n">model</span>
-</code></pre></td></tr></table>
-</div>
-</div><h2 id="fit-the-model">Fit the model</h2>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_base</span> <span class="o">=</span> <span class="n">build_cnn</span><span class="p">()</span>
+</code></pre></div><h2 id="fit-the-model">Fit the model</h2>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_base</span> <span class="o">=</span> <span class="n">build_cnn</span><span class="p">()</span>
 <span class="n">model_base</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;base_cnn&#39;</span>
 <span class="n">model_base</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>_________________________________________________________________
+</code></pre></div><pre><code>_________________________________________________________________
 Layer (type)                 Output Shape              Param #   
 =================================================================
 conv2d_1 (Conv2D)            (None, 148, 148, 32)      896       
@@ -446,19 +297,7 @@ Trainable params: 19,035,649
 Non-trainable params: 1,472
 _________________________________________________________________
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">keras.optimizers</span> <span class="kn">import</span> <span class="n">RMSprop</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">keras.optimizers</span> <span class="kn">import</span> <span class="n">RMSprop</span>
 <span class="n">model_base</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">loss</span> <span class="o">=</span> <span class="s1">&#39;binary_crossentropy&#39;</span><span class="p">,</span>
                    <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optimizers</span><span class="o">.</span><span class="n">RMSprop</span><span class="p">(</span><span class="n">lr</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">),</span>
                    <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;accuracy&#39;</span><span class="p">])</span>
@@ -466,64 +305,20 @@ _________________________________________________________________
 <span class="c1"># model_base.compile(optimizer=&#39;adam&#39;, loss=&#39;binary_crossentropy&#39;, metrics=[&#39;accuracy&#39;])</span>
 
 <span class="n">history_base</span><span class="o">=</span><span class="n">model_base</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_base</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s1">&#39;model_base_wieghts.h5&#39;</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_base</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s1">&#39;model_base_wieghts.h5&#39;</span><span class="p">)</span>
 <span class="n">model_base</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;model_base.h5&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="performance-of-base-model">Performance of base model</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">loss</span> <span class="o">=</span> <span class="n">model_base</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</code></pre></div><h3 id="performance-of-base-model">Performance of base model</h3>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">loss</span> <span class="o">=</span> <span class="n">model_base</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">acc</span> <span class="o">=</span> <span class="n">model_base</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_test</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Base CNN Model gives me LogLoss of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">loss</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Base CNN Model gives me Accuracy of {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">acc</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>5000/5000 [==============================] - 2s 408us/step
+</code></pre></div><pre><code>5000/5000 [==============================] - 2s 408us/step
 5000/5000 [==============================] - 2s 336us/step
 Base CNN Model gives me LogLoss of 0.5596861797451973
 Base CNN Model gives me Accuracy of 0.8514
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">acc</span> <span class="o">=</span> <span class="n">history_base</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">]</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">acc</span> <span class="o">=</span> <span class="n">history_base</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">]</span>
 <span class="n">val_acc</span> <span class="o">=</span> <span class="n">history_base</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]</span>
 <span class="n">loss</span> <span class="o">=</span> <span class="n">history_base</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>
 <span class="n">val_loss</span> <span class="o">=</span> <span class="n">history_base</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span>
@@ -542,9 +337,7 @@ Base CNN Model gives me Accuracy of 0.8514
 <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><img src='/images/cat-dog/output_21_0.png'>
+</code></pre></div><img src='/images/cat-dog/output_21_0.png'>
 <p>Obvious overfitting charastics and can&rsquo;t achieve good accuracy score. The reason might be we have limited dataset even we already include data agumentation in the CNN model.</p>
 <p>To solve that, we can use transfer learning to take advantages of features from imagenet.</p>
 <ul>
@@ -560,31 +353,7 @@ Base CNN Model gives me Accuracy of 0.8514
 <p>I will use the first type in this homework for the sake of time and computation ability as we have roughly enough data to train with.</p>
 <h2 id="transfer-learning-vgg16">Transfer Learning VGG16</h2>
 <p>The loaded model is chopped after last max-pool layer in VGG16 architecture by setting the parameter <code>include_top=false</code>.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Defining and training the densely connected classifier</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Defining and training the densely connected classifier</span>
 
 <span class="k">def</span> <span class="nf">model_transfer_vgg16_chopped</span><span class="p">():</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">()</span>   
@@ -604,19 +373,9 @@ Base CNN Model gives me Accuracy of 0.8514
                   <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">])</span>
 
     <span class="k">return</span> <span class="n">model</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span> <span class="o">=</span> <span class="n">model_transfer_vgg16_chopped</span><span class="p">()</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span> <span class="o">=</span> <span class="n">model_transfer_vgg16_chopped</span><span class="p">()</span>
 <span class="n">model_transfer</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>Downloading data from https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
+</code></pre></div><pre><code>Downloading data from https://github.com/fchollet/deep-learning-models/releases/download/v0.1/vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5
 58892288/58889256 [==============================] - 2s 0us/step
 _________________________________________________________________
 Layer (type)                 Output Shape              Param #   
@@ -636,33 +395,10 @@ Trainable params: 2,097,665
 Non-trainable params: 14,714,688
 _________________________________________________________________
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s2">&#34;The number of trainable weights before freezing the convolutional layer = &#34;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">model_transfer</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>The number of trainable weights before freezing the convolutional layer =  4
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="s2">&#34;The number of trainable weights before freezing the convolutional layer = &#34;</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">model_transfer</span><span class="o">.</span><span class="n">trainable_weights</span><span class="p">))</span>
+</code></pre></div><pre><code>The number of trainable weights before freezing the convolutional layer =  4
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># set callbacks</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># set callbacks</span>
 <span class="kn">from</span> <span class="nn">keras.callbacks</span> <span class="kn">import</span> <span class="n">EarlyStopping</span><span class="p">,</span> <span class="n">ReduceLROnPlateau</span>
 
 <span class="n">earlystop</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s1">&#39;val_loss&#39;</span><span class="p">,</span><span class="n">patience</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
@@ -674,34 +410,14 @@ _________________________________________________________________
                                             <span class="n">min_lr</span><span class="o">=</span><span class="mf">0.0001</span><span class="p">)</span>
 
 <span class="n">callbacks</span> <span class="o">=</span> <span class="p">[</span><span class="n">earlystop</span><span class="p">,</span> <span class="n">learning_rate_reduction</span><span class="p">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">history_vgg16</span> <span class="o">=</span> <span class="n">model_transfer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">history_vgg16</span> <span class="o">=</span> <span class="n">model_transfer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span>
                               <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">),</span>
                               <span class="n">epochs</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
                              <span class="n">callbacks</span><span class="o">=</span><span class="n">callbacks</span><span class="p">,</span>
                               <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="performance-of-transfer-learning-model">Performance of transfer learning model</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>5000/5000 [==============================] - 7s 1ms/step
+</code></pre></div><h3 id="performance-of-transfer-learning-model">Performance of transfer learning model</h3>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+</code></pre></div><pre><code>5000/5000 [==============================] - 7s 1ms/step
 
 
 
@@ -709,40 +425,9 @@ _________________________________________________________________
 
 [0.27564358766500857, 0.9672]
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s1">&#39;model_transfer_weights.h5&#39;</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s1">&#39;model_transfer_weights.h5&#39;</span><span class="p">)</span>
 <span class="n">model_transfer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;model_transfer.h5&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">acc</span> <span class="o">=</span> <span class="n">history_vgg16</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">]</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">acc</span> <span class="o">=</span> <span class="n">history_vgg16</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;acc&#39;</span><span class="p">]</span>
 <span class="n">val_acc</span> <span class="o">=</span> <span class="n">history_vgg16</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_acc&#39;</span><span class="p">]</span>
 <span class="n">loss</span> <span class="o">=</span> <span class="n">history_vgg16</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;loss&#39;</span><span class="p">]</span>
 <span class="n">val_loss</span> <span class="o">=</span> <span class="n">history_vgg16</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">&#39;val_loss&#39;</span><span class="p">]</span>
@@ -761,27 +446,10 @@ _________________________________________________________________
 <span class="n">ax2</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><img src='/images/cat-dog/output_33_0.png'>
+</code></pre></div><img src='/images/cat-dog/output_33_0.png'>
 <h2 id="test">Test</h2>
 <p>We will convert the predict category back into our generator classes by using train_generator.class_indices. It is the classes that image generator map while converting data into computer vision</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">test_images</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">test_images</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">test_filenames</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">test_dir</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
@@ -792,61 +460,16 @@ _________________________________________________________________
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;broken image&#39;</span><span class="p">)</span>
 
 <span class="n">test_filenames</span> <span class="o">=</span> <span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">test_filenames</span><span class="p">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>broken image
+</code></pre></div><pre><code>broken image
 </code></pre>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">test_images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">test_images</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
 <span class="n">test_images</span> <span class="o">=</span> <span class="n">test_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">predictions</span> <span class="o">=</span> <span class="n">model_transfer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">predictions2</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mf">0.995</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">predictions</span> <span class="o">=</span> <span class="n">model_transfer</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_images</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">predictions2</span> <span class="o">=</span> <span class="n">predictions</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span><span class="nb">max</span><span class="o">=</span><span class="mf">0.995</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&#34;id&#34;</span><span class="p">:</span> <span class="n">test_filenames</span><span class="p">,</span> <span class="s2">&#34;label&#34;</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">predictions2</span><span class="p">)})</span>
 <span class="n">results</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">lstrip</span><span class="p">(</span><span class="s1">&#39;[&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s1">&#39;]&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;submission.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">results</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;submission.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">predictions2</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.5</span><span class="p">:</span>
         <span class="k">print</span><span class="p">(</span><span class="s1">&#39;I am {:.3%} sure this is a Dog&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">predictions</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
     <span class="k">else</span><span class="p">:</span>
@@ -854,9 +477,7 @@ _________________________________________________________________
 
     <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">test_images</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>I am 100.000% sure this is a Dog
+</code></pre></div><pre><code>I am 100.000% sure this is a Dog
 </code></pre>
 <img src='/images/cat-dog/output_41_1.png' width="200">
 <pre><code>I am 100.000% sure this is a Cat

@@ -37,7 +37,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "machine learning, Time Series Forecasting","wordcount":  6025 ,
+            },"genre": "posts","keywords": "machine learning, Time Series Forecasting","wordcount":  5569 ,
         "url": "https:\/\/hyper-potato.github.io\/2019-12-30-restaurants-visitors-predictive-model\/","datePublished": "2019-11-02","dateModified": "2019-11-02","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -93,8 +93,8 @@
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-11-02>2019-11-02</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 6025 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>29 min&nbsp;</div>
+                <i class="fas fa-pencil-alt fa-fw"></i>about 5569 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>27 min&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -327,38 +327,17 @@
 One obvious solution to predicting visitors would be to look at how many customers came the year before. For example, if we are predicting for Jan 10, we might want to look at Jan 10th of the prior year.
 However, this is a slight problem here: what if Jan 10th of the previous year fell on a Saturday, but this year it falls on a Monday?  To adjust this, we instead will take the number of visitors from the matching <code>week of the year</code> &amp; the <code>day of the week</code> together.
 After running our LightGBM model, this feature was in the top 5 in terms of importance.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">final</span><span class="p">[</span><span class="s1">&#39;prev_visitors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">final</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">final</span><span class="p">[</span><span class="s1">&#39;prev_visitors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">final</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span>
     <span class="p">[</span><span class="n">final</span><span class="p">[</span><span class="s1">&#39;visit_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">week</span><span class="p">,</span>
      <span class="n">final</span><span class="p">[</span><span class="s1">&#39;visit_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span><span class="p">])[</span><span class="s1">&#39;visitors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div></li>
+</code></pre></div></li>
 <li>
 <p><strong>Days since 25th</strong> (<strong>Paycheck Day. Yay!)</strong></p>
 <p>The next feature calculates how many days it has been since the previous 25th of the month. The 25th is special because this is when most Japanese people receive their monthly paycheck (<a href="[http://www.japanvisa.com/news/japan-payroll-%E2%80%93-introduction]%28http://www.japanvisa.com/news/japan-payroll-%e2%80%93-introduction%29" rel="noopener noreffer">Japan Visa</a>
 ). In a country like the US, this may not play too large of a role as people simply use a credit card. In Japan, however, people seem to be averse to debt and prefer cash over credit cards (<a href="https://blog.btrax.com/japanese-hold-as-many-credit-cards-as-americans-but-do-they-use-them/" target="_blank" rel="noopener noreffer">Business in Japan</a>
 ).</p>
 <p>After running our LightGBM model, this feature was in the top 5 in terms of importance.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">daysToPrev25th</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">daysToPrev25th</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
     <span class="n">TARGET_DATE</span> <span class="o">=</span> <span class="mi">25</span>
     <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;dayofmonth&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">:</span> 	<span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;dayofmonth&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">TARGET_DATE</span>
     <span class="k">else</span><span class="p">:</span> 	<span class="k">return</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;daysinPrevmonth&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">TARGET_DATE</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;dayofmonth&#39;</span><span class="p">]</span>
@@ -366,32 +345,18 @@ After running our LightGBM model, this feature was in the top 5 in terms of impo
 <span class="n">air_visit</span><span class="p">[</span><span class="s2">&#34;dayofmonth&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">air_visit</span><span class="p">[</span><span class="s2">&#34;visit_date&#34;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">day</span>      
 <span class="n">air_visit</span><span class="p">[</span><span class="s2">&#34;daysinPrevmonth&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">air_visit</span><span class="p">[</span><span class="s2">&#34;visit_date&#34;</span><span class="p">]</span> <span class="o">-</span> <span class="n">pd</span><span class="o">.</span><span class="n">DateOffset</span><span class="p">(</span><span class="n">months</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">daysinmonth</span>
 <span class="n">air_visit</span><span class="p">[</span><span class="s2">&#34;daysToPrev25th&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">air_visit</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span><span class="n">daysToPrev25th</span><span class="p">(</span><span class="n">row</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div></li>
+</code></pre></div></li>
 </ul>
 <h3 id="visit-features">Visit Features</h3>
 <p>Note that <code>visitors</code> does not exist in test set. Features such as locations and genres are categorical attributes and many missing values are involved. In this case, we need to create features on <code>visitors</code> , which will rely on the number of <code>visitors</code> to calculate. Therefore, we can feed visitors related features into our models to provide clues regarding stores.</p>
 <p>Here, we calculate min, max, median, mean, and the number of times each store has been visited per each day of the week. The following code might look complicated but we are using the aggregate method of &ldquo;group by&rdquo; essentially.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">visitor_features</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">visitor_data</span><span class="p">):</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">visitor_features</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">visitor_data</span><span class="p">):</span>
     <span class="n">tmp</span> <span class="o">=</span> <span class="n">visitor_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;air_store_id&#39;</span><span class="p">,</span> <span class="s1">&#39;dow&#39;</span><span class="p">],</span> <span class="n">as_index</span><span class="o">=</span><span class="bp">False</span><span class="p">)[</span><span class="s1">&#39;visitors&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;visitors&#39;</span><span class="p">:</span> <span class="s1">&#39;min_visitors&#39;</span><span class="p">})</span>
     <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">tmp</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;air_store_id&#39;</span><span class="p">,</span> <span class="s1">&#39;dow&#39;</span><span class="p">])</span>
 <span class="n">visitor_data</span><span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">train</span> <span class="o">=</span> <span class="n">visitor_features</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">visitor_data</span><span class="p">)</span>
 <span class="n">test</span> <span class="o">=</span> <span class="n">visitor_features</span><span class="p">(</span><span class="n">test</span><span class="p">,</span> <span class="n">visitor_data</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><ul>
+</code></pre></div><ul>
 <li><strong>max visitors</strong>: maximum number of visitors for each store for a specific weekday</li>
 <li><strong>min visitors</strong>: minimum number of visitors for each store for a specific weekday</li>
 <li><strong>average visitors</strong>: average number of visitors for each store for a specific weekday</li>
@@ -410,19 +375,7 @@ After running our LightGBM model, this feature was in the top 5 in terms of impo
 .
 This is the dataset that we combined with our training set. We made sure that every city was included and that there were no missing values.
 <em>Population is in millions, population density is in thousands.</em></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tokyo-to&#39;</span><span class="p">,</span><span class="s1">&#39;Osaka-fu&#39;</span><span class="p">,</span><span class="s1">&#39;Fukuoka-ken&#39;</span><span class="p">,</span><span class="s1">&#39;Hyogo-ken&#39;</span><span class="p">,</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">cities</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tokyo-to&#39;</span><span class="p">,</span><span class="s1">&#39;Osaka-fu&#39;</span><span class="p">,</span><span class="s1">&#39;Fukuoka-ken&#39;</span><span class="p">,</span><span class="s1">&#39;Hyogo-ken&#39;</span><span class="p">,</span>
           <span class="s1">&#39;Hokkaido&#39;</span><span class="p">,</span><span class="s1">&#39;Hiroshima-ken&#39;</span><span class="p">,</span><span class="s1">&#39;Shizuoka-ken&#39;</span><span class="p">,</span>
           <span class="s1">&#39;Miyagi-ken&#39;</span><span class="p">,</span><span class="s1">&#39;Niigata-ken&#39;</span><span class="p">,</span><span class="s1">&#39;Osaka&#39;</span><span class="p">,</span><span class="s1">&#39;Kanagawa-ken&#39;</span><span class="p">,</span> <span class="s1">&#39;Saitama-ken&#39;</span><span class="p">]</span>
 <span class="n">population</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.7</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">8.6</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span><span class="mf">3.7</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="o">.</span><span class="mi">8</span><span class="p">,</span> <span class="mf">2.6</span><span class="p">,</span> <span class="mf">1.6</span><span class="p">]</span>
@@ -430,25 +383,14 @@ This is the dataset that we combined with our training set. We made sure that ev
 
 <span class="n">pop</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">cities</span><span class="p">,</span> <span class="n">population</span><span class="p">,</span> <span class="n">density</span><span class="p">)),</span>
             <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;cities&#39;</span><span class="p">,</span><span class="s1">&#39;population&#39;</span><span class="p">,</span> <span class="s1">&#39;density&#39;</span><span class="p">])</span>
-</code></pre></td></tr></table>
-</div>
-</div></li>
+</code></pre></div></li>
 <li>
 <p><strong>Restaurant Types</strong> - this information contains which food type the restaurant is selling. We are provided with restaurant types for every store in our data, but the labels are not consistent. In order to gain more meaningful data from the types of restaurants we are provided, we convert the many specific labels into more general labels that capture the restaurant type.
 After looking at the plot below, we are doubtful that restaurant type plays much of a role for the restaurants we are predicting. It doesn&rsquo;t really seem like there is much of a relationship between restaurant type and expected visitors.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Quick example</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Quick example</span>
 <span class="n">all_stores</span><span class="p">[</span><span class="s1">&#39;Food_Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">all_stores</span><span class="p">[</span><span class="s1">&#39;Food_Type&#39;</span><span class="p">]</span>
      <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">((</span><span class="s1">&#39;Izakaya&#39;</span><span class="p">),</span><span class="s1">&#39;Izakaya&#39;</span><span class="p">,</span><span class="n">all_stores</span><span class="p">[</span><span class="s1">&#39;Food_Type&#39;</span><span class="p">])</span>
-</code></pre></td></tr></table>
-</div>
-</div></li>
+</code></pre></div></li>
 </ul>
 <h3 id="data-cleaning">Data Cleaning</h3>
 <h4 id="outliers">Outliers</h4>
@@ -459,60 +401,20 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <li>Data point that falls outside of 3 standard deviations.</li>
 </ul>
 <p><img src="https://i.loli.net/2019/12/01/buTGivKW5jAJwk7.png" alt="47651575174054_.pic.jpg" style="zoom: 67%;" /></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">q1</span><span class="p">,</span> <span class="n">q3</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">visitors</span><span class="p">,[</span><span class="mi">25</span><span class="p">,</span><span class="mi">75</span><span class="p">])</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">q1</span><span class="p">,</span> <span class="n">q3</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">train</span><span class="o">.</span><span class="n">visitors</span><span class="p">,[</span><span class="mi">25</span><span class="p">,</span><span class="mi">75</span><span class="p">])</span>
 <span class="n">iqr</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">-</span> <span class="n">q1</span>
 <span class="n">lower_bound</span> <span class="o">=</span> <span class="n">q1</span> <span class="o">-</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span>
 <span class="n">upper_bound</span> <span class="o">=</span> <span class="n">q3</span> <span class="o">+</span><span class="p">(</span><span class="mf">1.5</span> <span class="o">*</span> <span class="n">iqr</span><span class="p">)</span>
 <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">visitors</span> <span class="o">&gt;</span> <span class="n">upper_bound</span> <span class="p">,</span><span class="s1">&#39;visitors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">upper_bound</span>
 <span class="n">train</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">train</span><span class="o">.</span><span class="n">visitors</span> <span class="o">&lt;</span> <span class="n">lower_bound</span> <span class="p">,</span><span class="s1">&#39;visitors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">lower_bound</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>After this process we will get a nicer distribution.</p>
+</code></pre></div><p>After this process we will get a nicer distribution.</p>
 <p><img src="https://i.imgur.com/yg0MqGh.jpg" style="zoom:67%;" /></p>
 <h2 id="3-modeling">3. Modeling</h2>
 <p>Given the Time Series nature of our prediction exercise, we started by implementing the model ARIMA, short for Auto Regressive Integrated Moving Average, which is a model that explains a given time series based on its own past values, i.e. its own lags and the lagged forecast errors, so that equation can be used to forecast future values. But as we can see from this explanation, ARIMA model doesn&rsquo;t take into consideration external factors to forecast the number of visitors.</p>
 <p>We then implemented another famous model for Time series which is Facebook Prophet, which is a procedure based on an additive model where non-linear trends are fit with yearly, weekly, and daily seasonality, plus holiday effects. However, this model works best with time series that have strong seasonal effects and several seasons of historical data, which is not the case in our prediction exercise.</p>
 <p>That&rsquo;s when we shifted our approach to Light GBM, which is a gradient boosting framework that uses tree based learning algorithms. The advantage of this approach is that it doesn&rsquo;t need any statistical assumptions in the backend. Besides, it determines which features have the highest discriminative powers,  which enables us to give valuable insights to the restaurant owners.</p>
 <h3 id="arima">ARIMA</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-R" data-lang="R"><span class="c1"># forecasting - register cores for parallel processing</span>
+<div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="c1"># forecasting - register cores for parallel processing</span>
 <span class="nf">registerDoMC</span><span class="p">(</span><span class="nf">detectCores</span><span class="p">()</span><span class="m">-1</span><span class="p">)</span>
 <span class="n">fcst_matrix</span> <span class="o">&lt;-</span> <span class="nf">foreach</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="m">1</span><span class="o">:</span><span class="nf">nrow</span><span class="p">(</span><span class="n">train_ts</span><span class="p">),</span><span class="n">.combine</span><span class="o">=</span><span class="n">rbind</span><span class="p">,</span> <span class="n">.packages</span><span class="o">=</span><span class="nf">c</span><span class="p">(</span><span class="s">&#34;forecast&#34;</span><span class="p">))</span> <span class="o">%dopar%</span> <span class="p">{</span>
     <span class="n">fcst_ets</span> <span class="o">&lt;-</span> <span class="nf">forecast</span><span class="p">(</span><span class="nf">ets</span><span class="p">(</span><span class="n">train_ts[i</span><span class="p">,</span><span class="n">]</span><span class="p">),</span><span class="n">h</span><span class="o">=</span><span class="n">fcst_intv</span><span class="p">)</span><span class="o">$</span><span class="n">mean</span>
@@ -536,43 +438,8 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <span class="n">fcst_df_long</span><span class="o">$</span><span class="n">air_store_id</span> <span class="o">&lt;-</span> <span class="nf">as.character</span><span class="p">(</span><span class="n">fcst_df_long</span><span class="o">$</span><span class="n">air_store_id</span><span class="p">)</span>
 <span class="n">fcst_df_long</span><span class="o">$</span><span class="n">fcst_date</span> <span class="o">&lt;-</span> <span class="nf">as.Date</span><span class="p">(</span><span class="nf">parse_date_time</span><span class="p">(</span><span class="n">fcst_df_long</span><span class="o">$</span><span class="n">fcst_date</span><span class="p">,</span><span class="s">&#39;%y-%m-%d&#39;</span><span class="p">))</span>
 <span class="n">fcst_df_long</span><span class="o">$</span><span class="n">visitors</span> <span class="o">&lt;-</span> <span class="nf">as.numeric</span><span class="p">(</span><span class="n">fcst_df_long</span><span class="o">$</span><span class="n">visitors</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="prophet">Prophet</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Prediction</span>
+</code></pre></div><h3 id="prophet">Prophet</h3>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Prediction</span>
 <span class="kn">from</span> <span class="nn">fbprophet</span> <span class="kn">import</span> <span class="n">Prophet</span>
 <span class="c1"># This is used for suppressing prophet info messages.</span>
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -601,75 +468,8 @@ After looking at the plot below, we are doubtful that restaurant type plays much
     <span class="n">forecast</span> <span class="o">=</span> <span class="n">forecast</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">)</span>
     <span class="n">test</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">forecast</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">Done.&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="lightgbm">LightGBM</h3>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#import lightgbm as lgbm</span>
+</code></pre></div><h3 id="lightgbm">LightGBM</h3>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1">#import lightgbm as lgbm</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
 <span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
 
@@ -730,9 +530,7 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <span class="n">val_std</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">val_scores</span><span class="p">)</span>
 
 <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Local RMSLE: {:.5f} (±{:.5f})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">val_mean</span><span class="p">,</span> <span class="n">val_std</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="lstm-seq2seq--encoderdecoder">LSTM seq2seq + Encoder/Decoder</h3>
+</code></pre></div><h3 id="lstm-seq2seq--encoderdecoder">LSTM seq2seq + Encoder/Decoder</h3>
 <p>Note that we have included all of the details below for this model in particular because this is our final model. Additionally, this model is best suited for this problem.</p>
 <h4 id="motivation"><strong>Motivation</strong></h4>
 <p>LSTM is a great solution for relatively short sequences, up to 100-300 items. On longer sequences LSTM still works, but can gradually forget information from the oldest items. In our dataset, the timeseries is up to 478 days long, so we decided to implement encoder and decoder to &ldquo;strengthen&rdquo; LSTM memory.</p>
@@ -741,30 +539,7 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <p>And then we used another RNN layer with 2 hidden LSTM model acts as &ldquo;<strong>decoder</strong>&quot;: it is trained to predict the next characters of the target sequence, given previous characters of the target sequence. Specifically, it is trained to turn the target sequences into the same sequences but offset by one timestep in the future, a training process called &ldquo;teacher forcing&rdquo; in this context. Importantly, the encoder uses as initial state the state vectors from the encoder, which is how the decoder obtains information about what it is supposed to generate.</p>
 <h4 id="data-preparation"><strong>Data Preparation</strong></h4>
 <p><strong>1) Basic tidying of the training and test table</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Drop unnecessary columns</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Drop unnecessary columns</span>
 <span class="n">train_df</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span> <span class="s1">&#39;population&#39;</span><span class="p">,</span> <span class="s1">&#39;reserve_visitors&#39;</span><span class="p">,</span> <span class="s1">&#39;days_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">])</span>
 <span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">,</span> <span class="s1">&#39;reserve_visitors&#39;</span><span class="p">,</span><span class="s1">&#39;days_diff&#39;</span><span class="p">,</span> <span class="s1">&#39;day&#39;</span><span class="p">,</span> <span class="s1">&#39;season&#39;</span><span class="p">])</span>
 <span class="c1"># Refine column names</span>
@@ -783,33 +558,9 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <span class="c1"># Fill the cells of missing values with -1</span>
 <span class="n">train_df</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">test</span> <span class="o">=</span> <span class="n">test</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>2) Encode categorical columns</strong></p>
+</code></pre></div><p><strong>2) Encode categorical columns</strong></p>
 <p>There are several categorical columns in the dataset, which are  &lsquo;Food_Type&rsquo;, &lsquo;day_of_week&rsquo;, &lsquo;air_store_id&rsquo; that needs to be transferred. One-hot encoding may provide better result, but we applied labels encoding to avoid high dimensional feature space.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Weekday</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Weekday</span>
 <span class="n">le_weekday</span> <span class="o">=</span> <span class="n">LabelEncoder</span><span class="p">()</span>
 <span class="n">le_weekday</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">])</span>
 <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_weekday</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;day_of_week&#39;</span><span class="p">])</span>
@@ -827,81 +578,9 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Food_Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_ftype</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;Food_Type&#39;</span><span class="p">])</span>
 <span class="n">test</span><span class="p">[</span><span class="s1">&#39;Food_Type&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">le_ftype</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;Food_Type&#39;</span><span class="p">])</span>
 
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>3) Simultaneous transformation of Train and test sets</strong></p>
+</code></pre></div><p><strong>3) Simultaneous transformation of Train and test sets</strong></p>
 <p>Considering the input data structure the LSTM RNN model needed, we filled up all the dates within the whole time span (2016-01-01 ~ 2017-05-31) for each stores with number of visitors as 0 on those dates, and the time-independent features (food types, longitude, latitude, etc) are &ldquo;stretched&rdquo; to timeseries length.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span><span class="lnt">66
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># combine train and test sets</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># combine train and test sets</span>
 <span class="n">X_all</span> <span class="o">=</span> <span class="n">train_df</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
 <span class="c1"># date table (includes all dates for training and test period)</span>
 <span class="n">dates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="n">X_all</span><span class="o">.</span><span class="n">visit_date</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span>
@@ -967,42 +646,13 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <span class="c1"># list of df_to_reshape columns without &#39;air_store_id&#39; and &#39;visit_date&#39;</span>
 <span class="n">columns_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df_to_reshape</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">2</span><span class="p">:])]</span>
 
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>4) Normalize all numerical values</strong></p>
+</code></pre></div><p><strong>4) Normalize all numerical values</strong></p>
 <p>We bounded all numerical values between -1 and 1. To avoid data leakage &lsquo;fit&rsquo; should be made on train data and &lsquo;transform&rsquo; on train and test data in this case all data in test set is taken from train set, thus fit/transform on all data.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">scaler</span> <span class="o">=</span> <span class="n">MinMaxScaler</span><span class="p">(</span><span class="n">feature_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
 <span class="n">scaler</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df_to_reshape</span><span class="p">[</span><span class="n">columns_list</span><span class="p">])</span>
 <span class="n">df_to_reshape</span><span class="p">[</span><span class="n">columns_list</span><span class="p">]</span> <span class="o">=</span> <span class="n">scaler</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">df_to_reshape</span><span class="p">[</span><span class="n">columns_list</span><span class="p">])</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>5) Reshape data structure for Neural Network and Encoder/Decoder</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># reshape X into (samples, timesteps, features)</span>
+</code></pre></div><p><strong>5) Reshape data structure for Neural Network and Encoder/Decoder</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># reshape X into (samples, timesteps, features)</span>
 <span class="n">X_all_lstm</span> <span class="o">=</span> <span class="n">df_to_reshape</span><span class="o">.</span><span class="n">values</span><span class="p">[:,</span><span class="mi">2</span><span class="p">:]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">ids</span><span class="p">),</span>
                                                 <span class="nb">len</span><span class="p">(</span><span class="n">dates</span><span class="p">),</span>
                                                 <span class="n">df_to_reshape</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span>
@@ -1016,9 +666,7 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <span class="c1"># test dates</span>
 <span class="n">n_test_dates</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="s1">&#39;visit_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
 
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>6) Training and validation split</strong></p>
+</code></pre></div><p><strong>6) Training and validation split</strong></p>
 <p>There are two ways to split timeseries into training and validation datasets:</p>
 <ol>
 <li>Walk-forward split. This is not actually a split: we train on full dataset and validate on full dataset, using different timeframes. Timeframe for validation is shifted forward by one prediction interval relative to timeframe for training.</li>
@@ -1026,34 +674,7 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 </ol>
 <p>Walk-forward is preferable, because it directly relates to the competition goal: predict future values using historical values. But this split consumes data points at the end of timeseries, thus making hard to train model to precisely predict the future.</p>
 <p>We used validation (with walk-forward split) only for model tuning. Final model to predict future values was trained in blind mode, without any validation.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># make additional features for number of visitors in t-1, t-2, ... t-7</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># make additional features for number of visitors in t-1, t-2, ... t-7</span>
 <span class="n">t_minus</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="n">Y_lstm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">Y_lstm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="mi">1</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">temp</span> <span class="o">=</span> <span class="n">Y_lstm</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
@@ -1076,82 +697,11 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 
 <span class="n">X_val</span> <span class="o">=</span> <span class="n">X_lstm</span><span class="p">[:,</span><span class="o">-</span><span class="mi">140</span><span class="p">:,:]</span>
 <span class="n">Y_val</span> <span class="o">=</span> <span class="n">Y_lstm</span><span class="p">[:,</span><span class="o">-</span><span class="mi">140</span><span class="p">:,:]</span>
-</code></pre></td></tr></table>
-</div>
-</div><h4 id="model"><strong>Model</strong></h4>
+</code></pre></div><h4 id="model"><strong>Model</strong></h4>
 <p><strong>1) Model Structure Building</strong></p>
 <p>The encoder takes input features of 39 days (t<em>1, t</em>2 … t39) and encode their hidden states through LSTM neural network. Then it pass the hidden states to decoder. Decoder use them with the features of 39 days shifted 1 day forward (t<em>2, t</em>3 … T40) to predict number of visitors per each of 829 restaurants in t_40.</p>
 <p>Methods used to address overfitting: we applied dropout and recurrent dropout regularization in all RNN layers and adjust the epoch size to prevent overfitting.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span><span class="lnt">60
-</span><span class="lnt">61
-</span><span class="lnt">62
-</span><span class="lnt">63
-</span><span class="lnt">64
-</span><span class="lnt">65
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># MODEL FOR ENCODER AND DECODER -------------------------------------------</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># MODEL FOR ENCODER AND DECODER -------------------------------------------</span>
 <span class="n">num_encoder_tokens</span> <span class="o">=</span> <span class="n">X_lstm</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 <span class="n">latent_dim</span> <span class="o">=</span> <span class="mi">256</span>
 
@@ -1216,33 +766,9 @@ After looking at the plot below, we are doubtful that restaurant type plays much
                <span class="n">Y_decoder</span><span class="p">)</span>
 
 
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>2) Generator applied to feed encoder and decoder</strong></p>
+</code></pre></div><p><strong>2) Generator applied to feed encoder and decoder</strong></p>
 <p>Our  generator that randomly creates times series of 39 consecutive days. And those time series has following 3-D shape: 829 restaurants * 39 days * num_features.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">dec_enc_n_days_gen</span><span class="p">(</span><span class="n">X_3d</span><span class="p">,</span> <span class="n">Y_3d</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">dec_enc_n_days_gen</span><span class="p">(</span><span class="n">X_3d</span><span class="p">,</span> <span class="n">Y_3d</span><span class="p">,</span> <span class="n">length</span><span class="p">):</span>
     <span class="k">while</span> <span class="mi">1</span><span class="p">:</span>
         <span class="n">decoder_boundary</span> <span class="o">=</span> <span class="n">X_3d</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">length</span> <span class="o">-</span> <span class="mi">1</span>
 
@@ -1260,29 +786,9 @@ After looking at the plot below, we are doubtful that restaurant type plays much
         <span class="k">yield</span><span class="p">([</span><span class="n">X_to_conc</span><span class="p">,</span>
                <span class="n">X_to_decode</span><span class="p">],</span>
                <span class="n">Y_decoder</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>3) Training the model</strong></p>
+</code></pre></div><p><strong>3) Training the model</strong></p>
 <p>Training on X_tr/Y_tr and validate with X_val/Y_val. To perform validation training on validation data should be made instead of training on full data set. Then validation check is made on period outside of training data</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="s1">&#39;&#39;&#39;
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="s1">&#39;&#39;&#39;
 </span><span class="s1">training_model.fit_generator(dec_enc_n_days_gen(X_tr, Y_tr, 39),
 </span><span class="s1">                             validation_data = dec_enc_n_days_gen(X_val, Y_val, 39),
 </span><span class="s1">                             steps_per_epoch = X_lstm.shape[0],
@@ -1296,76 +802,11 @@ After looking at the plot below, we are doubtful that restaurant type plays much
                             <span class="n">steps_per_epoch</span> <span class="o">=</span> <span class="n">X_lstm</span><span class="p">[:,:,:]</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
                             <span class="n">verbose</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span>
                             <span class="n">epochs</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>4) Perform Prediction</strong></p>
+</code></pre></div><p><strong>4) Perform Prediction</strong></p>
 <p>The function takes 39 days before first prediction day (input_seq), then using encoder to identify hidden states for these 39 days. Next, decoder takes hidden states provided by encoder, and predicts number of visitors from day 2 to day 40. Day 40 is the first day of target_seq.</p>
 <p>Predicted value for day 40 is appended to features of day 41. Then function takes period from day 2 to day 40 and repeat the process unil all days in target sequence get their predictions.</p>
 <p>The output of the function is the vector with predictions that has following shape: 820 restaurants * 39 days * 1 predicted visitors amount</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span><span class="lnt">35
-</span><span class="lnt">36
-</span><span class="lnt">37
-</span><span class="lnt">38
-</span><span class="lnt">39
-</span><span class="lnt">40
-</span><span class="lnt">41
-</span><span class="lnt">42
-</span><span class="lnt">43
-</span><span class="lnt">44
-</span><span class="lnt">45
-</span><span class="lnt">46
-</span><span class="lnt">47
-</span><span class="lnt">48
-</span><span class="lnt">49
-</span><span class="lnt">50
-</span><span class="lnt">51
-</span><span class="lnt">52
-</span><span class="lnt">53
-</span><span class="lnt">54
-</span><span class="lnt">55
-</span><span class="lnt">56
-</span><span class="lnt">57
-</span><span class="lnt">58
-</span><span class="lnt">59
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">predict_sequence</span><span class="p">(</span><span class="n">inf_enc</span><span class="p">,</span> <span class="n">inf_dec</span><span class="p">,</span> <span class="n">input_seq</span><span class="p">,</span> <span class="n">Y_input_seq</span><span class="p">,</span> <span class="n">target_seq</span><span class="p">):</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="k">def</span> <span class="nf">predict_sequence</span><span class="p">(</span><span class="n">inf_enc</span><span class="p">,</span> <span class="n">inf_dec</span><span class="p">,</span> <span class="n">input_seq</span><span class="p">,</span> <span class="n">Y_input_seq</span><span class="p">,</span> <span class="n">target_seq</span><span class="p">):</span>
     <span class="c1"># state of input sequence produced by encoder</span>
     <span class="n">state</span> <span class="o">=</span> <span class="n">inf_enc</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">input_seq</span><span class="p">)</span>
 
@@ -1424,9 +865,7 @@ After looking at the plot below, we are doubtful that restaurant type plays much
                                 <span class="n">X_lstm</span><span class="p">[:,</span><span class="o">-</span><span class="n">X_lstm_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:,:],</span>
                                 <span class="n">Y_lstm</span><span class="p">[:,</span><span class="o">-</span><span class="n">X_lstm_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]:,:],</span>
                                 <span class="n">X_lstm_test</span><span class="p">[:,:,:])</span>
-</code></pre></td></tr></table>
-</div>
-</div><h3 id="evaluation">Evaluation</h3>
+</code></pre></div><h3 id="evaluation">Evaluation</h3>
 <p>Finally, we aggregated the prediction of both LGBM and seq2seq, which enabled us to get the best evaluation metric:</p>
 <table>
 <thead>
@@ -1483,20 +922,7 @@ a_i is the actual number of visitors</p>
 <p>Using the same weekday from the previous week, the manager would be off by 94% on average.</p>
 </li>
 </ol>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># One day</span>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># One day</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;prev_day_visitors&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;visitors_x&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">shift</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;air_store_id&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">group</span><span class="p">:</span> <span class="n">group</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="p">])</span>
 <span class="c1"># One week</span>
@@ -1505,9 +931,7 @@ a_i is the actual number of visitors</p>
 <span class="c1"># Error</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;difference_decimal&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">abs</span><span class="p">(</span>
     <span class="n">df</span><span class="p">[</span><span class="s1">&#39;visitors_x&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;prev_day_visitors&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;visitors_x&#39;</span><span class="p">]</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><strong>Staffing</strong></p>
+</code></pre></div><p><strong>Staffing</strong></p>
 <p>The hourly minimum wage in Japan translates to roughly <a href="https://tradingeconomics.com/japan/minimum-wages" target="_blank" rel="noopener noreffer">$8.30 USD</a>
 . Overstaffing by 2 people for a given 8-hour day equates to roughly $130 in unnecessary expenses. On the flip side, understaffing means a poor customer experience as wait time is longer. We believe this provides strong support for the purchase of our system.</p>
 <p><strong>Supply Chain</strong></p>

@@ -17,10 +17,10 @@
       <pubDate>Wed, 18 Mar 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hyper-potato.github.io/2020-03-18-change-category-colour-across-plots/</guid>
-      <description>Self-quarantine gets me nerd-out on small things that I usally googled again and again.
+      <description>Self-quarantine gets me nerd-out on small things that I usually googled again and again.
 For example, very often I need to plot multiple plots sharing the same category, where it&amp;rsquo;s better to keep color match is consistent across plots.
 The easiest solution to make sure to have the same colors for the same categories in different plots would be to manually specify the colors at plot creation.
-We can use a list of colors or a dictionary to mao colors onto categories.</description>
+We can use a list of colors or a dictionary to map colors onto categories.</description>
     </item>
     
   </channel>

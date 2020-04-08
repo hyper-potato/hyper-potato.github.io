@@ -37,7 +37,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "association rules, unsupervised learning","wordcount":  5435 ,
+            },"genre": "posts","keywords": "association rules, unsupervised learning","wordcount":  5417 ,
         "url": "https:\/\/hyper-potato.github.io\/2019-12-18-money-ball-with-arules\/","datePublished": "2019-11-02","dateModified": "2019-11-02","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -93,7 +93,7 @@
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-11-02>2019-11-02</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 5435 words&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 5417 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>26 min&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -120,15 +120,8 @@ the counterattack would work.</p>
 <p>To start our analysis, we fetched match data related only to Dortmund. We dropped all irrelevant columns for our analysis.</p>
 <p><em>Adding flag for home/away matches:</em></p>
 <p>A team always has 2 legs against any opponent - home and away matches. Generally a team’s performance varies a lot in home and away matches due to the change in the environment and playing atmosphere. So we split the dataset into these 2 categories to see if there is any discernible patterns between their performances at home and away games.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">dortmund_matches</span><span class="o">$</span><span class="n">home_or_away</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">dortmund_matches</span><span class="o">$</span><span class="n">home_team_api_id</span> <span class="o">==</span> <span class="m">9789</span><span class="p">,</span><span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="s">&#39;away&#39;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><em>Creating a column for opponent team strength:</em></p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">dortmund_matches</span><span class="o">$</span><span class="n">home_or_away</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">dortmund_matches</span><span class="o">$</span><span class="n">home_team_api_id</span> <span class="o">==</span> <span class="m">9789</span><span class="p">,</span><span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="s">&#39;away&#39;</span><span class="p">)</span>
+</code></pre></div><p><em>Creating a column for opponent team strength:</em></p>
 <p>We want to classify opoonent teams as strong, equal and weak on a match by match basis by their overall team rating.</p>
 <p><strong>strong_opponent</strong> - Overall rating of opponent team &gt; 2.5 than Dortmund</p>
 <p><strong>equal_opponent</strong> - Overall rating of opponent team is in between +2.5 to -2.5 of Dortmund</p>
@@ -524,17 +517,9 @@ the counterattack would work.</p>
 <p>Over time, <em>Dortmund</em> has improved their goal scoring capabilities from ~1.75 to ~2.4, but their defence seems to be fairly constant with an average of about 1. The graph above shows that conceded goals have increased. On the other hand, their most popular rival, <em>Bayern Munich</em>
 significantly improved their defense while maintaining strong attacking capabilities. <em>Bayern’s</em> average goals scored only improved marginally from 2.19 to 2.35, but the average number of goals conceded has reduced significantly from 1.24 to 0.5.</p>
 <p>A quick look at Dortmund’s past strategy tells us that this constant goals concede might be because of no change in their defense strategy since 5 seasons.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">test</span> <span class="o">&lt;-</span> <span class="n">team_atts</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">team_api_id</span> <span class="o">==</span> <span class="m">9789</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">subset</span><span class="p">(</span><span class="n">select</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">defencePressureClass</span><span class="p">,</span> <span class="n">defenceAggressionClass</span><span class="p">,</span> <span class="n">defenceDefenderLineClass</span><span class="p">))</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">test</span> <span class="o">&lt;-</span> <span class="n">team_atts</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">team_api_id</span> <span class="o">==</span> <span class="m">9789</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">subset</span><span class="p">(</span><span class="n">select</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">defencePressureClass</span><span class="p">,</span> <span class="n">defenceAggressionClass</span><span class="p">,</span> <span class="n">defenceDefenderLineClass</span><span class="p">))</span>
 <span class="n">test</span>
-</code></pre></td></tr></table>
-</div>
-</div><script data-pagedtable-source type="application/json">
+</code></pre></div><script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["year"],"name":[1],"type":["chr"],"align":["left"]},{"label":["defencePressureClass"],"name":[2],"type":["chr"],"align":["left"]},{"label":["defenceAggressionClass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["defenceDefenderLineClass"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"2010","2":"Medium","3":"Double","4":"Offside Trap","_rn_":"1"},{"1":"2011","2":"Medium","3":"Double","4":"Cover","_rn_":"2"},{"1":"2012","2":"Medium","3":"Double","4":"Cover","_rn_":"3"},{"1":"2013","2":"Medium","3":"Double","4":"Cover","_rn_":"4"},{"1":"2014","2":"Medium","3":"Double","4":"Cover","_rn_":"5"},{"1":"2015","2":"Medium","3":"Double","4":"Cover","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
 <p><em>Interpretation:</em></p>
@@ -594,35 +579,15 @@ If our possession is between 45% and 55%, we conclude that both teams have equal
   </script>
 <p><em>Analyzing home games against  <code>weak_opponents</code></em></p>
 <p>Since the winning rate right now is 0.73, we want to generate rules that give us a winning rate greater than 0.73. From the result, we can see that if we keep our possession the same as our opponent, we can actually increase our winning chances by 43%.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules</span> <span class="o">&lt;-</span> <span class="nf">apriori</span><span class="p">(</span><span class="n">soccer</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">supp</span> <span class="o">=</span> <span class="m">0.03</span><span class="p">,</span> <span class="n">conf</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#34;confidence&#34;</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules</span> <span class="o">&lt;-</span> <span class="nf">apriori</span><span class="p">(</span><span class="n">soccer</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">supp</span> <span class="o">=</span> <span class="m">0.03</span><span class="p">,</span> <span class="n">conf</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#34;confidence&#34;</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 
 <span class="n">rules</span> <span class="o">%&gt;%</span>
   <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">(</span><span class="n">rhs</span> <span class="o">%pin%</span> <span class="s">&#34;win&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
   <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="n">confidence</span> <span class="o">&gt;</span> <span class="m">0.72</span><span class="p">)</span> <span class="o">%&gt;%</span>
   <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">(</span><span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;home&#39;</span> <span class="o">&amp;</span> <span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;weak_opponent&#39;</span><span class="p">))</span> <span class="o">%&gt;%</span>
   <span class="nf">inspect</span><span class="p">()</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>##     lhs                                     rhs   support    confidence
+</code></pre></div><pre><code>##     lhs                                     rhs   support    confidence
 ## [1] {home,less_possession,weak_opponent} =&gt; {win} 0.08552632 0.8125    
 ##     lift     count
 ## [1] 1.436047 13
@@ -734,33 +699,14 @@ However, interestingly, we find that when we play with less possession, our losi
 That many rules are unnecessary. If we set our minimum length to 17, we will have 826 rules this time. After filtering the condition, we will have a total of 16 applicable rules, which are adequate. Also, we need to adjust our support each time. Because Dortmund plays a lot of home game against weak team, we can set up our support high for that category. However, since Dortmund only plays a few home games against equal team (12 games), we need to lower our support. Also, we need to filter by confidence each time to make sure we have only those rules that can increase our winning rate.</p>
 <p><em>Analyzing home games against ‘weak_opponents’ for win</em></p>
 <p>Since the winning rate right now is 0.73, we want to generate rules that gives us a winning rate greater than 0.74.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules1</span> <span class="o">&lt;-</span> <span class="nf">apriori</span><span class="p">(</span><span class="n">team</span><span class="p">,</span><span class="n">parameter</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">supp</span> <span class="o">=</span> <span class="m">0.03</span><span class="p">,</span> <span class="n">conf</span> <span class="o">=</span> <span class="m">0.33</span><span class="p">,</span> <span class="n">maxlen</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">minlen</span> <span class="o">=</span> <span class="m">7</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules1</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">rules1</span><span class="p">,</span><span class="n">by</span> <span class="o">=</span> <span class="s">&#34;confidence&#34;</span><span class="p">,</span><span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules1</span> <span class="o">&lt;-</span> <span class="nf">apriori</span><span class="p">(</span><span class="n">team</span><span class="p">,</span><span class="n">parameter</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">supp</span> <span class="o">=</span> <span class="m">0.03</span><span class="p">,</span> <span class="n">conf</span> <span class="o">=</span> <span class="m">0.33</span><span class="p">,</span> <span class="n">maxlen</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">minlen</span> <span class="o">=</span> <span class="m">7</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules1</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">rules1</span><span class="p">,</span><span class="n">by</span> <span class="o">=</span> <span class="s">&#34;confidence&#34;</span><span class="p">,</span><span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
 <span class="n">rules1</span> <span class="o">&lt;-</span> <span class="n">rules1</span> <span class="o">%&gt;%</span>
   <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span>  <span class="p">(</span><span class="n">rhs</span> <span class="o">%pin%</span> <span class="s">&#34;win&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
   <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">(</span><span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;home&#39;</span> <span class="o">&amp;</span> <span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;weak_opponent&#39;</span><span class="p">))</span> <span class="o">%&gt;%</span>
   <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="n">confidence</span> <span class="o">&gt;</span> <span class="m">0.73</span><span class="p">)</span>
 <span class="nf">inspect</span><span class="p">(</span><span class="n">rules1[1</span><span class="o">:</span><span class="m">3</span><span class="n">]</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><pre><code>##     lhs                                 rhs      support confidence     lift count
+</code></pre></div><pre><code>##     lhs                                 rhs      support confidence     lift count
 ## [1] {Dortmund_Normal_Shooting,                                                    
 ##      Dortmund_Risky_Passing,                                                      
 ##      home,                                                                        

@@ -37,7 +37,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "causality, matching","wordcount":  2462 ,
+            },"genre": "posts","keywords": "causality, matching","wordcount":  2458 ,
         "url": "https:\/\/hyper-potato.github.io\/2020-02-29-swimmer-performance-vs-lane-placement\/","datePublished": "2020-02-29","dateModified": "2020-02-29","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -93,7 +93,7 @@
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-29>2020-02-29</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 2462 words&nbsp;
+                <i class="fas fa-pencil-alt fa-fw"></i>about 2458 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>12 min&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
@@ -135,21 +135,11 @@
 <p>Then, results of the swimmers in inside and outside lanes could be compared to estimate an effect. Alas, we had neither the time nor the resources to conduct a proper experiment. Instead, we will be performing an observational study.</p>
 <h2 id="data-overview">DATA OVERVIEW</h2>
 <p>The data used for our analysis comprises of meet results from conference championship meets in the California Community College Athletic Association between 2017 and 2019, scraped from SwimPhone.com. Each meet included in our dataset took place at the end of the season in either April or May, was swam in an 8 lane pool, and follows the same championship meet format with prelims of an event in the morning and the top 16 qualifiers racing again in the evening for finals. To simplify our analysis, we restrict the scope to events of 100 yards, the most common distance. Each unit of observation is a finalist in a specific event. The dependent variable we will be modeling is the finals time while the treatment is the lane placement in finals. Lanes 4 and 5 are considered inside lanes while lanes 1 and 8 are considered outside lanes. Other covariates included are the prelims time, the improvement from seed time to prelims time, the gender of the swimmer, and the stroke of the event.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"><span class="p">&lt;</span><span class="nt">figure</span><span class="p">&gt;</span>
   <span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&#34;https://i.loli.net/2020/03/08/znx6EItUGLT54Wj.png&#34;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&#34;Figure 1: Continuous Data Distributions&#34;</span><span class="p">/&gt;</span>
   <span class="p">&lt;</span><span class="nt">figcaption</span><span class="p">&gt;</span>Figure 1: Continuous Data Distributions<span class="p">&lt;/</span><span class="nt">figcaption</span><span class="p">&gt;</span>
 <span class="p">&lt;/</span><span class="nt">figure</span><span class="p">&gt;</span>
-</code></pre></td></tr></table>
-</div>
-</div><p>When examining the distributions of the time variables (Figure 1), there are several characteristics of note. It appears that both prelims time and finals time follow similar right skewed distributions.</p>
+</code></pre></div><p>When examining the distributions of the time variables (Figure 1), there are several characteristics of note. It appears that both prelims time and finals time follow similar right skewed distributions.</p>
 <p>Most of the data is around 60 seconds with a few observations reaching 80 or even over 100 seconds but no extreme outliers. Additionally, the finals time seems to be slightly more concentrated at lower values. The time improvement from seed to prelims is centered above 0, indicating that most finalists improved upon their in-season seed time in prelims. This distribution is fairly symmetric with some outliers gaining more than 10 seconds or improving by over 20 seconds.</p>
 <p><img
         class="lazyload"

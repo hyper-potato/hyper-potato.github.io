@@ -37,7 +37,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "statistical modeling, causal inference","wordcount":  3716 ,
+            },"genre": "posts","keywords": "statistical modeling, causal inference","wordcount":  3565 ,
         "url": "https:\/\/hyper-potato.github.io\/2020-02-17-effectiveness-of-online-advertising\/","datePublished": "2020-02-17","dateModified": "2020-02-17","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -93,8 +93,8 @@
             <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
 </span></div>
             <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2020-02-17>2020-02-17</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 3716 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>18 min&nbsp;</div>
+                <i class="fas fa-pencil-alt fa-fw"></i>about 3565 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>17 min&nbsp;</div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -176,19 +176,7 @@
 .</p>
 <h3 id="sample-size-analysis">Sample Size Analysis</h3>
 <p>Now, we will discuss the implications of our sample size for the conclusions we can make. Because the sizes of the treatment and control groups are not even, we cannot use the same power test detailed in class as our sample violates the assumption that they are of equal size. Instead, we will use a test in the pwr package designed for unequal groups. 1 minus power refers to the probability of failing to detect an effect that exists. Therefore, a higher power reduces the probability that a real effect is undetected.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ptab2</span> <span class="o">=</span> <span class="nf">cbind</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="kc">NULL</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">ptab2</span> <span class="o">=</span> <span class="nf">cbind</span><span class="p">(</span><span class="kc">NULL</span><span class="p">,</span> <span class="kc">NULL</span><span class="p">)</span>
 <span class="nf">for </span><span class="p">(</span><span class="n">i</span> <span class="n">in</span> <span class="nf">c</span><span class="p">(</span><span class="m">.7</span><span class="p">,</span> <span class="m">.75</span><span class="p">,</span> <span class="m">.8</span><span class="p">,</span> <span class="m">.85</span><span class="p">,</span> <span class="m">.9</span><span class="p">,</span> <span class="m">.95</span><span class="p">)){</span>
   <span class="n">pwrt</span> <span class="o">=</span> <span class="nf">pwr.t2n.test</span><span class="p">(</span><span class="n">n1</span> <span class="o">=</span> <span class="m">2656</span><span class="p">,</span> <span class="n">n2</span> <span class="o">=</span> <span class="m">22647</span><span class="p">,</span> <span class="n">sig.level</span> <span class="o">=</span> <span class="m">.05</span><span class="p">,</span> <span class="n">power</span> <span class="o">=</span> <span class="n">i</span><span class="p">,</span>
                       <span class="n">alternative</span> <span class="o">=</span> <span class="s">&#34;two.sided&#34;</span><span class="p">)</span>
@@ -196,26 +184,11 @@
 <span class="p">}</span>
 
 <span class="nf">plot</span><span class="p">(</span><span class="n">ptab2[</span><span class="p">,</span><span class="m">1</span><span class="n">]</span><span class="p">,</span> <span class="n">ptab2[</span><span class="p">,</span><span class="m">2</span><span class="n">]</span><span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;b&#34;</span><span class="p">,</span> <span class="n">xlab</span> <span class="o">=</span> <span class="s">&#34;Power&#34;</span><span class="p">,</span> <span class="n">ylab</span> <span class="o">=</span> <span class="s">&#34;Effect Size&#34;</span><span class="p">)</span>
-</code></pre></td></tr></table>
-</div>
-</div><p><img src="https://i.loli.net/2020/02/18/7L6JBSjpMyCPUtW.png" alt="image.png" style="zoom:33%;" /></p>
+</code></pre></div><p><img src="https://i.loli.net/2020/02/18/7L6JBSjpMyCPUtW.png" alt="image.png" style="zoom:33%;" /></p>
 <p>As we can see in the graph above, given our sample size and a standard significance level of 0.05, there is an increasing relationship between the level of power and the minimum effect size that can be reliably detected. In otherwords, at higher levels of power, there must be a larger effect to be detected reliable.</p>
 <h3 id="randomization-check">Randomization Check</h3>
 <p>Finally, we will perform t-tests to check if the randomization between the treatment and control groups was done sufficiently and that the groups are roughly homogenous outside of the treatment. If the groups are significantly different, the conclusions of our analyses may not be reliable.</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">t.test(imp_1 ~ test, data = star)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">t.test(imp_1 ~ test, data = star)
 # Output of tests for sites 2 to 5 are hidden to reduce redundancy as results are
 # similar to that of site 1 (sites 3/5 significant, sites 2/4 insignificant)
 invisible(t.test(imp_2 ~ test, data = star))
@@ -224,47 +197,7 @@ invisible(t.test(imp_4 ~ test, data = star))
 invisible(t.test(imp_5 ~ test, data = star))
 t.test(imp_6 ~ test, data = star)
 t.test(sum1to5 ~ test, data = star)
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
-</span><span class="lnt">32
-</span><span class="lnt">33
-</span><span class="lnt">34
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Welch Two Sample t-test
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Welch Two Sample t-test
 
 data:  imp_1 by test
 t = -3.905, df = 3574.1, p-value = 9.596e-05
@@ -298,58 +231,17 @@ alternative hypothesis: true difference in means is not equal to 0
 sample estimates:
 mean in group 0 mean in group 1
        6.065512        6.095024
-</code></pre></td></tr></table>
-</div>
-</div><p>When we consider websites 1 to 5 on their own, there seems to be statistically significant difference between the treatment and control groups. This implies that the composition of people in the two groups are not necessarily homogenous. However, when it comes to the total number of impressions seen in sites 1 to 5, given their interchangeability and Star Digital&rsquo;s inability to show adds on a specific site, there is not enough evidence to say that the groups are significantly different. Similarly, in terms of their impressions on site 6, there is not enough evidence to assert that the treatment and control groups are not homogenous.</p>
+</code></pre></div><p>When we consider websites 1 to 5 on their own, there seems to be statistically significant difference between the treatment and control groups. This implies that the composition of people in the two groups are not necessarily homogenous. However, when it comes to the total number of impressions seen in sites 1 to 5, given their interchangeability and Star Digital&rsquo;s inability to show adds on a specific site, there is not enough evidence to say that the groups are significantly different. Similarly, in terms of their impressions on site 6, there is not enough evidence to assert that the treatment and control groups are not homogenous.</p>
 <h2 id="main-analysis">Main Analysis</h2>
 <p>Now that we better understand the data we will be analyzing, we can move onto answering the three main questions that Star Digital has.</p>
 <h3 id="question-1">Question 1:</h3>
 <p><strong>Is online advertising effective for Star Digital?</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">lm1 = glm(purchase ~ test, data = star, family = &#39;binomial&#39;)
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">lm1 = glm(purchase ~ test, data = star, family = &#39;binomial&#39;)
 summary(lm1)
 exp(coef(lm1))
 # This transformation of fitted model coefficients is done here and in further analyses
 # so that they can be interpreted as the odds ratio.
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Call:
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Call:
 glm(formula = purchase ~ test, family = &#34;binomial&#34;, data = star)
 
 Deviance Residuals:
@@ -373,60 +265,16 @@ Number of Fisher Scoring iterations: 3
 
 (Intercept)        test
   0.9443631   1.0797852
-</code></pre></td></tr></table>
-</div>
-</div><p><em>Interpretations</em></p>
+</code></pre></div><p><em>Interpretations</em></p>
 <p>First, we will use logistic regression to determine whether being in the group that receives Star Digital ads has a significant increase in the odds of purchase. In the regression, the p-value for &lsquo;test&rsquo; is 0.0614, which is greater than the acceptable significance level 0.05. This means there is not enough evidence to say whether the consumer is in the treatment or control group has an effect on whether he/she will eventually make a purchase at Star Digital. Hence, we do not have enough evidence to conclude that simply displaying online advertising is  effective in stimulating purchases. Although we cannot confidently say that it is different from 0, we estimate that being part of the test group would increase the odds of purchasing Star Digital by 7.98%.</p>
 <h3 id="question-2">Question 2:</h3>
 <p><strong>Is there a frequency effect of advertising on purchase? In particular, the question is whether increasing the frequency of advertising increases the probability of purchase?</strong></p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-R" data-lang="R"><span class="n">star</span><span class="o">$</span><span class="n">total_imp</span> <span class="o">=</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">star[</span><span class="p">,</span><span class="m">4</span><span class="o">:</span><span class="m">9</span><span class="n">]</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="n">star</span><span class="o">$</span><span class="n">total_imp</span> <span class="o">=</span> <span class="nf">rowSums</span><span class="p">(</span><span class="n">star[</span><span class="p">,</span><span class="m">4</span><span class="o">:</span><span class="m">9</span><span class="n">]</span><span class="p">)</span>
 
 <span class="n">lm2</span> <span class="o">=</span> <span class="nf">glm</span><span class="p">(</span><span class="n">purchase</span> <span class="o">~</span> <span class="n">test</span> <span class="o">+</span> <span class="n">total_imp</span> <span class="o">+</span> <span class="n">test</span><span class="o">*</span><span class="n">total_imp</span><span class="p">,</span> <span class="n">data</span> <span class="o">=</span> <span class="n">star</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s">&#39;binomial&#39;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm2</span><span class="p">)</span>
 <span class="nf">exp</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">lm2</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Call:
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Call:
 glm(formula = purchase ~ test + total_imp + test * total_imp,
     family = &#34;binomial&#34;, data = star)
 
@@ -453,9 +301,7 @@ Number of Fisher Scoring iterations: 5
 
    (Intercept)           test      total_imp test:total_imp
      0.8440214      0.9861932      1.0160156      1.0155865
-</code></pre></td></tr></table>
-</div>
-</div><p><em>Interpretations</em></p>
+</code></pre></div><p><em>Interpretations</em></p>
 <p>To answer this question, we first create a new variable summing all the impressions from the websites. Now, we need to determine the impact of ad frequency on purchase. Again, we will use logistic regression. Our results show that simply being subject to the Star Digital ads does not result in a significant increase in purchasing. This supports the conclusion we reached in Question 1.</p>
 <p>Looking at the effect of total impressions on the odds of purchase, we see a very signifcant p-value, much lower than 0.05. This means that there is evidence that the total number of ad impressions for each consumer  effects whether they make a purchase at Star Digital or not. The coefficent of the total impression term is 0.0159, which means that there is around a 1.6% increase in the odds of making purchasing at Star Digital for for each additional ad impression in the control group. This implies that more online activity increases the likelihood of purchasing from Star Digital, regardless of whether they are seeing Star Digital ads.</p>
 <p>Now focusing on the treatment group, we again see p-value for the interaction between being in the treatment group and total impressions is well below than 0.05. This indicates a significant difference in the effect of an additional ad impression between the treatment and control group. Examining the coefficient on the interaction term, we see that above and beyond the 1.6% increase in purchase odds for the control group, consumers in the treatment group are expected to have an additional 1.5% increase in odds of purchasing from Star Digital for each ad impression.</p>
@@ -464,54 +310,11 @@ Number of Fisher Scoring iterations: 5
 <p><strong>Which sites should Star Digital advertise on? In particular, should it put its advertising dollars in site 6 or in sites 1 through 5?</strong></p>
 <p>To address this question, we must first define a RoI metric in order to compare the effectiveness of sites 1 through 5 and site 6. To do so, we used the following formula as our criteria to assess the profitability of different sites:</p>
 <p>ROI = ((Value of Purchase * Increase in Odds of Purchase) - Cost of Impression) / Cost of Impression</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-R" data-lang="R"><span class="n">lm3</span> <span class="o">=</span> <span class="nf">glm</span><span class="p">(</span><span class="n">purchase</span> <span class="o">~</span> <span class="n">test</span> <span class="o">+</span> <span class="n">sum1to5</span> <span class="o">+</span> <span class="n">imp_6</span> <span class="o">+</span> <span class="n">test</span><span class="o">*</span><span class="n">sum1to5</span> <span class="o">+</span> <span class="n">test</span><span class="o">*</span><span class="n">imp_6</span><span class="p">,</span>
+<div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="n">lm3</span> <span class="o">=</span> <span class="nf">glm</span><span class="p">(</span><span class="n">purchase</span> <span class="o">~</span> <span class="n">test</span> <span class="o">+</span> <span class="n">sum1to5</span> <span class="o">+</span> <span class="n">imp_6</span> <span class="o">+</span> <span class="n">test</span><span class="o">*</span><span class="n">sum1to5</span> <span class="o">+</span> <span class="n">test</span><span class="o">*</span><span class="n">imp_6</span><span class="p">,</span>
           <span class="n">data</span> <span class="o">=</span> <span class="n">star</span><span class="p">,</span> <span class="n">family</span> <span class="o">=</span> <span class="s">&#39;binomial&#39;</span><span class="p">)</span>
 <span class="nf">summary</span><span class="p">(</span><span class="n">lm3</span><span class="p">)</span>
 <span class="nf">exp</span><span class="p">(</span><span class="nf">coef</span><span class="p">(</span><span class="n">lm3</span><span class="p">))</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt"> 1
-</span><span class="lnt"> 2
-</span><span class="lnt"> 3
-</span><span class="lnt"> 4
-</span><span class="lnt"> 5
-</span><span class="lnt"> 6
-</span><span class="lnt"> 7
-</span><span class="lnt"> 8
-</span><span class="lnt"> 9
-</span><span class="lnt">10
-</span><span class="lnt">11
-</span><span class="lnt">12
-</span><span class="lnt">13
-</span><span class="lnt">14
-</span><span class="lnt">15
-</span><span class="lnt">16
-</span><span class="lnt">17
-</span><span class="lnt">18
-</span><span class="lnt">19
-</span><span class="lnt">20
-</span><span class="lnt">21
-</span><span class="lnt">22
-</span><span class="lnt">23
-</span><span class="lnt">24
-</span><span class="lnt">25
-</span><span class="lnt">26
-</span><span class="lnt">27
-</span><span class="lnt">28
-</span><span class="lnt">29
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">Call:
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">Call:
 glm(formula = purchase ~ test + sum1to5 + imp_6 + test * sum1to5 +
     test * imp_6, family = &#34;binomial&#34;, data = star)
 
@@ -540,38 +343,18 @@ Number of Fisher Scoring iterations: 5
 
  (Intercept)         test      sum1to5        imp_6 test:sum1to5   test:imp_6
    0.8465755    0.9939313    1.0196422    1.0039860    1.0147240    1.0135741
-</code></pre></td></tr></table>
-</div>
-</div><p><em>Interpretations</em></p>
+</code></pre></div><p><em>Interpretations</em></p>
 <p>Our final regression summary using logistic regression and assessing the effect of ads on certain websites again confirms our results from Question 1 that just being in the treatment or control group does not significantly affect the odds to purchase.</p>
 <p>Additionally, the total impressions from site 1 through 5 has a significant effect on the odds of purchase purchase while there is not evidence to say that number of impressions from site 6 has a significant impact at the 95% confidence level. More specifically, we estimate that for each additional impression on sites 1 through 5, the odds of purchasing from Star Digital increases by 1.96%. However, each additional impression on site 6 leads to an expected increase in the odds of purchase by only 0.40%.</p>
 <p>In addition, the p-value for interaction terms on being in the treatment group and the total number of impressions on each group of sites is very small and we have evidence to suggest that the treatment group&rsquo;s purchase behavior changes differently with additional impressions than the treatment group. Compared to the control group, each additional impression from sites 1 to 5 for the treatment group is expected to have a 1.47% increase in purchase odds more than the 1.96% increase expected in the control group. Similarly, those in the treatment group are expected to have a 1.36% higher increase in odds of purchase for each additional site 6 ad than those in the control group.</p>
 <p>Meanwhile, site 1 to 5 runs ads at 25 dollars per 1000 impressions whereas site 6 runs ads at 20 dollars per 1000 impressions. Therefore, our ROI is calculated as follows:</p>
-<div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-R" data-lang="R"><span class="n">ROI_site1to5</span> <span class="o">=</span> <span class="p">((</span><span class="m">1200</span> <span class="o">*</span> <span class="m">.0147240</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="m">25</span> <span class="o">/</span> <span class="m">1000</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="m">25</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span>
+<div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="n">ROI_site1to5</span> <span class="o">=</span> <span class="p">((</span><span class="m">1200</span> <span class="o">*</span> <span class="m">.0147240</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="m">25</span> <span class="o">/</span> <span class="m">1000</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="m">25</span> <span class="o">/</span> <span class="m">1000</span><span class="p">)</span>
 <span class="n">ROI_site1to5</span>
 <span class="n">ROI_site6</span> <span class="o">=</span> <span class="p">((</span><span class="m">1200</span> <span class="o">*</span> <span class="m">.0135741</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="m">20</span> <span class="o">/</span> <span class="m">1000</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span><span class="m">20</span><span class="o">/</span><span class="m">1000</span><span class="p">)</span>
 <span class="n">ROI_site6</span>
-</code></pre></td></tr></table>
-</div>
-</div><div class="highlight"><div class="chroma">
-<table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span></code></pre></td>
-<td class="lntd">
-<pre class="chroma"><code class="language-fallback" data-lang="fallback">[1] 705.752
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">[1] 705.752
 [1] 813.446
-</code></pre></td></tr></table>
-</div>
-</div><p>As we can see, there is a higher ROI in investing in ads on site 6 and we conclude that Star Digital should put its advertising dollars in site 6.</p>
+</code></pre></div><p>As we can see, there is a higher ROI in investing in ads on site 6 and we conclude that Star Digital should put its advertising dollars in site 6.</p>
 <h2 id="concerns-and-limitations">Concerns and Limitations</h2>
 <p>Now that our analysis is complete, we will briefly touch on some of the major threats and limitations of our results and conclusions.</p>
 <h3 id="threats-to-causal-inference">Threats to Causal Inference</h3>
