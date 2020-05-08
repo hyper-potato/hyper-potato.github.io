@@ -37,7 +37,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "EDA, Python","wordcount":  1192 ,
+            },"genre": "posts","keywords": "EDA, Python","wordcount":  1189 ,
         "url": "https:\/\/hyper-potato.github.io\/2020-04-05-when-we-are-under-quarantine\/","datePublished": "2020-04-05","dateModified": "2020-04-05","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -143,7 +143,7 @@
         <span class="n">songs</span> <span class="o">=</span> <span class="n">sp</span><span class="o">.</span><span class="n">user_playlist_tracks</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">playlist_id</span><span class="o">=</span><span class="n">playlist_id</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="n">offset_index</span><span class="p">)</span>
 
         <span class="k">for</span> <span class="n">song</span> <span class="ow">in</span> <span class="n">songs</span><span class="p">[</span><span class="s1">&#39;items&#39;</span><span class="p">]:</span>
-            <span class="c1">#join track ids to a single string as an input parameter for audio_features function</span>
+        <span class="c1">#join track ids to a single string as an input parameter for audio_features function</span>
             <span class="n">track_list</span> <span class="o">+=</span> <span class="n">song</span><span class="p">[</span><span class="s1">&#39;track&#39;</span><span class="p">][</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="o">+</span><span class="s1">&#39;,&#39;</span>
 
             <span class="c1">#get the time when the song was added</span>
@@ -178,10 +178,6 @@
 
     <span class="c1">#add the timestamp added, title and artists of a song</span>
     <span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;added_at&#39;</span><span class="p">],</span> <span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;song_title&#39;</span><span class="p">],</span> <span class="n">df_result</span><span class="p">[</span><span class="s1">&#39;artists&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">added_ts_list</span><span class="p">,</span> <span class="n">title_list</span><span class="p">,</span> <span class="n">artist_list</span>
-
-
-    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;--- COMPLETED ---&#39;</span><span class="p">)</span>
-
     <span class="k">return</span> <span class="n">df_result</span>    
 </code></pre></div><h2 id="a-glimpse-of-my-playlists">A glimpse of my playlists</h2>
 <p>get all my playlist:</p>
@@ -512,6 +508,7 @@
 </table>
 <h2 id="next">Next</h2>
 <p>I&rsquo;ll use cluster to bucket my favorite tracks when I get really bored.</p>
+<img src='/images/google cute.jpeg'>
 <h1 id="tl-dr">TL; DR</h1>
 <p><strong>Let&rsquo;s jam out!</strong></p>
 <p>How do you find good music you&rsquo;ve never heard before?</p>
@@ -521,9 +518,7 @@
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
-            <div class="post-info-mod">
-                <span>The article was updated on 2020-04-05</span>
-            </div>
+          
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">

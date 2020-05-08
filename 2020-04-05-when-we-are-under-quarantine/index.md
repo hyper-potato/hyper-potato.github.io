@@ -54,7 +54,7 @@ def get_features_from_playlist(user='', playlist_id=''):
         songs = sp.user_playlist_tracks(user, playlist_id=playlist_id, offset=offset_index)
 
         for song in songs['items']:
-            #join track ids to a single string as an input parameter for audio_features function
+        #join track ids to a single string as an input parameter for audio_features function
             track_list += song['track']['id'] +','
 
             #get the time when the song was added
@@ -89,10 +89,6 @@ def get_features_from_playlist(user='', playlist_id=''):
 
     #add the timestamp added, title and artists of a song
     df_result['added_at'], df_result['song_title'], df_result['artists'] = added_ts_list, title_list, artist_list
-
-
-    print('--- COMPLETED ---')
-
     return df_result    
 ```
 
@@ -332,7 +328,7 @@ tracks_w_features_encoded_product \
 
 I'll use cluster to bucket my favorite tracks when I get really bored.
 
-
+<img src='/images/google cute.jpeg'>
 
 # TL; DR
 
