@@ -2,7 +2,7 @@
 layout:    post
 title:     Predicting Visitors for Restaurants
 description:  For suckers for Sashimi like me!
-date:       2019-11-02
+date:       2019-11-12
 author:     Nina
 featuredImage: "/images/post-sushi-set-japanese.jpg"
 toc: true
@@ -12,11 +12,7 @@ tags: [machine learning, Time Series Forecasting]
 
 
 
-
-#For Suckers for Sashimi Like Me!
-
-
-![from unsplash](https://images.unsplash.com/photo-1546530785-86397501ae20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80)
+**For Suckers for Sashimi Like Me!**
 
 
 

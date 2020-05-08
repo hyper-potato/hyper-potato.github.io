@@ -1,22 +1,18 @@
 ---
 layout:     post
-title:      Swimmer Performance vs Lane Placement
-description:  Causal Inference Using Mataching Technology
-date:       2020-02-29
+title: Swimmer Performance vs Lane Placement Analysis using Matching
+date: 2020-02-29
 featuredImage: "/images/post-swim.jpg"
-author:     Nina
+author: Nina
 comment: true
-catalog: 	True
-tags: [causality, matching]
+toc: true
+catalog: true
+tags: [causal inference, matching]
 ---
 
-[TOC]
 
 
-
-![](/assets/img/post-swim.jpg)
-
-## INTRODUCTION
+## Introduction 
 
 ### Unfair Competitive Advantage
 
@@ -26,9 +22,7 @@ When watching competitive swimming, it seems like the swimmers in the middle lan
 
 To illustrate this notion, take the example of Michael Phelps, widely regarded as the greatest swimmer of all time. In the 2012 Olympic Games, Phelps barely qualified for the finals of the 400 IM. As the slowest qualifier, he was placed in one of the outermost positions, lane 1. Unphased, Phelps didn’t think much of it. “The only thing that matters is getting a spot” he rationalized, “you can’t get a gold medal from the morning.” In retrospect, it’s understandable that Phelps was this confident despite having the slowest prelims time amongst qualifiers; he was, after all, the reigning gold medalist and world record holder in the event. However, he was not able to defend his title when swimming from an outside lane. As a matter of fact, he failed to medal at all, placing 4th in the event and adding over 5 seconds to his time from the prior Olympics. To put this in perspective, out of the 30 Olympic events that Phelps swam, the only other time he didn’t medal was at the age of 15.
 
-Although this example gives some credence to the claim that lane placement may affect performance, it is quite anecdotal. To determine if similar research has been done, we turned to the internet. In 2016, Wall Street Journal, Washington Post, and Quartz all published articles detailing quantitative research on lane advantages in swimming. Unfortunately, these studies were all specific to the Olympic pool in Rio de Janeiro regarding design concerns. As our interest lies with competitive swimming in general, our question is left unanswered. A more generalized article on the subject was published by BBC, however, it is entirely theoretical. In our study, we will use real competition data to assess the effect of lane placement on performance.
-
-![image.png](https://i.loli.net/2020/03/08/RSmW8fswJOYb3G7.png)
+Although this example gives some credence to the claim that lane placement may affect performance, it is quite anecdotal. In our study, we will use real competition data to assess the effect of lane placement on performance.
 
 
 
@@ -52,16 +46,15 @@ Then, results of the swimmers in inside and outside lanes could be compared to e
 
 
 
-## DATA OVERVIEW
+## Data Overview
 
 The data used for our analysis comprises of meet results from conference championship meets in the California Community College Athletic Association between 2017 and 2019, scraped from SwimPhone.com. Each meet included in our dataset took place at the end of the season in either April or May, was swam in an 8 lane pool, and follows the same championship meet format with prelims of an event in the morning and the top 16 qualifiers racing again in the evening for finals. To simplify our analysis, we restrict the scope to events of 100 yards, the most common distance. Each unit of observation is a finalist in a specific event. The dependent variable we will be modeling is the finals time while the treatment is the lane placement in finals. Lanes 4 and 5 are considered inside lanes while lanes 1 and 8 are considered outside lanes. Other covariates included are the prelims time, the improvement from seed time to prelims time, the gender of the swimmer, and the stroke of the event.
 
-```html
-<figure>
-  <img src="https://i.loli.net/2020/03/08/znx6EItUGLT54Wj.png" alt="Figure 1: Continuous Data Distributions"/>
-  <figcaption>Figure 1: Continuous Data Distributions</figcaption>
-</figure>
-```
+
+
+<img src="https://i.loli.net/2020/03/08/znx6EItUGLT54Wj.png" alt="Figure 1: Continuous Data Distributions"/>
+
+**Figure 1**: Continuous Data Distributions
 
 
 
@@ -91,7 +84,7 @@ Intuitively, a swimmer’s performance in prelims is a very strong indicator of 
 
 
 
-## MAIN ANALYSIS
+## Main Analysis
 
 ### Naïve Regression
 
@@ -143,11 +136,11 @@ The significant predictors and estimates are quite similar to those before match
 
 
 
-## CONCLUSION
+## Conclusion
 
 ### Policy Implications
 
-Moving forward, there are a few things that can be done to level the playing field. Recall the three reasons we may see an effect of lane placement upon performance (physical, psychological, visual). Barring a radical redesign of the competition pool, we can only address two of these potential reasons: physical and mental factors.
+Recall the three reasons we may see an effect of lane placement upon performance (physical, psychological, visual). Barring a radical redesign of the competition pool, we can only address two of these potential reasons: physical and mental factors.
 
 To combat the physical disadvantages of swimming in an outside lane, we first recommend ensuring that high level competitions have buffer lanes on the outside. This is already done in many top competitions. By having an extra lane against the wall, competitors will no longer be subject to waves crashing against the wall.
 
@@ -169,11 +162,13 @@ From a more technical perspective, the functional form of logistic regression us
 
 Finally, we are unable to account for differing lanes in the prelims swim. When including this as a covariate, we would essentially be estimating the treatment effect of lane placement twice. This would lead to a difficult to interpret and fairly unreliable estimate.
 
-<img src="https://images.unsplash.com/photo-1461567933755-6c82be2197da?ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1789&amp;q=80" style="zoom:33%;" />
+
+
+---
 
 
 
-REFERENCES
+Reference
 
 - Various articles referenced in the introduction section.
   - https://www.wsj.com/articles/did-the-olympic-pool-give-some-swimmers-an-advantage-1471470741

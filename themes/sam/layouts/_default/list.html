@@ -1,0 +1,21 @@
+{{ define "section_content" }}
+<div class="section" id="content">
+    {{ .Content }}
+    <div>
+    {{ range (where .Data.Pages "Section" "!=" "").GroupByDate "2006" }}
+    <h2>{{ .Key }}</h2>
+    
+    {{ range .Pages }}
+        <li>
+            {{ if .Params.showDate }}
+            {{ .Date.Format (default "Jan 02")}} -
+            {{ end }}
+            <a href="{{.Permalink}}">
+                {{.Title}}
+            </a>
+        </li>
+        {{ end }}
+    {{ end }}
+  </div>
+</div>
+{{ end }}

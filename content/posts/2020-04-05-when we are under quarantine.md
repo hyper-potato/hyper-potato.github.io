@@ -6,7 +6,8 @@ date:       2020-04-05
 author:     Nina
 catalog: 	 true
 comment: true
-tags: [EDA, Python]
+featuredImage: "/images/pornography-thecure.jpeg"
+tags: ["EDA", "Python"]
 ---
 
 __Sit tight and listen to music__
@@ -16,8 +17,6 @@ For the past weeks, I’ve taken breaks from staring blankly into the middle dis
 I’m using Spotify only since last year here and there, most of time I use apple music as the main source of music. I like the feature of adding songs to library on apple music. By innertion I’m still using the library to save songs that I like. After moving apple music library to Spotify, I nerded out to see how my playlist looks under Spotify's standard.
 
 
-
-<img src='/images/pornography-thecure.jpeg'>
 
 ## Preparation
 
@@ -64,7 +63,7 @@ def get_features_from_playlist(user='', playlist_id=''):
         songs = sp.user_playlist_tracks(user, playlist_id=playlist_id, offset=offset_index)
 
         for song in songs['items']:
-            #join track ids to a single string as an input parameter for audio_features function
+        #join track ids to a single string as an input parameter for audio_features function
             track_list += song['track']['id'] +','
 
             #get the time when the song was added
@@ -99,10 +98,6 @@ def get_features_from_playlist(user='', playlist_id=''):
 
     #add the timestamp added, title and artists of a song
     df_result['added_at'], df_result['song_title'], df_result['artists'] = added_ts_list, title_list, artist_list
-
-
-    print('--- COMPLETED ---')
-
     return df_result    
 ```
 
@@ -342,12 +337,14 @@ tracks_w_features_encoded_product \
 
 I'll use cluster to bucket my favorite tracks when I get really bored.
 
-
+<img src='/images/google cute.jpeg'>
 
 # TL; DR
 
-Let's jam out!
+**Let's jam out!**
 
 How do you find good music you've never heard before?
 
 Try this website... [www.gnoosic.com](http://www.gnoosic.com/) you put in three of your favorite bands/artists, and it will recommend similar stuff that you most likely haven't heard of, or listened to.
+
+And you will come back and thank me. You are welcome. 

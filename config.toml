@@ -6,7 +6,11 @@ languageCode = "en"
 title = "Hyper Potato's Blog"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt"
+theme = "LoveIt" #"sam" #
+# For sam theme
+# pygmentsStyle            = "monokai"                        # https://help.farbox.com/pygments.html
+# pygmentsCodefences       = true
+
 
 [menu]
   [[menu.main]]
@@ -335,6 +339,8 @@ theme = "LoveIt"
     startLevel = 2
     endLevel = 4
 
+
+
 # Author Info
 [author]
   name = "Nina"
@@ -410,3 +416,26 @@ theme = "LoveIt"
 
   [params.googleApiFonts.family.pre]
     monospace  = "Droid Sans Mono"
+
+
+
+
+# For sam theme
+[[params.mainMenu]]
+  link = "posts"
+  text = "posts"
+
+[[params.mainMenu]]
+  link = "gallery"
+  text = "gallery"
+
+[[params.mainMenu]]
+  link = "portfolio"
+  text = "portfolio"
+
+[[params.mainMenu]]
+  link = "/about/"
+  text = "who is Nina?"
+
+[imaging]
+  quality = 75

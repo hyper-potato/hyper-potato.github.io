@@ -6,11 +6,12 @@ date:       2020-03-02
 featuredImage: "/images/chill-walker.jpg"
 author:     Nina
 comment: true
-catalog: 	 true
+catalog: true
 tags: [causal inference, sample size]
 toc: true
-
 ---
+
+
 
 ## Risk of a large sample size
 

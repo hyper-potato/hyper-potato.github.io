@@ -2,7 +2,7 @@
 layout:     post
 title:     The Good Bad Ugly of R-Square
 subtitle:  Metrics Explained, MSE, R^2, RMSLE
-date:       2019-11-02
+date:       2020-01-20
 author:     Nina
 featuredImage: "/images/home-bg-ricky.jpg"
 toc: true
