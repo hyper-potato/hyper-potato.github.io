@@ -9,21 +9,21 @@
         <meta name="Description" content="For suckers for Sashimi like me!"><meta property="og:title" content="Predicting Visitors for Restaurants" />
 <meta property="og:description" content="For suckers for Sashimi like me!" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/" />
-<meta property="article:published_time" content="2019-11-02T00:00:00+00:00" />
-<meta property="article:modified_time" content="2019-11-02T00:00:00+00:00" />
+<meta property="og:url" content="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" />
+<meta property="article:published_time" content="2019-11-12T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-12T00:00:00+00:00" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Predicting Visitors for Restaurants"/>
 <meta name="twitter:description" content="For suckers for Sashimi like me!"/>
 <meta name="theme-color" content="#ffffff">
 <meta name="msapplication-TileColor" content="#da532c">
-<link rel="canonical" href="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/" />
+<link rel="canonical" href="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" />
 <link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
 <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
-<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="prev" href="https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/" /><link rel="next" href="https://hyper-potato.github.io/2019-12-18-money-ball-with-arules/" /><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="prev" href="https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/" /><link rel="next" href="https://hyper-potato.github.io/2019-11-28-cat-or-dog-classification-dnn/" /><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><link rel="stylesheet" href="/css/style.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -31,14 +31,14 @@
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https:\/\/hyper-potato.github.io\/2019-12-30-restaurants-visitors-predictive-model\/"
+            "@id": "https:\/\/hyper-potato.github.io\/2019-11-12-restaurants-visitors-predictive-model\/"
         },"image": {
                 "@type": "ImageObject",
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
             },"genre": "posts","keywords": "machine learning, Time Series Forecasting","wordcount":  5569 ,
-        "url": "https:\/\/hyper-potato.github.io\/2019-12-30-restaurants-visitors-predictive-model\/","datePublished": "2019-11-02","dateModified": "2019-11-02","publisher": {
+        "url": "https:\/\/hyper-potato.github.io\/2019-11-12-restaurants-visitors-predictive-model\/","datePublished": "2019-11-12","dateModified": "2019-11-12","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
                 "logo": {
@@ -58,7 +58,8 @@
                 window.isDark = (window.localStorage && window.localStorage.getItem('theme')) === 'dark';
             }
             window.isDark && document.body.classList.add('dark-theme');
-        </script><div class="wrapper"><header class="desktop" id="header-desktop">
+        </script><div class="wrapper"><link href="https://fonts.googleapis.com/css2?family=Arapey:ital@0;1&display=swap" rel="stylesheet">
+<header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
             <a href="/">Hyper Potato&#39;s Blog</a>
@@ -90,11 +91,11 @@
 </script>
 <main class="main">
                 <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Predicting Visitors for Restaurants</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-laugh"></i>Nina</a>
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel="noopener noreffer author" class="author"><i class="far fa-meh fa-fw"></i>Nina</a>
 </span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-11-02>2019-11-02</time>&nbsp;
-                <i class="fas fa-pencil-alt fa-fw"></i>about 5569 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>27 min&nbsp;</div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i><time datetime=2019-11-12>2019-11-12</time>&nbsp;
+              
+            </div>
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading.min.svg"
@@ -157,15 +158,7 @@
   </ul>
 </nav></div>
                 </details>
-            </div><div class="content" id="content"><p>#For Suckers for Sashimi Like Me!</p>
-<p><img
-        class="lazyload"
-        src="/svg/loading.small.min.svg"
-        data-sizes="auto"
-        data-srcset="https://images.unsplash.com/photo-1546530785-86397501ae20?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=1001&amp;q=80,  1.5x,  2x"
-        data-src=""
-        alt="from unsplash"
-        title="from unsplash" /></p>
+            </div><div class="content" id="content"><p><strong>For Suckers for Sashimi Like Me!</strong></p>
 <h2 id="1-project-definition--introduction">1. Project Definition &amp; Introduction</h2>
 <p>When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.</p>
 <p>If restaurants can predict how many visitors will be in one day, it&rsquo;s easier for them to make the arrangement. However, forecasting the number of visits is hard because it might be influenced by countless factors  (eg weather, holiday, and location). It&rsquo;s even harder for new restaurants with little historical data to make accurate predictions.</p>
@@ -973,16 +966,16 @@ a_i is the actual number of visitors</p>
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>The article was updated on 2019-11-02</span>
+                <span>The article was updated on 2019-11-12</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/2019-12-30-restaurants-visitors-predictive-model/index.md" target="_blank">Read Markdown</a>
+                            <a class="link-to-markdown" href="/2019-11-12-restaurants-visitors-predictive-model/index.md" target="_blank">Read Markdown</a>
                         </span></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/" data-title="Predicting Visitors for Restaurants" data-hashtags="machine learning,Time Series Forecasting"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/" data-hashtag="machine learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/" data-title="Predicting Visitors for Restaurants" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/" data-description="For suckers for Sashimi like me!" data-image="/images/post-sushi-set-japanese.jpg"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/" data-title="Predicting Visitors for Restaurants"><i class="fab fa-hacker-news fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" data-title="Predicting Visitors for Restaurants" data-hashtags="machine learning,Time Series Forecasting"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" data-hashtag="machine learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/"><i class="fab fa-linkedin fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" data-title="Predicting Visitors for Restaurants" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Pinterest" data-sharer="pinterest" data-url="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" data-description="For suckers for Sashimi like me!" data-image="/images/post-sushi-set-japanese.jpg"><i class="fab fa-pinterest fa-fw"></i></a><a href="javascript:void(0);" title="Share on Hacker News" data-sharer="hackernews" data-url="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" data-title="Predicting Visitors for Restaurants"><i class="fab fa-hacker-news fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -994,8 +987,8 @@ a_i is the actual number of visitors</p>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/2020-01-20-the-good-bad-ugly-of-r-square/" class="prev" rel="prev" title="The Good Bad Ugly of R-Square"><i class="fas fa-angle-left fa-fw"></i>The Good Bad Ugly of R-Square</a>
-            <a href="/2019-12-18-money-ball-with-arules/" class="next" rel="next" title=""><i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/2019-11-02-money-ball-with-arules/" class="prev" rel="prev" title=""><i class="fas fa-angle-left fa-fw"></i></a>
+            <a href="/2019-11-28-cat-or-dog-classification-dnn/" class="next" rel="next" title="Cats vs Dogs Classification">Cats vs Dogs Classification<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div class="comment"><div id="disqus_thread"></div><noscript>
             Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>

@@ -1,7 +1,6 @@
 # 
 
 
-{:toc}
 
 
 ## Summary
@@ -142,11 +141,11 @@ To win more games, Dortmund either needs to score more goals (have a good attack
 
 
 
-![](/img/post-moneyball/unnamed-chunk-30-1.png)
+![](/imgages/post-moneyball/unnamed-chunk-30-1.png)
 
 
 
-![](/img/post-moneyball/unnamed-chunk-31-1.png)
+![](/imgages/post-moneyball/unnamed-chunk-31-1.png)
 
 Historically, all German teams have been improving, by both scoring more goals and conceding fewer goals than previous seasons.
 
@@ -173,7 +172,7 @@ Now we will deep dive to understand how is Dortmund’s overall match performanc
 
 
 
-![](/img/post-moneyball/unnamed-chunk-34-1.png)
+![](/imgages/post-moneyball/unnamed-chunk-34-1.png)
 
 *Interpretation:*
 
@@ -202,7 +201,7 @@ Then we analyze what strategy works best in each category by using association r
 
 ## Association Rules
 
-![](/img/ShadowMonsterBear_This_Better_Work.jpg)
+![](/imgages/ShadowMonsterBear_This_Better_Work.jpg)
 
 
 
@@ -325,7 +324,7 @@ Based on above analysis, we can provide several rules for our team’s coach:
 
 ### Effect of Team Attributes on match outcome
 
-![](/img/Jonah.jpg)
+![](/imgages/Jonah.jpg)
 
 Next we analyze team attributes and their impact on match outcome.
 
@@ -620,7 +619,7 @@ Similar to home games against equal\_opponents, we have high confidence of 100% 
 
 
 
-## Conclusion
+## TL;DR / Conclusion
 
 ### Findings
 
@@ -636,7 +635,7 @@ The most import finding from our analysis is that strategies do impact game outc
 
 ### Recommendations
 
-![](/img/post-moneyball)
+![](/imgages/post-moneyball)
 
 We believe that the only way for a club to get the top spot in the league is to score as many points as possible either through wins or ties. Given the fact that we have a dominant team FC Bayern Munich who always has much more budget than Dortmund and can easily sign the best
 players, it is difficult to beat them by forming a team with better skills than FC Bayern Munich. Instead, the best approach to achieve success is to pick the best strategy each game especially against weaker opponents since that is where we can get most points.

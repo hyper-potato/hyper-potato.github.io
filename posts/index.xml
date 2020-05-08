@@ -13,10 +13,10 @@
     
     <item>
       <title>A boring look into my Spotify playlist</title>
-      <link>https://hyper-potato.github.io/when-we-are-under-quarantine/</link>
+      <link>https://hyper-potato.github.io/2020-04-05-when-we-are-under-quarantine/</link>
       <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hyper-potato.github.io/when-we-are-under-quarantine/</guid>
+      <guid>https://hyper-potato.github.io/2020-04-05-when-we-are-under-quarantine/</guid>
       <description>Sit tight and listen to music
 For the past weeks, I’ve taken breaks from staring blankly into the middle distance to dip deeper into my playlists than I have in years.
 I’m using Spotify only since last year here and there, most of time I use apple music as the main source of music. I like the feature of adding songs to library on apple music. By innertion I’m still using the library to save songs that I like.</description>
@@ -46,13 +46,12 @@ Warning: Huge Samples Can Make the Insignificant&amp;hellip;Significant When sam
     </item>
     
     <item>
-      <title>Swimmer Performance vs Lane Placement</title>
+      <title>Swimmer Performance vs Lane Placement Analysis using Matching</title>
       <link>https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/</link>
       <pubDate>Sat, 29 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/</guid>
-      <description>[TOC]
-INTRODUCTION Unfair Competitive Advantage When watching competitive swimming, it seems like the swimmers in the middle lanes always win the race. Although this is partly by design, as the fastest qualifiers are placed in the innermost lanes, there is great debate amongst the swimming world whether there is additional advantage unintentionally given to these swimmers. In this project, we hope to address whether lane placement leads to an unfair competitive advantage.</description>
+      <description>Introduction Unfair Competitive Advantage When watching competitive swimming, it seems like the swimmers in the middle lanes always win the race. Although this is partly by design, as the fastest qualifiers are placed in the innermost lanes, there is great debate amongst the swimming world whether there is additional advantage unintentionally given to these swimmers. In this project, we hope to address whether lane placement leads to an unfair competitive advantage.</description>
     </item>
     
     <item>
@@ -62,6 +61,24 @@ INTRODUCTION Unfair Competitive Advantage When watching competitive swimming, it
       
       <guid>https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/</guid>
       <description>Summary Background Star Digital, a large multichannel video service provider, spends a large portion of their budget on advertising. As the technological environment changed, so did Star Digital&amp;rsquo;s advertising strategy as they began to invest more heavily in online advertising such as banner ads. In order to get the most out of their budget, they actively evaluate the return on investment (RoI) of each ad medium. In evaluating the effectiveness of an online advertising campaign, Star Digital has designed a controlled experiment.</description>
+    </item>
+    
+    <item>
+      <title>I&#39;m fine with whatever</title>
+      <link>https://hyper-potato.github.io/2020-01-30-im-fine-with-whatever/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-01-30-im-fine-with-whatever/</guid>
+      <description>Honestly, I don’t care what we do tonight. We could go out and get drinks, or grab some beer and stay in. We could check out that new Japanese place we’ve been meaning to try, or just swing by that Mexican place by the river. We could make Chinese as always. We could get pizza on the patio. We could pound down a two-gallon bucket of tzatziki sauce in the back of the car.</description>
+    </item>
+    
+    <item>
+      <title>The Good Bad Ugly of R-Square</title>
+      <link>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</link>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</guid>
+      <description>MSE  Sensitive to outliers Has the same units as the response variable. Lower values of MSE indicate better fit. Actually, it’s hard to realize if our model is good or not by looking at the absolute values of MSE or MSE. We would probably want to measure how much our model is better than the constant baseline.  Disadvantage of MSE  If we make a single very bad prediction, taking the square will make the error even worse and  it may skew the metric towards overestimating the model’s badness.</description>
     </item>
     
     <item>
@@ -75,34 +92,24 @@ Introduction This is an Image classification exercise. I will play with an expir
     </item>
     
     <item>
-      <title></title>
-      <link>https://hyper-potato.github.io/2019-12-18-money-ball-with-arules/</link>
-      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hyper-potato.github.io/2019-12-18-money-ball-with-arules/</guid>
-      <description>{:toc}
-Summary The Business Problem Borussia Dortmund is one of the top teams in German Soccer League. But in some of the past seasons they have had inconsistent performances. Our objective is to help the team stay consistent with their performance and win the German League.
-Our analysis is directed to help the coach of Borussia Dortmund take strategic decisions and make sure that team becomes the champion in the next season.</description>
-    </item>
-    
-    <item>
       <title>Predicting Visitors for Restaurants</title>
-      <link>https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/</link>
-      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      <link>https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/</link>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hyper-potato.github.io/2019-12-30-restaurants-visitors-predictive-model/</guid>
-      <description>#For Suckers for Sashimi Like Me!
+      <guid>https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/</guid>
+      <description>For Suckers for Sashimi Like Me!
 1. Project Definition &amp;amp; Introduction When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.
 If restaurants can predict how many visitors will be in one day, it&amp;rsquo;s easier for them to make the arrangement.</description>
     </item>
     
     <item>
-      <title>The Good Bad Ugly of R-Square</title>
-      <link>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</link>
+      <title></title>
+      <link>https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/</link>
       <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</guid>
-      <description>MSE  Sensitive to outliers Has the same units as the response variable. Lower values of MSE indicate better fit. Actually, it’s hard to realize if our model is good or not by looking at the absolute values of MSE or MSE. We would probably want to measure how much our model is better than the constant baseline.  Disadvantage of MSE  If we make a single very bad prediction, taking the square will make the error even worse and  it may skew the metric towards overestimating the model’s badness.</description>
+      <guid>https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/</guid>
+      <description>Summary The Business Problem Borussia Dortmund is one of the top teams in German Soccer League. But in some of the past seasons they have had inconsistent performances. Our objective is to help the team stay consistent with their performance and win the German League.
+Our analysis is directed to help the coach of Borussia Dortmund take strategic decisions and make sure that team becomes the champion in the next season.</description>
     </item>
     
     <item>
@@ -124,8 +131,7 @@ Present a brief overview of the predictive modeling process, explorations, and d
       <guid>https://hyper-potato.github.io/2019-08-27-hi-there/</guid>
       <description>Hey there ![joy](/images/joy division.png)
 Here is Xue Ni. I go by Nina.
-I suck at writing bios.
-Because repeating myself sucks.</description>
+I suck at writing bios.</description>
     </item>
     
   </channel>

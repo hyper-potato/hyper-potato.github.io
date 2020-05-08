@@ -11,5 +11,4 @@ Here is Xue Ni. I go by Nina.
 
 I suck at writing bios.
 
-**Because repeating myself sucks.**
 

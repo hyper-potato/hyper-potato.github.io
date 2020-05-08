@@ -1,6 +1,8 @@
 # What happened if the sample size is very large?
 
 
+
+
 ## Risk of a large sample size
 
 Typically we don't worry about sample size being too large, because that means we have more power, we can detect smaller effect with more significance.

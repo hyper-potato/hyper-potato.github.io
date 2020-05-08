@@ -52,7 +52,7 @@ cars.sample(10)
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -200,7 +200,7 @@ cars.describe()
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -332,7 +332,7 @@ buy
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }
@@ -545,11 +545,11 @@ for score in scores:
 ```
 
     # Tuning hyper-parameters for precision
-
+    
     Best parameters set found on development set:
-
+    
     {'C': 19.306977288832496}
-
+    
     Grid scores on development set:
 
 
@@ -573,10 +573,10 @@ for score in scores:
 ​    
 ​    # Tuning hyper-parameters for recall
 ​    
-    Best parameters set found on development set:
+​    Best parameters set found on development set:
 
     {'C': 19.306977288832496}
-
+    
     Grid scores on development set:
 
 
@@ -674,12 +674,12 @@ print(classification_report(y1_test,y1_pred))
      [  1  15   3   0]
      [  0  14   0  10]]
                   precision    recall  f1-score   support
-
+    
                1       0.87      0.95      0.91       358
                2       0.61      0.58      0.59       118
                3       0.43      0.16      0.23        19
                4       0.83      0.42      0.56        24
-
+    
         accuracy                           0.81       519
        macro avg       0.69      0.53      0.57       519
     weighted avg       0.80      0.81      0.80       519
@@ -764,11 +764,11 @@ for score in scores:
 ```
 
     # Tuning hyper-parameters for precision
-
+    
     Best parameters set found on development set:
-
+    
     {'n_neighbors': 5}
-
+    
     Grid scores on development set:
 
 
@@ -785,7 +785,7 @@ for score in scores:
                2       0.90      0.88      0.89       118
                3       0.78      0.74      0.76        19
                4       0.89      0.67      0.76        24
-
+    
         accuracy                           0.94       519
        macro avg       0.88      0.82      0.85       519
     weighted avg       0.94      0.94      0.94       519
@@ -877,19 +877,19 @@ print(classification_report(y1_test,y1_pred))
     Training Accuracy:  0.9818031430934657
     Testing Accuracy:  0.9421965317919075
     Cross-Validation Score :0.813
-
+    
      [[355   3   0   0]
      [ 12 104   1   1]
      [  0   4  14   1]
      [  0   5   3  16]]
-
+    
                   precision    recall  f1-score   support
-
+    
                1       0.97      0.99      0.98       358
                2       0.90      0.88      0.89       118
                3       0.78      0.74      0.76        19
                4       0.89      0.67      0.76        24
-
+    
         accuracy                           0.94       519
        macro avg       0.88      0.82      0.85       519
     weighted avg       0.94      0.94      0.94       519
@@ -946,11 +946,11 @@ for score in scores:
 ```
 
     # Tuning hyper-parameters for precision
-
+    
     Best parameters set found on development set:
-
+    
     {'C': 100, 'gamma': 0.1, 'kernel': 'rbf'}
-
+    
     Grid scores on development set:
 
 
@@ -1030,19 +1030,19 @@ print(classification_report(y1_test,y1_pred))
     Training Accuracy:  0.9983457402812241
     Testing Accuracy:  0.9749518304431599
     Cross-Validation Score :0.877
-
+    
      [[355   3   0   0]
      [  3 112   2   1]
      [  0   1  17   1]
      [  0   1   1  22]]
-
+    
                   precision    recall  f1-score   support
-
+    
                1       0.99      0.99      0.99       358
                2       0.96      0.95      0.95       118
                3       0.85      0.89      0.87        19
                4       0.92      0.92      0.92        24
-
+    
         accuracy                           0.97       519
        macro avg       0.93      0.94      0.93       519
     weighted avg       0.98      0.97      0.98       519
@@ -1126,19 +1126,19 @@ print(classification_report(y1_test,y1_pred))
     Training Accuracy:  0.7766749379652605
     Testing Accuracy:  0.7630057803468208
     Cross-Validation Score :0.754
-
+    
      [[332  17   1   8]
      [ 36  36   5  41]
      [  1   5   4   9]
      [  0   0   0  24]]
-
+    
                   precision    recall  f1-score   support
-
+    
                1       0.90      0.93      0.91       358
                2       0.62      0.31      0.41       118
                3       0.40      0.21      0.28        19
                4       0.29      1.00      0.45        24
-
+    
         accuracy                           0.76       519
        macro avg       0.55      0.61      0.51       519
     weighted avg       0.79      0.76      0.75       519
@@ -1223,19 +1223,19 @@ print(classification_report(y1_test,y1_pred))
 
     Training Accuracy:  0.9842845326716294
     Testing Accuracy:  0.9556840077071291
-
+    
      [[352   6   0   0]
      [  6 105   6   1]
      [  0   0  17   2]
      [  0   0   2  22]]
-
+    
                   precision    recall  f1-score   support
-
+    
                1       0.98      0.98      0.98       358
                2       0.95      0.89      0.92       118
                3       0.68      0.89      0.77        19
                4       0.88      0.92      0.90        24
-
+    
         accuracy                           0.96       519
        macro avg       0.87      0.92      0.89       519
     weighted avg       0.96      0.96      0.96       519
@@ -1499,7 +1499,7 @@ score
     .dataframe tbody tr th {
         vertical-align: top;
     }
-
+    
     .dataframe thead th {
         text-align: right;
     }

@@ -12,13 +12,12 @@
     
     
     <item>
-      <title>Swimmer Performance vs Lane Placement</title>
+      <title>Swimmer Performance vs Lane Placement Analysis using Matching</title>
       <link>https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/</link>
       <pubDate>Sat, 29 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/</guid>
-      <description>[TOC]
-INTRODUCTION Unfair Competitive Advantage When watching competitive swimming, it seems like the swimmers in the middle lanes always win the race. Although this is partly by design, as the fastest qualifiers are placed in the innermost lanes, there is great debate amongst the swimming world whether there is additional advantage unintentionally given to these swimmers. In this project, we hope to address whether lane placement leads to an unfair competitive advantage.</description>
+      <description>Introduction Unfair Competitive Advantage When watching competitive swimming, it seems like the swimmers in the middle lanes always win the race. Although this is partly by design, as the fastest qualifiers are placed in the innermost lanes, there is great debate amongst the swimming world whether there is additional advantage unintentionally given to these swimmers. In this project, we hope to address whether lane placement leads to an unfair competitive advantage.</description>
     </item>
     
   </channel>

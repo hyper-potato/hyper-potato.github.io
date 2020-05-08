@@ -6,7 +6,7 @@
     <description>Recent content in metric on Hyper Potato&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 02 Nov 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://hyper-potato.github.io/tags/metric/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>The Good Bad Ugly of R-Square</title>
       <link>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</link>
-      <pubDate>Sat, 02 Nov 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 20 Jan 2020 00:00:00 +0000</pubDate>
       
       <guid>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</guid>
       <description>MSE  Sensitive to outliers Has the same units as the response variable. Lower values of MSE indicate better fit. Actually, it’s hard to realize if our model is good or not by looking at the absolute values of MSE or MSE. We would probably want to measure how much our model is better than the constant baseline.  Disadvantage of MSE  If we make a single very bad prediction, taking the square will make the error even worse and  it may skew the metric towards overestimating the model’s badness.</description>

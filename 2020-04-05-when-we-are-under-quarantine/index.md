@@ -9,8 +9,6 @@ I’m using Spotify only since last year here and there, most of time I use appl
 
 
 
-<img src='/images/pornography-thecure.jpeg'>
-
 ## Preparation
 
 To get the data I used [Spotify API](https://developer.spotify.com/documentation/web-api/) and [spotipy](https://github.com/plamere/spotipy) as a Python client. After creating a web application in Spotify API Dashboard and gathering the credentials, I was able to initialize and authorize the client.
@@ -338,9 +336,10 @@ I'll use cluster to bucket my favorite tracks when I get really bored.
 
 # TL; DR
 
-Let's jam out!
+**Let's jam out!**
 
 How do you find good music you've never heard before?
 
 Try this website... [www.gnoosic.com](http://www.gnoosic.com/) you put in three of your favorite bands/artists, and it will recommend similar stuff that you most likely haven't heard of, or listened to.
 
+And you will come back and thank me. You are welcome. 

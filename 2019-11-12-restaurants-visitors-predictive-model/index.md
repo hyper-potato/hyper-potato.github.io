@@ -3,11 +3,7 @@
 
 
 
-
-#For Suckers for Sashimi Like Me!
-
-
-![from unsplash](https://images.unsplash.com/photo-1546530785-86397501ae20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1001&q=80)
+**For Suckers for Sashimi Like Me!**
 
 
 
