@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Moneyball on Dortmund with Association Rules - Hyper Potato&#39;s Blog</title>
+        <meta name="Description" content="Hi, here is Nina"><meta property="og:title" content="Moneyball on Dortmund with Association Rules" />
+<meta property="og:description" content="Summary The Business Problem Borussia Dortmund is one of the top teams in German Soccer League. But in some of the past seasons they have had inconsistent performances. Our objective is to help the team stay consistent with their performance and win the German League.
+Our analysis is directed to help the coach of Borussia Dortmund take strategic decisions and make sure that team becomes the champion in the next season." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/" />
+<meta property="og:image" content="https://hyper-potato.github.io/logo.png"/>
+<meta property="article:published_time" content="2019-11-02T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-11-02T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://hyper-potato.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Moneyball on Dortmund with Association Rules"/>
+<meta name="twitter:description" content="Summary The Business Problem Borussia Dortmund is one of the top teams in German Soccer League. But in some of the past seasons they have had inconsistent performances. Our objective is to help the team stay consistent with their performance and win the German League.
+Our analysis is directed to help the coach of Borussia Dortmund take strategic decisions and make sure that team becomes the champion in the next season."/>
+<meta name="application-name" content="Hyper Potato&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Hyper Potato&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/" /><link rel="prev" href="https://hyper-potato.github.io/2019-10-06-car-evaluation-using-machine-learning/" /><link rel="next" href="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Moneyball on Dortmund with Association Rules",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hyper-potato.github.io\/2019-11-02-money-ball-with-arules\/"
+        },"image": {
+                "@type": "ImageObject",
+                "url": "https:\/\/hyper-potato.github.io\/cover.png",
+                "width":  800 ,
+                "height":  600 
+            },"genre": "posts","keywords": "association rules, unsupervised learning","wordcount":  5418 ,
+        "url": "https:\/\/hyper-potato.github.io\/2019-11-02-money-ball-with-arules\/","datePublished": "2019-11-02T00:00:00+00:00","dateModified": "2019-11-02T00:00:00+00:00","publisher": {
+                "@type": "Organization",
+                "name": "xxxx",
+                "logo": {
+                "@type": "ImageObject",
+                "url": "https:\/\/hyper-potato.github.io\/logo.png",
+                "width":  127 ,
+                "height":  40 
+                }
+            },"author": {
+                "@type": "Person",
+                "name": "Nina"
+            },"description": ""
+    }
+    </script></head>
+    <body><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Hyper Potato&#39;s Blog"><img
+        class="lazyload logo"
+        src="/svg/loading/small.min.svg"
+        data-src="/images/me/robot.png"
+        data-srcset="/images/me/robot.png, /images/me/robot.png 1.5x, /images/me/robot.png 2x"
+        data-sizes="auto"
+        alt="Hyper Potato&#39;s Blog"
+        title="Hyper Potato&#39;s Blog" /><span class="header-title-pre"> </span>Hyper Potato&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/about/"> About </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Hyper Potato&#39;s Blog"><img
+        class="lazyload logo"
+        src="/svg/loading/small.min.svg"
+        data-src="/images/me/robot.png"
+        data-srcset="/images/me/robot.png, /images/me/robot.png 1.5x, /images/me/robot.png 2x"
+        data-sizes="auto"
+        alt="Hyper Potato&#39;s Blog"
+        title="Hyper Potato&#39;s Blog" /><span class="header-title-pre"> </span>Hyper Potato&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/about/" title="">About</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Moneyball on Dortmund with Association Rules</h1><h2 class="single-subtitle">Unsupervised learning practice on FIFA</h2><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author">
+                  <p><i class="far fa-hand-spock fa-fw"></i> Nina</p>
+                    
+                </span>&nbsp;<time datetime=2019-11-02>2019-11-02</time>&nbsp;&nbsp;
+                    <span class="post-category">included in<a href="/categories/unsupervised-learning/">
+                                <i class="far fa-folder fa-fw"></i>unsupervised learning
+                            </a></span></div>
+            
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading/normal.min.svg"
+        data-src="/images/post-moneyball.jpg"
+        data-srcset="/images/post-moneyball.jpg, /images/post-moneyball.jpg 1.5x, /images/post-moneyball.jpg 2x"
+        data-sizes="auto"
+        alt="/images/post-moneyball.jpg"
+        title="/images/post-moneyball.jpg" /></div><div class="details toc" id="toc-static">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#summary">Summary</a>
+      <ul>
+        <li><a href="#the-business-problem">The Business Problem</a></li>
+        <li><a href="#what-is-success">What is Success?</a></li>
+        <li><a href="#approach">Approach</a></li>
+      </ul>
+    </li>
+    <li><a href="#data-preparation">Data Preparation</a></li>
+    <li><a href="#exploratory-data-analysis">Exploratory Data Analysis</a>
+      <ul>
+        <li><a href="#ranking">Ranking</a></li>
+        <li><a href="#goals">Goals</a></li>
+        <li><a href="#overall-matches-performance">Overall Matches Performance</a></li>
+        <li><a href="#conclusions">Conclusions</a></li>
+      </ul>
+    </li>
+    <li><a href="#association-rules">Association Rules</a>
+      <ul>
+        <li><a href="#effect-of-ball-possession-on-match-outcome">Effect of Ball Possession on match outcome</a>
+          <ul>
+            <li><a href="#conclusion">Conclusion</a></li>
+          </ul>
+        </li>
+        <li><a href="#effect-of-team-attributes-on-match-outcome">Effect of Team Attributes on match outcome</a>
+          <ul>
+            <li><a href="#explanation">Explanation</a></li>
+            <li><a href="#approaches">Approaches</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#tldr--conclusion">TL;DR / Conclusion</a>
+      <ul>
+        <li><a href="#findings">Findings</a></li>
+        <li><a href="#recommendations">Recommendations</a></li>
+        <li><a href="#limitations">Limitations</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><h2 id="summary">Summary</h2>
+<h3 id="the-business-problem">The Business Problem</h3>
+<p>Borussia Dortmund is one of the top teams in German Soccer League. But in some of the past seasons they have had inconsistent performances. Our objective is to help the team stay consistent with their performance and win the German League.</p>
+<p>Our analysis is directed to help the coach of Borussia Dortmund take strategic decisions and make sure that team becomes the champion in the next season.</p>
+<h3 id="what-is-success">What is Success?</h3>
+<p>We define success as winning more games and getting as many points as possible. Soccer is a highly competitive game and a good team is the team who always wins the game. Winning more games means more reputation, more fans, more money. The nature of competitive sports means that the only definition for success is win.</p>
+<h3 id="approach">Approach</h3>
+<p>Codes in detail can be found here: <a href="https://github.com/hyper-potato/Moneyball-Dortmund-Arule" target="_blank" rel="noopener noreffer">github repo</a></p>
+<p>A team generally has two options to maximize wins - either it can hire better players or it can improve the game play strategy. Since we do not have data regarding Dortmund’s budget or player costs, we will focus on the latter.</p>
+<p>Good coaching is essential to a soccer team and the best coach can earn more than $10 million a year. Generally, a team’s coach has different plans for different games. For example, if Dortmund is going to play against a weak team in the league, the best way is to keep the ball under control and keep attacking them. However, when Dortmund is going to play against one of the best team in the history, FC Bayern Munich, who is in the same league, Dortmund needs to focus on defense and hope
+the counterattack would work.</p>
+<p>We want to analyze what sets of strategies work best depending on who we are playing agaist. We hope to make a guidance manual for Dortmund’s coach to help him choose the best game strategy and improve the winning rate.</p>
+<h2 id="data-preparation">Data Preparation</h2>
+<p>To start our analysis, we fetched match data related only to Dortmund. We dropped all irrelevant columns for our analysis.</p>
+<p><em>Adding flag for home/away matches:</em></p>
+<p>A team always has 2 legs against any opponent - home and away matches. Generally a team’s performance varies a lot in home and away matches due to the change in the environment and playing atmosphere. So we split the dataset into these 2 categories to see if there is any discernible patterns between their performances at home and away games.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">dortmund_matches</span><span class="o">$</span><span class="n">home_or_away</span> <span class="o">&lt;-</span> <span class="nf">ifelse</span><span class="p">(</span><span class="n">dortmund_matches</span><span class="o">$</span><span class="n">home_team_api_id</span> <span class="o">==</span> <span class="m">9789</span><span class="p">,</span><span class="s">&#39;home&#39;</span><span class="p">,</span> <span class="s">&#39;away&#39;</span><span class="p">)</span>
+</code></pre></div><p><em>Creating a column for opponent team strength:</em></p>
+<p>We want to classify opoonent teams as strong, equal and weak on a match by match basis by their overall team rating.</p>
+<p><strong>strong_opponent</strong> - Overall rating of opponent team &gt; 2.5 than Dortmund</p>
+<p><strong>equal_opponent</strong> - Overall rating of opponent team is in between +2.5 to -2.5 of Dortmund</p>
+<p><strong>weak</strong> - Overall rating of opponent team &lt; 2.5 than Dortmund</p>
+<p>We choose these intervals as Fifa generally gives ratings to the players such that teams’ main playing XI have relatively similar scores. For example, the overall team rating for 2 of the top clubs in the world, Barcelona and Real Madrid, have an overall team rating of 344 and 343 respectively. So we give a buffer of 2.5 points for classifying teams as same ‘level’. Source:<a href="https://www.fifaindex.com/teams/fifa19/" target="_blank" rel="noopener noreffer">fifaindex</a></a></p>
+<p><em>Below we categorize our possession information as more, less or same.</em></p>
+<p><strong>more_possession</strong> - when our ball possession is more than 55%</p>
+<p><strong>less_possession</strong> - when our ball possession is less than 45%</p>
+<p><strong>same_possession</strong> - when our ball possession is in between 45% to 55%</p>
+<h2 id="exploratory-data-analysis">Exploratory Data Analysis</h2>
+<h3 id="ranking">Ranking</h3>
+<p>We start by looking at Dortmund’s ranking over the past couple of years. Table below shows that Dortmund is one of the top teams in the German league. Actually, if we look at the table below, we can conclude that Dortmund is considered the second best team in German League. In order to win the championship (get rank 1) within German league, a team needs to score the highest number of points. Points are allotted to a team based on match outcomes - a win gives 3 points, tie gives 1 point, while lost match has 0 points. In case of a tie in the number of points, Goal Difference is considered to decide rank. Goal Difference is the difference between Goals scored and Goals conceded.</p>
+<table>
+<thead>
+<tr>
+<th>Season</th>
+<th>Rank</th>
+<th>Club</th>
+<th>Points</th>
+<th>Goal Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2015-16</td>
+<td>1</td>
+<td>Bayern</td>
+<td>88</td>
+<td>63</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2</strong></td>
+<td><strong>Dortmund</strong></td>
+<td>78</td>
+<td>48</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Bayer</td>
+<td>60</td>
+<td>16</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Monchengladbach</td>
+<td>55</td>
+<td>17</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>Schalke 04</td>
+<td>52</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>Mainz</td>
+<td>50</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>Hertha</td>
+<td>50</td>
+<td>0</td>
+</tr>
+<tr>
+<td>2014-15</td>
+<td>1</td>
+<td>Bayern</td>
+<td>79</td>
+<td>62</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>Wolfsburg</td>
+<td>69</td>
+<td>34</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Monchengladbach</td>
+<td>66</td>
+<td>27</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Bayer</td>
+<td>61</td>
+<td>25</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>Augsburg</td>
+<td>49</td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>Schalke 04</td>
+<td>48</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>7</strong></td>
+<td><strong>Dortmund</strong></td>
+<td>46</td>
+<td>5</td>
+</tr>
+<tr>
+<td>2013-14</td>
+<td>1</td>
+<td>Bayern</td>
+<td>71</td>
+<td>90</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2</strong></td>
+<td><strong>Dortmund</strong></td>
+<td>71</td>
+<td>42</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Schalke 04</td>
+<td>64</td>
+<td>20</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Bayer</td>
+<td>61</td>
+<td>19</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>Wolfsburg</td>
+<td>60</td>
+<td>13</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>Monchengladbach</td>
+<td>55</td>
+<td>16</td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>Mainz</td>
+<td>53</td>
+<td>-2</td>
+</tr>
+<tr>
+<td>2012-13</td>
+<td>1</td>
+<td>Bayern</td>
+<td>91</td>
+<td>80</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>2</strong></td>
+<td><strong>Dortmund</strong></td>
+<td>66</td>
+<td>39</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Bayer</td>
+<td>65</td>
+<td>26</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Schalke 04</td>
+<td>55</td>
+<td>8</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>Freiburg</td>
+<td>51</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>Eintracht</td>
+<td>51</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>Hamburg</td>
+<td>48</td>
+<td>-11</td>
+</tr>
+<tr>
+<td>2011-12</td>
+<td><strong>1</strong></td>
+<td><strong>Dortmund</strong></td>
+<td>81</td>
+<td>55</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>Bayern</td>
+<td>73</td>
+<td>55</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Schalke 04</td>
+<td>64</td>
+<td>30</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Monchengladbach</td>
+<td>60</td>
+<td>25</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>Bayer</td>
+<td>54</td>
+<td>34</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>VfB Stuttgart</td>
+<td>53</td>
+<td>17</td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>Hannover</td>
+<td>48</td>
+<td>-4</td>
+</tr>
+<tr>
+<td>2010-11</td>
+<td><strong>1</strong></td>
+<td><strong>Dortmund</strong></td>
+<td>75</td>
+<td>45</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>Bayer</td>
+<td>68</td>
+<td>20</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Bayern</td>
+<td>65</td>
+<td>41</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Hannover</td>
+<td>60</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td>5</td>
+<td>Mainz</td>
+<td>58</td>
+<td>12</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>Nurnberg</td>
+<td>47</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>Kaiserslautern</td>
+<td>46</td>
+<td>-3</td>
+</tr>
+<tr>
+<td>2009-10</td>
+<td>1</td>
+<td>Bayern</td>
+<td>70</td>
+<td>41</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+<td>Schalke 04</td>
+<td>65</td>
+<td>22</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>Werder Bremen</td>
+<td>61</td>
+<td>31</td>
+</tr>
+<tr>
+<td></td>
+<td>4</td>
+<td>Bayer</td>
+<td>59</td>
+<td>21</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>5</strong></td>
+<td><strong>Dortmund</strong></td>
+<td>57</td>
+<td>12</td>
+</tr>
+<tr>
+<td></td>
+<td>6</td>
+<td>VfB Stuttgart</td>
+<td>55</td>
+<td>10</td>
+</tr>
+<tr>
+<td></td>
+<td>7</td>
+<td>Hamburg</td>
+<td>52</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>Rank Source:
+<a href="https://www.espn.com/soccer/standings/_/league/ger.1/season/2009/german-bundesliga" class="uri"><a href="https://www.espn.com/soccer/standings/_/league/ger.1/season/2009/german-bundesliga">https://www.espn.com/soccer/standings/_/league/ger.1/season/2009/german-bundesliga</a></a></p>
+<p><em>Interpretation</em></p>
+<p>We observe that although Dortmund is able to maintain rank in top 2 in most years, they have not won the rank 1 since past 4 years. To get rank 1 and win the championship, Dortmund would have to score points higher than FC Bayern (which has been the champion in most seasons). The difference in points in the last 2 seasons has been of 10 points. So winning about even 4 more games would help Dortmund in winning the German league championship or at least end up in the top 3.</p>
+<h3 id="goals">Goals</h3>
+<p>To win more games, Dortmund either needs to score more goals (have a good attack) or concede less goals (have a good defence). Let’s have a look at their goals statistics:</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/imgages/post-moneyball/unnamed-chunk-30-1.png"
+        data-srcset="/imgages/post-moneyball/unnamed-chunk-30-1.png, /imgages/post-moneyball/unnamed-chunk-30-1.png 1.5x, /imgages/post-moneyball/unnamed-chunk-30-1.png 2x"
+        data-sizes="auto"
+        alt="/imgages/post-moneyball/unnamed-chunk-30-1.png"
+        title="/imgages/post-moneyball/unnamed-chunk-30-1.png" /></p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/imgages/post-moneyball/unnamed-chunk-31-1.png"
+        data-srcset="/imgages/post-moneyball/unnamed-chunk-31-1.png, /imgages/post-moneyball/unnamed-chunk-31-1.png 1.5x, /imgages/post-moneyball/unnamed-chunk-31-1.png 2x"
+        data-sizes="auto"
+        alt="/imgages/post-moneyball/unnamed-chunk-31-1.png"
+        title="/imgages/post-moneyball/unnamed-chunk-31-1.png" /></p>
+<p>Historically, all German teams have been improving, by both scoring more goals and conceding fewer goals than previous seasons.</p>
+<p>Over time, <em>Dortmund</em> has improved their goal scoring capabilities from ~1.75 to ~2.4, but their defence seems to be fairly constant with an average of about 1. The graph above shows that conceded goals have increased. On the other hand, their most popular rival, <em>Bayern Munich</em>
+significantly improved their defense while maintaining strong attacking capabilities. <em>Bayern’s</em> average goals scored only improved marginally from 2.19 to 2.35, but the average number of goals conceded has reduced significantly from 1.24 to 0.5.</p>
+<p>A quick look at Dortmund’s past strategy tells us that this constant goals concede might be because of no change in their defense strategy since 5 seasons.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">test</span> <span class="o">&lt;-</span> <span class="n">team_atts</span> <span class="o">%&gt;%</span> <span class="nf">filter</span><span class="p">(</span><span class="n">team_api_id</span> <span class="o">==</span> <span class="m">9789</span><span class="p">)</span> <span class="o">%&gt;%</span> <span class="nf">subset</span><span class="p">(</span><span class="n">select</span> <span class="o">=</span> <span class="nf">c</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">defencePressureClass</span><span class="p">,</span> <span class="n">defenceAggressionClass</span><span class="p">,</span> <span class="n">defenceDefenderLineClass</span><span class="p">))</span>
+<span class="n">test</span>
+</code></pre></div><script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["year"],"name":[1],"type":["chr"],"align":["left"]},{"label":["defencePressureClass"],"name":[2],"type":["chr"],"align":["left"]},{"label":["defenceAggressionClass"],"name":[3],"type":["chr"],"align":["left"]},{"label":["defenceDefenderLineClass"],"name":[4],"type":["chr"],"align":["left"]}],"data":[{"1":"2010","2":"Medium","3":"Double","4":"Offside Trap","_rn_":"1"},{"1":"2011","2":"Medium","3":"Double","4":"Cover","_rn_":"2"},{"1":"2012","2":"Medium","3":"Double","4":"Cover","_rn_":"3"},{"1":"2013","2":"Medium","3":"Double","4":"Cover","_rn_":"4"},{"1":"2014","2":"Medium","3":"Double","4":"Cover","_rn_":"5"},{"1":"2015","2":"Medium","3":"Double","4":"Cover","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+<p><em>Interpretation:</em></p>
+<p>This is a clear indication that in order to improve their defense performance, Dortmund should try different strategies against different set of opponents to conceded minimum goals possible.</p>
+<h3 id="overall-matches-performance">Overall Matches Performance</h3>
+<p>Now we will deep dive to understand how is Dortmund’s overall match performance with respect to its different types of opponents (strong, equal and weak).</p>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/imgages/post-moneyball/unnamed-chunk-34-1.png"
+        data-srcset="/imgages/post-moneyball/unnamed-chunk-34-1.png, /imgages/post-moneyball/unnamed-chunk-34-1.png 1.5x, /imgages/post-moneyball/unnamed-chunk-34-1.png 2x"
+        data-sizes="auto"
+        alt="/imgages/post-moneyball/unnamed-chunk-34-1.png"
+        title="/imgages/post-moneyball/unnamed-chunk-34-1.png" /></p>
+<p><em>Interpretation:</em></p>
+<p>From the above plot we see that Dortmund’s performance varies depending on level of opponent and whether they are playing at home or as an away team. Over 8 years, Dortmund played 272 games in total. Since Dortmund is a strong team, in most of the matches (192 matches) the opponent team is categorized as  <code>weak_opponent</code>.</p>
+<p>In 55 matches, their opponent team is categorized as <code>equal_opponent</code> and in 25 matches Dortmund played against <code>strong_opponent</code>.</p>
+<p>We can observe two things in the plot - first, as expected, Dortmund has the highest winning rate agaist <code>weak_opponent</code>, followed by <code>equal_opponent</code>, and lastly <code>strong_opponent</code>. Among 192 games against ‘weak’ teams, Dortmund won 124 (65% winning rate). However, Dortmund only won 10 out of 25 games(40% winning rate) when playing against ‘strong team’.</p>
+<p>Second, Dortmund’s performance is better when they play home game compared to away games. For instance, they have a 73% winning rate when played against  <code>weak_opponent</code> at home and only 56% winning rate when playing in away matches.</p>
+<h3 id="conclusions">Conclusions</h3>
+<p>Since Dortmund’s performance depends on their opponents’ level and whether they are playing at home or not, coach should adjust the team’s strategy according to these circumstances. So, we seperate Dortmund’s matches into six categories:</p>
+<ol>
+<li>home games -&gt; against weak opponent</li>
+<li>away games -&gt; against weak opponent</li>
+<li>home games -&gt; against equal opponent</li>
+<li>away games -&gt; against equal opponent</li>
+<li>home games -&gt; against strong opponent</li>
+<li>away games -&gt; against strong opponent</li>
+</ol>
+<p>Then we analyze what strategy works best in each category by using association rules.</p>
+<h2 id="association-rules">Association Rules</h2>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/imgages/ShadowMonsterBear_This_Better_Work.jpg"
+        data-srcset="/imgages/ShadowMonsterBear_This_Better_Work.jpg, /imgages/ShadowMonsterBear_This_Better_Work.jpg 1.5x, /imgages/ShadowMonsterBear_This_Better_Work.jpg 2x"
+        data-sizes="auto"
+        alt="/imgages/ShadowMonsterBear_This_Better_Work.jpg"
+        title="/imgages/ShadowMonsterBear_This_Better_Work.jpg" /></p>
+<h3 id="effect-of-ball-possession-on-match-outcome">Effect of Ball Possession on match outcome</h3>
+<p>We will first analyze ball possession and its impact on match outcome.</p>
+<p><em>Explanation</em></p>
+<p>Possession is a crucial factor in a soccer game. Possession means the percentage of time a team has a ball under its control. For instance, if Dortmund has a possession of 60 in a game, it means 60% of time the ball is under the control of Dortmund’s players. Possession can reflect the strategy of a team. If a team has a high possession in a game, it means the team’s strategy is to keep attacking opponent. However, having the ball under control means the player will lose more energy and the
+defense will be weak since most players need to participate in offense part and ignore the defense task. On the other end, giving up the ball control means a team is trying to save the energy and utilize the counterattack chance to destroy the opponent at once.</p>
+<p>In short, possession reflects a team’s basic strategy in a game. We categorize our possession value so that if we have more than 55% possession, then we conclude we have more possession than the opponent.
+If our possession is between 45% and 55%, we conclude that both teams have equal possession. If our possession is under 45%, we conclude that our possession is less than opponent.</p>
+<p>We have calculated our winning rates according to above mentioned 6 categories i.e. if we are playing against strong/equal/weak team at home/away. We will analyze each category individually. For example, our winning rate for weak team/home game is 0.73, we want to see the rule with confidence over 0.73 with ‘win’ at the right hand side because this can show us only those useful strategy which can improve our performance.</p>
+<pre><code>##            away  equal_opponent            home less_possession
+##              75              37              77              59
+##            lose more_possession same_possession strong_opponent
+##              33              69              24              17
+##             tie   weak_opponent             win
+##              33              98              86
+</code></pre>
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["V1"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["V2"],"name":[2],"type":["fctr"],"align":["left"]},{"label":["V3"],"name":[3],"type":["fctr"],"align":["left"]},{"label":["V4"],"name":[4],"type":["fctr"],"align":["left"]}],"data":[{"1":"home","2":"tie","3":"weak_opponent","4":"more_possession","_rn_":"1"},{"1":"away","2":"lose","3":"equal_opponent","4":"less_possession","_rn_":"2"},{"1":"away","2":"win","3":"weak_opponent","4":"less_possession","_rn_":"3"},{"1":"home","2":"tie","3":"strong_opponent","4":"same_possession","_rn_":"4"},{"1":"away","2":"lose","3":"strong_opponent","4":"same_possession","_rn_":"5"},{"1":"home","2":"tie","3":"strong_opponent","4":"same_possession","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+<p><em>Analyzing home games against  <code>weak_opponents</code></em></p>
+<p>Since the winning rate right now is 0.73, we want to generate rules that give us a winning rate greater than 0.73. From the result, we can see that if we keep our possession the same as our opponent, we can actually increase our winning chances by 43%.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules</span> <span class="o">&lt;-</span> <span class="nf">apriori</span><span class="p">(</span><span class="n">soccer</span><span class="p">,</span> <span class="n">parameter</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">supp</span> <span class="o">=</span> <span class="m">0.03</span><span class="p">,</span> <span class="n">conf</span> <span class="o">=</span> <span class="m">0.1</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">rules</span><span class="p">,</span> <span class="n">by</span> <span class="o">=</span> <span class="s">&#34;confidence&#34;</span><span class="p">,</span> <span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+
+<span class="n">rules</span> <span class="o">%&gt;%</span>
+  <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">(</span><span class="n">rhs</span> <span class="o">%pin%</span> <span class="s">&#34;win&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="n">confidence</span> <span class="o">&gt;</span> <span class="m">0.72</span><span class="p">)</span> <span class="o">%&gt;%</span>
+  <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">(</span><span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;home&#39;</span> <span class="o">&amp;</span> <span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;weak_opponent&#39;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">inspect</span><span class="p">()</span>
+</code></pre></div><pre><code>##     lhs                                     rhs   support    confidence
+## [1] {home,less_possession,weak_opponent} =&gt; {win} 0.08552632 0.8125    
+##     lift     count
+## [1] 1.436047 13
+</code></pre>
+<p><em>Analyzing away games against ‘weak_opponents’</em></p>
+<p>We can see that right now our winning rate is 0.56. If we play with same possession, we will improve our winning chances by 6%. However, the count is only 3 in this case.</p>
+<pre><code>##     lhs                                     rhs   support    confidence
+## [1] {away,same_possession,weak_opponent} =&gt; {win} 0.01973684 0.6       
+##     lift     count
+## [1] 1.060465 3
+</code></pre>
+<p><em>Analyzing home games against ‘strong_opponents’</em></p>
+<p>We can see that right now our winning rate is 0.42. From our dataset we can see that if we play with less possesion, our winning rate can go up by 6%.</p>
+<pre><code>##     lhs                                       rhs   support    confidence
+## [1] {home,less_possession,strong_opponent} =&gt; {win} 0.01973684 0.6       
+## [2] {home,strong_opponent}                 =&gt; {win} 0.02631579 0.5       
+##     lift      count
+## [1] 1.0604651 3    
+## [2] 0.8837209 4
+</code></pre>
+<p><em>Analyzing away games against ‘strong_opponents’</em></p>
+<p>We could not find any patterns to improve our win rates for away matches against strong teams as we don’t have enough past data to refer to.
+However, interestingly, we find that when we play with less possession, our losing rate will increase three folds. Hence, we should avoid playing with less possession.</p>
+<p><em>Analyzing home games against ‘equal_opponents’</em></p>
+<p>We can see that right now our winning rate is 0.44. From our dataset we can see that if we play with more possesion, our winning rate can go up to 0.625. When we play with same possession, winning rate is 0.5, slightly higher than 0.44. We should never play with less possession, since this will give us a losing rate of 0.5, higher than original losing rate of 0.22.</p>
+<p><em>Analyzing away games against ‘equal_opponents’</em></p>
+<p>We can see that right now our winning rate is 0.39. From our dataset we can see that if we play with more possesion, our winning rate can go up to 1. If we play with same possession, winning rate will also increase to 0.5. If we play with less possession, losing rate will increase from 0.36 to 0.4.</p>
+<pre><code>##     lhs                                      rhs    support    confidence
+## [1] {away,equal_opponent,more_possession} =&gt; {win}  0.01315789 1.0000000
+## [2] {away,equal_opponent,same_possession} =&gt; {lose} 0.01315789 0.5000000
+## [3] {away,equal_opponent}                 =&gt; {win}  0.05921053 0.4285714
+## [4] {away,equal_opponent,less_possession} =&gt; {lose} 0.03947368 0.4000000
+## [5] {away,equal_opponent,less_possession} =&gt; {win}  0.03947368 0.4000000
+##     lift      count
+## [1] 1.7674419 2    
+## [2] 2.3030303 2    
+## [3] 0.7574751 9    
+## [4] 1.8424242 6    
+## [5] 0.7069767 6
+</code></pre>
+<h4 id="conclusion">Conclusion</h4>
+<p>Based on above analysis, we can provide several rules for our team’s coach:</p>
+<ol>
+<li>
+<p>home games and against weak opponent - have less possession</p>
+</li>
+<li>
+<p>away games and against weak opponent - have same possession</p>
+</li>
+<li>
+<p>home games and against equal opponent - 1st choice: more possession.  2nd choice: same possession, do not play with less possession.</p>
+</li>
+<li>
+<p>away games and against equal opponent - more possession, do not play with same possession</p>
+</li>
+<li>
+<p>home games and against strong opponent - haveless possession</p>
+</li>
+<li>
+<p>away games and against strong opponent - do not play with less possession</p>
+</li>
+</ol>
+<h3 id="effect-of-team-attributes-on-match-outcome">Effect of Team Attributes on match outcome</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/imgages/Jonah.jpg"
+        data-srcset="/imgages/Jonah.jpg, /imgages/Jonah.jpg 1.5x, /imgages/Jonah.jpg 2x"
+        data-sizes="auto"
+        alt="/imgages/Jonah.jpg"
+        title="/imgages/Jonah.jpg" /></p>
+<p>Next we analyze team attributes and their impact on match outcome.</p>
+<h4 id="explanation">Explanation</h4>
+<p>Now we will use team attributes data to generate rules to develop strategies for our team’s coach. Team attribution table contains the strategy which a team uses and it is updated every season. We combined eight features into every game for both Dortmund and opponent’s team.</p>
+<p>Some of the features are buildup passing class, chance crossing class, and defense pressure class. For example, if the passing class is ‘long’, it means Dortmund is focusing on long passing in the game. If the passing class is ‘mixed’, it means Dortmund will use both short passes and long passes in a game. If chance creation crossing class is ‘normal’, it means Dortmund is going to play normally. But when chance creation crossing class is ‘risky’, it means Dortmund will try to make some risky crosses even though it might lead to lost of possession or even conceding a goal. We will explain what each term mean in the following section.</p>
+<p><em>Terms</em></p>
+<p><em>1. Play Speed</em></p>
+<p><code>Slow</code>: Team plays a slow pace game</p>
+<p><code>Balanced</code>: Team plays with a balanced pace game</p>
+<p><code>Fast</code>: Team plays with a fast pace game</p>
+<p><em>2. Play Passing</em></p>
+<p><code>Short</code>: Team focuses on short passing</p>
+<p><code>Mixed</code>: Team does both short passing and long passing</p>
+<p><code>Long</code>: Team focuses on long passing</p>
+<p><em>3. Chance creation passing</em></p>
+<p><code>Safe</code>: Teams plays safe when there is a chance</p>
+<p><code>Normal</code>: Team plays normally when there is a chance</p>
+<p><code>Risky</code>: Team plays with risks when there is a chance</p>
+<p><em>4. Chance creation crossing</em></p>
+<p><code>Lots</code>: Team tends to try lots of cross passings</p>
+<p><code>Little</code>: Team tends to try little cross passings</p>
+<p><em>5. Chance creation positioning</em></p>
+<p><code>Organised</code>: Team asks players to play by plan</p>
+<p><code>Free Form</code>: Team allows player to play with improvise</p>
+<p><em>6. Defense Pressure</em></p>
+<p><code>Deep</code>: Team focuses less on defense</p>
+<p><code>Medium</code>: Team is average on defense</p>
+<p><code>High</code>: Team focuses a lot on defense</p>
+<p><em>7. Defense Aggression</em></p>
+<p><code>Contain</code>: Team is conservative and does not want to commit fouls on defense</p>
+<p><code>Press</code>: Team give pressure on defense</p>
+<p><code>Double</code>: Team will double the offensive player on defense</p>
+<p><em>8. Defender line class</em></p>
+<p><code>Cover</code>: Team plays with normal defense strategy</p>
+<p><code>Offside Trap</code>: Team sets up off side traps on defense</p>
+<p>We added ‘Dortmund’ and ‘Opponent’ before each term to distinguish between them.</p>
+<h4 id="approaches">Approaches</h4>
+<p>We have 19 columns in our table and we want our rule as specific as possible, so that we need to adjust parameter accordingly for each of six analysis. For example, when we analyze playing against weak team at home, if we set our minimum length to 16, we will generate 8341 rules.
+That many rules are unnecessary. If we set our minimum length to 17, we will have 826 rules this time. After filtering the condition, we will have a total of 16 applicable rules, which are adequate. Also, we need to adjust our support each time. Because Dortmund plays a lot of home game against weak team, we can set up our support high for that category. However, since Dortmund only plays a few home games against equal team (12 games), we need to lower our support. Also, we need to filter by confidence each time to make sure we have only those rules that can increase our winning rate.</p>
+<p><em>Analyzing home games against ‘weak_opponents’ for win</em></p>
+<p>Since the winning rate right now is 0.73, we want to generate rules that gives us a winning rate greater than 0.74.</p>
+<div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules1</span> <span class="o">&lt;-</span> <span class="nf">apriori</span><span class="p">(</span><span class="n">team</span><span class="p">,</span><span class="n">parameter</span> <span class="o">=</span> <span class="nf">list</span><span class="p">(</span><span class="n">supp</span> <span class="o">=</span> <span class="m">0.03</span><span class="p">,</span> <span class="n">conf</span> <span class="o">=</span> <span class="m">0.33</span><span class="p">,</span> <span class="n">maxlen</span> <span class="o">=</span> <span class="m">20</span><span class="p">,</span> <span class="n">minlen</span> <span class="o">=</span> <span class="m">7</span><span class="p">))</span>
+</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-r" data-lang="r"><span class="n">rules1</span> <span class="o">&lt;-</span> <span class="nf">sort</span><span class="p">(</span><span class="n">rules1</span><span class="p">,</span><span class="n">by</span> <span class="o">=</span> <span class="s">&#34;confidence&#34;</span><span class="p">,</span><span class="n">decreasing</span> <span class="o">=</span> <span class="kc">TRUE</span><span class="p">)</span>
+<span class="n">rules1</span> <span class="o">&lt;-</span> <span class="n">rules1</span> <span class="o">%&gt;%</span>
+  <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span>  <span class="p">(</span><span class="n">rhs</span> <span class="o">%pin%</span> <span class="s">&#34;win&#34;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="p">(</span><span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;home&#39;</span> <span class="o">&amp;</span> <span class="n">lhs</span> <span class="o">%pin%</span> <span class="s">&#39;weak_opponent&#39;</span><span class="p">))</span> <span class="o">%&gt;%</span>
+  <span class="nf">subset</span><span class="p">(</span><span class="n">subset</span> <span class="o">=</span> <span class="n">confidence</span> <span class="o">&gt;</span> <span class="m">0.73</span><span class="p">)</span>
+<span class="nf">inspect</span><span class="p">(</span><span class="n">rules1[1</span><span class="o">:</span><span class="m">3</span><span class="n">]</span><span class="p">)</span>
+</code></pre></div><pre><code>##     lhs                                 rhs      support confidence     lift count
+## [1] {Dortmund_Normal_Shooting,                                                    
+##      Dortmund_Risky_Passing,                                                      
+##      home,                                                                        
+##      Opponent_Normal_Passing,                                                     
+##      Opponent_Normal_Shooting,                                                    
+##      weak_opponent}                  =&gt; {win} 0.06862745  0.9333333 1.511111    14
+## [2] {Dortmund_Free Form_Positioning,                                              
+##      Dortmund_Normal_Shooting,                                                    
+##      home,                                                                        
+##      Opponent_Normal_Passing,                                                     
+##      Opponent_Normal_Shooting,                                                    
+##      weak_opponent}                  =&gt; {win} 0.06862745  0.9333333 1.511111    14
+## [3] {Dortmund_Free Form_Positioning,                                              
+##      Dortmund_Normal_Shooting,                                                    
+##      Dortmund_Risky_Passing,                                                      
+##      home,                                                                        
+##      Opponent_Normal_Passing,                                                     
+##      Opponent_Normal_Shooting,                                                    
+##      weak_opponent}                  =&gt; {win} 0.06862745  0.9333333 1.511111    14
+</code></pre>
+<p>We see that in our top 3 rules which have confidence greater than 80% and a high lift, Dortmund wins most of their matches against weak opponents at home primarily based on 3 characteristics:</p>
+<ol>
+<li>
+<p>The positioning of their players is free form while creating chances. This could mean that when Dortmund creates chances based on the flow of the game (eg: match situation) and not their structured passing routines, they have a better chance of winning matches against the weaker opposition.</p>
+</li>
+<li>
+<p>The ‘chanceCreationPassingColumn’ is ‘Risky’ which implies that they create chances that might be risky through passing. So this could inclue long passes, lob passes, and short passes in a tight space. This style of play provides Dortmund with more wins.</p>
+</li>
+<li>
+<p>The ‘chanceCreationShootingColumn’ is normal indicating their shooting has been normal and that is is good enough to win the matches.</p>
+</li>
+</ol>
+<p>Now that we have insight into our strengths against weak opponents, let’s see what factors cost us matches at home against these type of opponents. We generate rules to see which items on the left hand side co-occur together to give us losses which comes up on the right hand  side of the rule.</p>
+<p><em>Analyzing home games against ‘weak_opponents’ for lose</em></p>
+<pre><code>##     lhs                                 rhs       support confidence      lift count
+## [1] {Dortmund_Lots_Shooting,                                                        
+##      home,                                                                          
+##      Opponent_Normal_Shooting,                                                      
+##      Opponent_Organised_Positioning,                                                
+##      weak_opponent}                  =&gt; {lose} 0.03431373  0.2000000 1.0461538     7
+## [2] {Dortmund_Lots_Shooting,                                                        
+##      home,                                                                          
+##      Opponent_Normal_Passing,                                                       
+##      weak_opponent}                  =&gt; {lose} 0.03431373  0.1842105 0.9635628     7
+## [3] {Dortmund_Lots_Shooting,                                                        
+##      home,                                                                          
+##      Opponent_Organised_Positioning,                                                
+##      weak_opponent}                  =&gt; {lose} 0.03431373  0.1842105 0.9635628     7
+</code></pre>
+<p>It is evident from the sample size of 19 matches for loses over 6 seasons at home that Dortmund performs really well against weak teams. They should capitalize on maximizing this home advantage to convert these losses into wins to get those extra points and climb up in the league standings.</p>
+<p>The rule with the most lift informs us that when the opponents’ chance  creation positioning class is organized and the chance creation passing class is normal, Dortmund tends to play with a lot of crosses. This could mean that Dortmund creates opportunities by taking a lot of shots but they do not get converted to goals. The accuracy of shots might not be good and ensuring conversion shots to goals is essential to avoid  losses.</p>
+<p>We move our attention to the ties games at home.</p>
+<p><em>Analyzing home games against <code>weak_opponents</code> for tie</em></p>
+<pre><code>##     lhs                                 rhs      support confidence      lift count
+## [1] {Dortmund_Free Form_Positioning,                                               
+##      home,                                                                         
+##      Opponent_Organised_Positioning,                                               
+##      weak_opponent}                  =&gt; {tie} 0.03921569  0.1666667 0.8717949     8
+## [2] {home,                                                                         
+##      Opponent_Organised_Positioning,                                               
+##      weak_opponent}                  =&gt; {tie} 0.05882353  0.1643836 0.8598525    12
+## [3] {Dortmund_Risky_Passing,                                                       
+##      home,                                                                         
+##      Opponent_Organised_Positioning,                                               
+##      weak_opponent}                  =&gt; {tie} 0.03921569  0.1632653 0.8540031     8
+</code></pre>
+<p>Since the lift is not very high for any of these rules, we do not have any conclusive evidence. So we cannot tell what exactly contributed to the losses for the tied games.</p>
+<p><em>Analyzing away games against ‘weak_opponents’</em></p>
+<p>So far, we have looked at matches played at home with weaker opposition. We need to analyze how Dortmund fares in away matches.</p>
+<p>We can see that right now our winning rate is 0.55. We want to have  every rule that has a winning rate over 0.55.</p>
+<pre><code>##     lhs                                 rhs      support confidence     lift count
+## [1] {away,                                                                        
+##      Dortmund_Normal_Passing,                                                     
+##      Dortmund_Normal_Shooting,                                                    
+##      Dortmund_Organised_Positioning,                                              
+##      Opponent_Normal_Shooting,                                                    
+##      weak_opponent}                  =&gt; {win} 0.03921569  0.7272727 1.177489     8
+## [2] {away,                                                                        
+##      Dortmund_Normal_Passing,                                                     
+##      Dortmund_Organised_Positioning,                                              
+##      Opponent_Normal_Passing,                                                     
+##      Opponent_Normal_Shooting,                                                    
+##      weak_opponent}                  =&gt; {win} 0.03921569  0.7272727 1.177489     8
+## [3] {away,                                                                        
+##      Dortmund_Normal_Passing,                                                     
+##      Dortmund_Organised_Positioning,                                              
+##      Opponent_Normal_Shooting,                                                    
+##      Opponent_Organised_Positioning,                                              
+##      weak_opponent}                  =&gt; {win} 0.03921569  0.7272727 1.177489     8
+</code></pre>
+<p><em>Interpretation</em></p>
+<p>We can inspect the top three rules we generate here. We can see a huge increase in winning rate for the first two rules. The winning rate increases from 0.55 to 0.78. Effectively, if Dortmund’s opposition plays plays with an organized ball positioning, Dortmund’s best chances of winning are when they play with risky passes where they throw the long balls and ensure quick short passes in tight spaces.</p>
+<p><em>Analyzing away games against ‘weak_opponents’ for lose</em></p>
+<pre><code>##     lhs                                 rhs       support confidence     lift count
+## [1] {away,                                                                         
+##      Dortmund_Free Form_Positioning,                                               
+##      Dortmund_Lots_Shooting,                                                       
+##      Opponent_Normal_Passing,                                                      
+##      weak_opponent}                  =&gt; {lose} 0.03921569  0.3076923 1.609467     8
+## [2] {away,                                                                         
+##      Dortmund_Free Form_Positioning,                                               
+##      Dortmund_Lots_Shooting,                                                       
+##      Opponent_Normal_Passing,                                                      
+##      Opponent_Normal_Shooting,                                                     
+##      weak_opponent}                  =&gt; {lose} 0.03921569  0.3076923 1.609467     8
+## [3] {away,                                                                         
+##      Dortmund_Normal_Passing,                                                      
+##      Opponent_Normal_Passing,                                                      
+##      Opponent_Normal_Shooting,                                                     
+##      weak_opponent}                  =&gt; {lose} 0.03431373  0.2916667 1.525641     7
+</code></pre>
+<p>Here, what we see common amongst all the rules is that whenever Dortmund plays with lot of crosses in the game, they tend to lose. This was the case even with weaker opponents in the home games which led to their loss. Although the confidence isn’t very high, it is slightly better  than the base percentage and we can assume that the items that occur on  the left hand side of the rule lead to losses.</p>
+<p><em>Analyzing away games against ‘weak_opponents’ for tie</em></p>
+<p>Dortmund ends up tieing a lot of matches which earn them just 1 point  instead of 3 which can be scored with a win. They have 24 tied games in away matches across 6 seasons. There is scope for capitalizing on these matches to secure wins since the number of tied matches are very high.
+Converting even a few of these matches into wins can drastically alter the chances of getting the first spot in the league.</p>
+<pre><code>##     lhs                                 rhs      support confidence     lift count
+## [1] {away,                                                                        
+##      Dortmund_Lots_Shooting,                                                      
+##      Dortmund_Risky_Passing,                                                      
+##      Opponent_Normal_Passing,                                                     
+##      Opponent_Organised_Positioning,                                              
+##      weak_opponent}                  =&gt; {tie} 0.03431373  0.3043478 1.591973     7
+## [2] {away,                                                                        
+##      Dortmund_Free Form_Positioning,                                              
+##      Dortmund_Lots_Shooting,                                                      
+##      weak_opponent}                  =&gt; {tie} 0.04411765  0.3000000 1.569231     9
+## [3] {away,                                                                        
+##      Dortmund_Free Form_Positioning,                                              
+##      Dortmund_Lots_Shooting,                                                      
+##      Opponent_Normal_Shooting,                                                    
+##      weak_opponent}                  =&gt; {tie} 0.04411765  0.3000000 1.569231     9
+</code></pre>
+<p>It is obvious from the rules that Dortmund takes a lot of shots at the goal and plays with the flow of the game rather than relying to much on pre-planned tactices. The passing between players is normal and not risky. Somehow they are failing to convert those shot to goals.</p>
+<p><em>Analyzing home games against <code>equal_opponents</code> for win / lose</em></p>
+<p>We can see that right now our winning rate is 0.48. Any rule with a confidence over 0.48 could increase our performance. Since we have  smaller sample size(15 matches over 6 seasons) this time, we decrease our support from 0.03 to 0.01 this time.</p>
+<pre><code>##     lhs                                 rhs      support confidence     lift count
+## [1] {Dortmund_Normal_Shooting,                                                    
+##      Dortmund_Risky_Passing,                                                      
+##      equal_opponent,                                                              
+##      home,                                                                        
+##      Opponent_Risky_Passing}         =&gt; {win} 0.01470588          1 1.619048     3
+## [2] {Dortmund_Free Form_Positioning,                                              
+##      Dortmund_Normal_Shooting,                                                    
+##      equal_opponent,                                                              
+##      home,                                                                        
+##      Opponent_Risky_Passing}         =&gt; {win} 0.01470588          1 1.619048     3
+## [3] {Dortmund_Normal_Shooting,                                                    
+##      equal_opponent,                                                              
+##      home,                                                                        
+##      Opponent_Organised_Positioning,                                              
+##      Opponent_Risky_Passing}         =&gt; {win} 0.01470588          1 1.619048     3
+</code></pre>
+<p><em>Interpretation</em></p>
+<p>We can inspect the top three rules we generate here. We can see that with the right strategy, we will have a 100% winning rate. However, we know that in real life, it is impossible to guarantee that we can win game every time. 100% winning rate appears because our sample size is relatively small so that we can have a unexpected higher confidence  value here. But these rules still indicate an increase. Hence, we should collect more information for these games to generate a more supportive conclusion.</p>
+<p><em>Analyzing away games against ‘equal_opponents’ for win / lose</em></p>
+<pre><code>##     lhs                                 rhs      support confidence     lift count
+## [1] {away,                                                                        
+##      Dortmund_Normal_Shooting,                                                    
+##      equal_opponent,                                                              
+##      Opponent_Lots_Shooting,                                                      
+##      Opponent_Normal_Passing}        =&gt; {win} 0.01470588          1 1.619048     3
+## [2] {away,                                                                        
+##      Dortmund_Risky_Passing,                                                      
+##      equal_opponent,                                                              
+##      Opponent_Lots_Shooting,                                                      
+##      Opponent_Normal_Passing}        =&gt; {win} 0.01470588          1 1.619048     3
+## [3] {away,                                                                        
+##      Dortmund_Free Form_Positioning,                                              
+##      equal_opponent,                                                              
+##      Opponent_Lots_Shooting,                                                      
+##      Opponent_Normal_Passing}        =&gt; {win} 0.01470588          1 1.619048     3
+</code></pre>
+<p>Similar to home games against equal_opponents, we have high confidence of 100% here with just a sample size of 3. We cannot rely on these rules and proceed further with our analysis.</p>
+<h2 id="tldr--conclusion">TL;DR / Conclusion</h2>
+<h3 id="findings">Findings</h3>
+<p>From our analysis above, based on team attribution table, we can conclude that this is a good approach to generate rules for each categories. However, since we do not have a large sample size for games agaist equal teams and strong teams, the rules work the best when Dortmund plays against weak teams because we have enough counts to generate a detailed plan.</p>
+<p>The association rules provide us with insights for the strategies that are effective and not so effective for Dortmund against weak teams in both home and away games. Dortmund generally performs very well at home which is well known. The results slightly change when they play away games where their wins reduce and the number of ties and losses go up significantly as well.</p>
+<p>These are areas that elude them of vital points that give them a shot at the top 3 spots of the league. One prominent feature resulting most of their games which end up in ties and losses in both home and away games are that even though they take a lot of shots, they fail to net the ball into the goal. It could be due to the extra pressure in the away conditions and poor finishing. This is a huge area for improvement. If Dortmund can convert even one of the many shots that they have at the goal, it could be the differentiating factor in converting a loss to a tie and changing a tie to a win.</p>
+<p>The most import finding from our analysis is that strategies do impact game outcomes in a big way. When Dortmund plays with correct strategies, they can increase their winning rates significantly. By studying the ratings and features of opponents, Dortmund can adjust its plan accordingly and this will provide team with an advantage and a higher chance to win.</p>
+<h3 id="recommendations">Recommendations</h3>
+<p><img
+        class="lazyload"
+        src="/svg/loading/small.min.svg"
+        data-src="/imgages/post-moneyball"
+        data-srcset="/imgages/post-moneyball, /imgages/post-moneyball 1.5x, /imgages/post-moneyball 2x"
+        data-sizes="auto"
+        alt="/imgages/post-moneyball"
+        title="/imgages/post-moneyball" /></p>
+<p>We believe that the only way for a club to get the top spot in the league is to score as many points as possible either through wins or ties. Given the fact that we have a dominant team FC Bayern Munich who always has much more budget than Dortmund and can easily sign the best
+players, it is difficult to beat them by forming a team with better skills than FC Bayern Munich. Instead, the best approach to achieve success is to pick the best strategy each game especially against weaker opponents since that is where we can get most points.</p>
+<p>An area for significant improvement is the shot accuracy and finishing. Dortmund should give more intense drills and practice on finishing touches and shots.</p>
+<p>Our analysis has shown the huge potentianl benefits that can be brought by correct strategies. Based on our analysis, we suggest that Dortmund should look into both Dortmund’s and opponent’s team status such as possession, defense tasks, passing styles and other features and find how each feature can affect the game outcome.</p>
+<p>In short term, we suggest that Dortmund should start to apply the rules we found through our analysis immediately. These rules have no cost or minimal costs to implement. We believe the coach of one of the best teams in the German League would already know how to employ various strategies and we wanted to show what are the factors and strategies that lead to Dortmund’s wins and losses. This way, we provide rules or effective strategies that would work against various types of oppositions and the coach would have to effectively communicate these tactics to the players and employ player formations suitable for such strategies.</p>
+<p>We are very confident that our rules toward weak teams will be effective. Due to the low counts and small sample size of our rules toward equal team and strong teams, we hope that coach can investigate and verify them before applying.</p>
+<p>In long term, we suggest that Dortmund should establish a database which focuses on collecting information on match-level and team-level data for all its opponents. With more information, Dortmund can construct a more precise model that can generate detailed suggestions for team’s coach before each game. Buying good players can boost Dortmund’s performance for one or two years but establishing a database and constructing a data-driven model will benefit the club in the ong run.</p>
+<h3 id="limitations">Limitations</h3>
+<ol>
+<li>
+<p>We have specific strategies that should be executed for different scenarios. However, we are not sure whether the team can successfuly apply them. For instance, for some games rules suggest that Dortmund will have a higher winning chance by doubling the defense. Coach might not be able to apply this if the team does not have enough defensive players at the moment. We need to keep in touch with the coach in order to adjust strategies based on current status.</p>
+</li>
+<li>
+<p>Some confidence values from our rules can be inaccurate because of the lack of a big sample size. For example, when we analyze rules against strong teams, a certain strategy gives us a confidence value of 1. This means if we apply this strategy, our winning rate can be 100%. This cannot be true since the count is only 3, which means the winning rate is overestimated. Even though these rules are useful, we need to be cautious and it is difficult to know what the real
+confidence value is.</p>
+</li>
+<li>
+<p>Setting hyper-parameters for association rules can be tricky. If we want to have a very specific rule, we need to set our minimum length high, and this will lead to less rules. However, if we set our minimum length low, we will have some rules with really high confidence, lift but smaller length. It is up to coach team’s choice what kind of rules they would like to have. As a future consideration, we will combine our suggestions with real life outcomes to find out the best hyper-parameters for our association rules.</p>
+</li>
+</ol>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span></span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"><span>
+                            <a class="link-to-markdown" href="/2019-11-02-money-ball-with-arules/index.md" target="_blank">Read Markdown</a>
+                        </span></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/" data-title="Moneyball on Dortmund with Association Rules" data-hashtags="association rules,unsupervised learning"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/" data-hashtag="association rules"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/"><i class="fab fa-linkedin fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/association-rules/">association rules</a>,&nbsp;<a href="/tags/unsupervised-learning/">unsupervised learning</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2019-10-06-car-evaluation-using-machine-learning/" class="prev" rel="prev" title="Predictive models on used car evaluation"><i class="fas fa-angle-left fa-fw"></i>Predictive models on used car evaluation</a>
+            <a href="/2019-11-12-restaurants-visitors-predictive-model/" class="next" rel="next" title="Predicting Visitors for Restaurants">Predicting Visitors for Restaurants<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="disqus_thread" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://disqus.com/?ref_noscript">Disqus</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;
+                      Nina</div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript">
+    window.config = {"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{},"headerMode":{"desktop":"fixed","mobile":"auto"},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};
+</script><script type="text/javascript" src="https://polyfill.io/v3/polyfill.min.js?features=html5shiv%2CElement.prototype.closest%2CrequestAnimationFrame%2CCustomEvent%2CPromise%2CObject.entries%2CObject.assign%2CObject.values%2Cfetch%2CElement.prototype.after%2CArray.prototype.fill%2CIntersectionObserver%2CArray.from%2CArray.prototype.find%2CMath.sign"></script><script type="text/javascript" src="https://xueni-me.disqus.com/embed.js" defer></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/object-fit-images/ofi.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
