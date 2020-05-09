@@ -80,7 +80,7 @@ plt.show()
 
 
 
-Look at colors in box-lot
+Look at colors in box-plot
 
 ```python
 # Airbnb median rental price across boroughs in 2019
