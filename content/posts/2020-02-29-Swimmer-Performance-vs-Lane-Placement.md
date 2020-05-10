@@ -1,13 +1,17 @@
 ---
 layout:     post
-title: Swimmer Performance vs Lane Placement Analysis using Matching
+title: Swimmer Performance vs Lane Placement Analysis 
+subtitle: Causal inference case using Matching
 date: 2020-02-29
 featuredImage: "/images/post-swim.jpg"
 author: Nina
-comment: true
-toc: true
-catalog: true
+toc:
+  enable: true
+  auto: true
+math:
+  enable: true
 tags: [causal inference, matching]
+categories: [statistical modeling]
 ---
 
 

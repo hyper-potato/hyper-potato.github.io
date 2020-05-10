@@ -1,22 +1,23 @@
 ---
 title: "About"
 date: 2020-04-02T20:00:29-05:00
-comment: false
+comment: true
 toc: false
 ---
 
 # Nina.
 
-I'm a student from University of Minnesota. This blog is for document my data science 🎒 journey, and most importantly, shower thoughts.
+I'm a graduate student from University of Minnesota. This blog is to document my 🎒analytics study journey, and mostly, shower thoughts. Read with caution. 
 
 <br>
 
 **May the blessing of Bayes be upon you.**
 
 <img src="pi.jpeg" width="300" >
+
 ~~Roaming around.~~
 
-
+<br>
 
 
 ## find me on 🖖

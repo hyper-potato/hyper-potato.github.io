@@ -1,13 +1,15 @@
 ---
 layout:     post
 title:      Predictive models on used car evaluation
-description:   Hit the road
+subtitle:   Hit the road
 date:       2019-10-06
 author:     Nina
 featuredImage: "/images/patrick-tomasso-QMDap1TAu0g-unsplash.jpg"
-toc: true
+toc:
+  enable: true
+  auto: true
 tags: ["classification", "machine learning"]
-comment: true
+categories: [machine learning, predictive modeling]
 ---
 
 

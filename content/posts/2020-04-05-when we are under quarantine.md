@@ -1,13 +1,15 @@
 ---
 layout:     post
 title:      A boring look into my Spotify playlist
-description:  Let's jam out
+subtitle:  Let's jam out
 date:       2020-04-05
 author:     Nina
-catalog: 	 true
-comment: true
+toc:
+  enable: true
+  auto: true
 featuredImage: "/images/pornography-thecure.jpeg"
-tags: ["EDA", "Python"]
+tags: ["EDA", "Python", 'music', data analysis]
+categories: [EDA]
 ---
 
 __Sit tight and listen to music__

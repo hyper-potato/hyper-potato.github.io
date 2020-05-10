@@ -1,17 +1,18 @@
 ---
 layout:     post
 title:      What happened if the sample size is very large?
-subtitle:  Too Much of a Good Thing?
+subtitle:  Too large of a ... good thing?
 date:       2020-03-02
 featuredImage: "/images/chill-walker.jpg"
 author:     Nina
-comment: true
-catalog: true
 tags: [causal inference, sample size]
-toc: true
+categories: [statistical modeling]
+toc:
+  enable: true
+  auto: true
+math:
+  enable: true
 ---
-
-
 
 ## Risk of a large sample size
 

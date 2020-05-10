@@ -4,10 +4,13 @@ title:      Change category colour across plots in Seaborn
 subtitle:  This world deserves prettier plots
 date:       2020-03-18
 author:     Nina
-comment: true
-catalog: true
-math: true
-tags: ["seaborn", "visualization"]
+math:
+  enable: true
+toc:
+  enable: false
+  auto: true
+tags: ["seaborn", "visualization", "python"]
+categories: [visualization, python]
 ---
 
 
@@ -89,7 +92,7 @@ plt.show()
 
 
 
-Look at colors in box-lot
+Look at colors in box-plot
 
 ```python
 # Airbnb median rental price across boroughs in 2019

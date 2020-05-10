@@ -5,9 +5,11 @@ subtitle:  Metrics Explained, MSE, R^2, RMSLE
 date:       2020-01-20
 author:     Nina
 featuredImage: "/images/home-bg-ricky.jpg"
-toc: true
-comment: true
+toc:
+  enable: true
+  auto: true
 tags: [metric, causal inference]
+categories: [statistical modeling]
 ---
 
 

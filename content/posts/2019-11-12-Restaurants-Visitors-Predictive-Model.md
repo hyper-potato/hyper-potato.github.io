@@ -1,13 +1,15 @@
 ---
 layout:    post
 title:     Predicting Visitors for Restaurants
-description:  For suckers for Sashimi like me!
+subtitle:  For suckers for Sashimi like me!
 date:       2019-11-12
 author:     Nina
 featuredImage: "/images/post-sushi-set-japanese.jpg"
-toc: true
-comment: true
-tags: [machine learning, Time Series Forecasting]
+toc:
+  enable: true
+  auto: true
+tags: [machine learning, Time Series Forecasting, regression]
+categories: [machine learning, predictive modeling]
 ---
 
 
@@ -188,16 +190,18 @@ In order to take advantage of the date information, we extract year/month/day/we
 
 - **Days since 25th** (**Paycheck Day. Yay!)**
 
-  The next feature calculates how many days it has been since the previous 25th of the month. The 25th is special because this is when most Japanese people receive their monthly paycheck ([Japan Visa]([http://www.japanvisa.com/news/japan-payroll-%E2%80%93-introduction](http://www.japanvisa.com/news/japan-payroll-–-introduction))). In a country like the US, this may not play too large of a role as people simply use a credit card. In Japan, however, people seem to be averse to debt and prefer cash over credit cards ([Business in Japan](https://blog.btrax.com/japanese-hold-as-many-credit-cards-as-americans-but-do-they-use-them/)).
+  The next feature calculates how many days it has been since the previous 25th of the month. The 25th is special because this is when most Japanese people receive their monthly paycheck [Japan Visa](http://www.japanvisa.com/news/japan-payroll-–-introduction)
+
+  In a country like the US, this may not play too large of a role as people simply use a credit card. In Japan, however, people seem to be averse to debt and prefer cash over credit cards ([Business in Japan](https://blog.btrax.com/japanese-hold-as-many-credit-cards-as-americans-but-do-they-use-them/)).
 
   After running our LightGBM model, this feature was in the top 5 in terms of importance.
-
+  
   ```python
   def daysToPrev25th(row):
       TARGET_DATE = 25
-      if row['dayofmonth'] >= 25: 	return row['dayofmonth'] - TARGET_DATE
+    if row['dayofmonth'] >= 25: 	return row['dayofmonth'] - TARGET_DATE
       else: 	return row['daysinPrevmonth'] - TARGET_DATE + row['dayofmonth']
-
+  
   air_visit["dayofmonth"] = air_visit["visit_date"].dt.day      
   air_visit["daysinPrevmonth"] = (air_visit["visit_date"] - pd.DateOffset(months=1)).dt.daysinmonth
   air_visit["daysToPrev25th"] = air_visit.apply(lambda row:daysToPrev25th(row), axis=1)

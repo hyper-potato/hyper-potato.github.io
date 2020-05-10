@@ -1,12 +1,14 @@
 ---
 layout:     post
 title:      I'm fine with whatever
-description:   cool
+subtitle:   cool
 date:       2020-01-30
 author:     Nina
 draft: false
-catalog: 	False
 featuredImage: "/images/62zCH7I.png"
+categories: [shower thought]
+toc:
+  enable: false
 ---
 
 

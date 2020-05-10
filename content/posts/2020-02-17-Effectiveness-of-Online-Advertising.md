@@ -5,11 +5,13 @@ subtitle:   Causal Inference Experiments Case Study
 date:       2020-02-17
 featuredImage: "/images/californication.jpg"
 author:     Nina
-comment: true
-catalog: 	True
-toc: true
-math: true
+toc:
+  enable: true
+  auto: true
+math:
+  enable: true
 tags: [statistical modeling, causal inference]
+categories: [statistical modeling]
 ---
 
 

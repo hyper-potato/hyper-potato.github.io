@@ -1,14 +1,15 @@
 ---
 layout:     post-header
-description:     Moneyball on Dortmund with Association Rules
-description:  Unsupervised learning practice on FIFA
+title:     Moneyball on Dortmund with Association Rules
+subtitle:  Unsupervised learning practice on FIFA
 date:       2019-11-02
 author:     Nina
-comment: true
 featuredImage: "/images/post-moneyball.jpg"
-toc: true
-catalog: true
+toc:
+  enable: true
+  auto: true
 tags: [association rules, unsupervised learning]
+categories: [unsupervised learning]
 ---
 
 

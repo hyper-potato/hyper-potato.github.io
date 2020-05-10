@@ -6,9 +6,11 @@ date:       2019-11-28
 featuredImage: "/images/post-cat-dog.jpg"
 author:     Nina
 catalog: 	 true
-comment: true
-toc: true
-tags: [machine learning, neural network]
+toc:
+  enable: true
+  auto: true
+tags: [machine learning, neural network, classification]
+categories: [machine learning, predictive modeling]
 ---
 
 
