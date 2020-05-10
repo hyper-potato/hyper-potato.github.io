@@ -135,7 +135,7 @@ Warning: Huge Samples Can Make the Insignificant&hellip;Significant When sample 
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">What happened if the sample size is very large?</h1><h2 class="single-subtitle">Too Much of a Good Thing?</h2><div class="post-meta">
+        </div><article class="page single"><h1 class="single-title animated flipInX">What happened if the sample size is very large?</h1><h2 class="single-subtitle">Too large of a ... good thing?</h2><div class="post-meta">
             <div class="post-meta-line">
                 <span class="post-author">
                   <p><i class="far fa-hand-spock fa-fw"></i> Nina</p>
@@ -195,7 +195,7 @@ Warning: Huge Samples Can Make the Insignificant&hellip;Significant When sample 
 <p>To use it, we need to know (or at least guess) a few things.  We can give R values for all but one of several quantities, and R can determine the missing one for us.</p>
 <p>Suppose we want to know the power that a t-test has for detecting a difference as large as 1 unit from zero if the standard deviation is 3 units, we have a sample of n = 20, and we are testing with alpha = .05</p>
 <div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="nf">power.t.test</span><span class="p">(</span> <span class="m">20</span> <span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">.05</span> <span class="p">,</span> <span class="kc">NULL</span> <span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;one.sample&#34;</span> <span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"> One-sample t test power calculation
+</code></pre></div><pre><code> One-sample t test power calculation
 
               n = 20
           delta = 1
@@ -203,10 +203,10 @@ Warning: Huge Samples Can Make the Insignificant&hellip;Significant When sample 
       sig.level = 0.05
           power = 0.2931601
     alternative = two.sided
-</code></pre></div><p>So we have only a 29% chance of detecting en effect that size.</p>
+</code></pre><p>So we have only a 29% chance of detecting en effect that size.</p>
 <p><br>How large a sample would we need to have power .8?</p>
 <div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="nf">power.t.test</span><span class="p">(</span> <span class="kc">NULL</span> <span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">.05</span> <span class="p">,</span> <span class="m">.8</span> <span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;one.sample&#34;</span> <span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"> One-sample t test power calculation
+</code></pre></div><pre><code> One-sample t test power calculation
 
               n = 72.58407
           delta = 1
@@ -214,10 +214,10 @@ Warning: Huge Samples Can Make the Insignificant&hellip;Significant When sample 
       sig.level = 0.05
           power = 0.8
     alternative = two.sided
-</code></pre></div><p>We need 73 (round up) to be reduce the Type II error risk to 20%.</p>
+</code></pre><p>We need 73 (round up) to be reduce the Type II error risk to 20%.</p>
 <p><br>How large an effect could we detect with 80% power with out original sample size?</p>
 <div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="nf">power.t.test</span><span class="p">(</span> <span class="m">20</span> <span class="p">,</span> <span class="kc">NULL</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">.05</span> <span class="p">,</span> <span class="m">.8</span> <span class="p">,</span> <span class="n">type</span> <span class="o">=</span> <span class="s">&#34;one.sample&#34;</span> <span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">   One-sample t test power calculation
+</code></pre></div><pre><code>   One-sample t test power calculation
 
               n = 20
           delta = 1.981323
@@ -225,11 +225,11 @@ Warning: Huge Samples Can Make the Insignificant&hellip;Significant When sample 
       sig.level = 0.05
           power = 0.8
     alternative = two.sided
-</code></pre></div><p>About 2 units (2/3 of a standard deviation).</p>
+</code></pre><p>About 2 units (2/3 of a standard deviation).</p>
 <p>It also works for a two-sample problem; the default is actually the two-sample case.</p>
 <p><br>Suppose we want to detect a 1-unit difference in means between groups with standard deviation 3 in both groups, again we assume alpha = .05 and want power .8.</p>
 <div class="highlight"><pre class="chroma"><code class="language-R" data-lang="R"><span class="nf">power.t.test</span><span class="p">(</span> <span class="kc">NULL</span> <span class="p">,</span> <span class="m">1</span> <span class="p">,</span> <span class="m">3</span> <span class="p">,</span> <span class="m">.05</span> <span class="p">,</span> <span class="m">.8</span> <span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"> Two-sample t test power calculation
+</code></pre></div><pre><code> Two-sample t test power calculation
 
               n = 142.2466
           delta = 1
@@ -239,7 +239,7 @@ Warning: Huge Samples Can Make the Insignificant&hellip;Significant When sample 
     alternative = two.sided
 
 NOTE: n is number in *each* group
-</code></pre></div><p>We can detect effects no smaller than about .9 standard deviations under those conditions.</p>
+</code></pre><p>We can detect effects no smaller than about .9 standard deviations under those conditions.</p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
@@ -249,9 +249,7 @@ NOTE: n is number in *each* group
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
-            <div class="post-info-md"><span>
-                            <a class="link-to-markdown" href="/2020-03-02-sample-size-reflection/index.md" target="_blank">Read Markdown</a>
-                        </span></div>
+            <div class="post-info-md"></div>
             <div class="post-info-share">
                 <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://hyper-potato.github.io/2020-03-02-sample-size-reflection/" data-title="What happened if the sample size is very large?" data-hashtags="causal inference,sample size"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://hyper-potato.github.io/2020-03-02-sample-size-reflection/" data-hashtag="causal inference"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://hyper-potato.github.io/2020-03-02-sample-size-reflection/"><i class="fab fa-linkedin fa-fw"></i></a></span>
             </div>
