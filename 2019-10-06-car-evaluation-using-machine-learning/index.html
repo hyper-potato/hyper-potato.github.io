@@ -135,29 +135,12 @@ Present a brief overview of the predictive modeling process, explorations, and d
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
             <div class="toc-content" id="toc-content-auto"></div>
-        </div><article class="page single"><h1 class="single-title animated flipInX">Beginner&#39;s guide for predictive models</h1><h2 class="single-subtitle">on used car evaluation</h2><div class="post-meta">
-            <div class="post-meta-line">
-                <span class="post-author">
-                  <p><i class="far fa-hand-spock fa-fw"></i> Nina</p>
-                    
-                </span>&nbsp;<time datetime=2019-10-06>2019-10-06</time>&nbsp;&nbsp;
-                    <span class="post-category">included in<a href="/categories/machine-learning/">
-                                <i class="far fa-folder fa-fw"></i>Machine learning
-                            </a></span></div>
-            
-        </div><div class="featured-image"><img
-        class="lazyload"
-        src="/svg/loading/normal.min.svg"
-        data-src="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg"
-        data-srcset="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg, /images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg 1.5x, /images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg 2x"
-        data-sizes="auto"
-        alt="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg"
-        title="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg" /></div><div class="details toc" id="toc-static">
-                <div class="details-summary toc-title">
-                    <span>Contents</span>
-                    <span><i class="details-icon fas fa-angle-right"></i></span>
-                </div>
-                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+        </div><article class="page single"><div class="details toc" id="toc-static">
+              <div class="details-summary toc-title">
+                  <span>Contents</span>
+                  <span><i class="details-icon fas fa-angle-right"></i></span>
+              </div>
+              <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
     <li><a href="#data-exploration">Data Exploration</a></li>
     <li><a href="#initial-feature-exploration">Initial Feature Exploration</a></li>
@@ -185,7 +168,24 @@ Present a brief overview of the predictive modeling process, explorations, and d
     <li><a href="#model-comparison">Model Comparison</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p>In this post, I will apply decision tree, k-NN, SVM to predict the evaluation of the cars based on their characteristics. Dataset is from <a href="https://archive.ics.uci.edu/ml/datasets/Car&#43;Evaluation" target="_blank" rel="noopener noreffer">UCI ML Repository</a>.</p>
+          </div><h1 class="single-title animated flipInX">Beginner&#39;s guide for predictive models</h1><h2 class="single-subtitle">on used car evaluation</h2><div class="post-meta">
+            <div class="post-meta-line">
+                <span class="post-author">
+                  <p>Nina</p>
+                    
+                </span>&nbsp;&nbsp;&nbsp;<time datetime=2019-10-06>2019-10-06</time>&nbsp;&nbsp;&nbsp;
+                    <span class="post-category">included in&nbsp;<a href="/categories/machine-learning/">
+                                <i class="far fa-folder fa-fw"></i><span>&nbsp;</span>Machine learning
+                            </a></span></div>
+
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading/normal.min.svg"
+        data-src="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg"
+        data-srcset="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg, /images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg 1.5x, /images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg 2x"
+        data-sizes="auto"
+        alt="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg"
+        title="/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg" /></div><div class="content" id="content"><p>In this post, I will apply decision tree, k-NN, SVM to predict the evaluation of the cars based on their characteristics. Dataset is from <a href="https://archive.ics.uci.edu/ml/datasets/Car&#43;Evaluation" target="_blank" rel="noopener noreffer">UCI ML Repository</a>.</p>
 <p>More specifically, I will explore how well these techniques perform for several different parameter values.</p>
 <p>Present a brief overview of the predictive modeling process, explorations, and discuss my results. Then I will present the final model and discuss its performance in a comprehensive manner (overall accuracy; per-class performance, i.e., whether this model predicts all classes equally well, or if there some classes for which it does much better than others; etc.)</p>
 <p>Let&rsquo;s hit the road.</p>
