@@ -7,7 +7,7 @@ __Sit tight and listen to music__
 
 For the past weeks, I’ve taken breaks from staring blankly into the middle distance to dip deeper into my playlists than I have in years.
 
-I’m using Spotify only since last year here and there, most of time I use apple music as the main source of music. I like the feature of adding songs to library on apple music. By innertion I’m still using the library to save songs that I like. After moving apple music library to Spotify, I nerded out to see how my playlist looks under Spotify's standard. All code can be found [here](https://github.com/hyper-potato/spotify-playlist).
+I've been using Spotify only since last year since most of time I used apple music. I like the feature of adding songs to library on apple music. By innertion I’m still using the library to save songs that I like. After moving apple music library to Spotify, I nerded out to see how my playlist looks under Spotify's standard. All code can be found [here](https://github.com/hyper-potato/spotify-playlist).
 
 
 
@@ -174,8 +174,6 @@ The first vanilla idea was the list of the most appearing artists in my playlist
 tracks_df.groupby('artist').count()['id'].reset_index().sort_values('id', ascending=False).rename(columns={'id': 'amount'}).head(10)
 ```
 
-<img src="https://i.loli.net/2020/04/06/8Ceh7XnRbWOPvDu.png" alt="image.png" style="zoom:50%;" />
-
 | Artist       | amount |
 | ------------ | ------ |
 | Sublime      | 20     |
@@ -201,7 +199,9 @@ So I looked at if my music habits changes under **lockdown**. It turns out only 
 
 > Valence: A measure from 0.0 to 1.0 describing the musical positiveness conveyed by a track. Tracks with high valence sound more positive (e.g. happy, cheerful, euphoric), while tracks with low valence sound more negative (e.g. sad, depressed, angry).
 
-Ahh. Lockdown unleashed my sadness just like the old saying ~~from me~~  'Depression feels like my 30-pound dog is sitting on my chest'.  Kidding. I luuuuuv my dog!!
+Ahh. Lockdown unleashed my sadness just like the old saying ~~from me~~  'Depression feels like my 30-pound dog is sitting on my chest'.  
+
+Kidding. I luuuuuv my dog!!
 
 ```python
 plt.figure(figsize=(6,4))
@@ -246,7 +246,7 @@ Let's just say I've tried to be chipper under quarantine, because I’m afraid t
 
 ## How different and similar among songs?
 
-I took those features out and calculate the distance between every two different tracks. (matrix production)
+I took those features out and calculate the distance between every two different tracks. (**matrix production**)
 
 ```python
 encode_fields = ['danceability', 'energy', 'key', 'loudness', 'mode', 'speechiness', 'acousticness', 'instrumentalness', 'liveness', 'valence', 'tempo', 'duration_ms', 'time_signature']
@@ -305,7 +305,7 @@ Suprisely makes sense!
 
 ### Most average songs
 
-eg the songs with the least distance from every other song:
+i.e. the songs with the least distance from every other song:
 
 ```python
 tracks_w_features_encoded_product \
@@ -345,12 +345,14 @@ I'll use cluster to bucket my favorite tracks when I get really bored.
 
 <img src='/images/spotify/google cute.jpeg'>
 
-# TL; DR
-
-**Let's jam out!**
+## Since you made this far
 
 How do you find good music you've never heard before?
 
-Try this website... [www.gnoosic.com](http://www.gnoosic.com/) you put in three of your favorite bands/artists, and it will recommend similar stuff that you most likely haven't heard of, or listened to.
+Try this gem I recently found... [www.gnoosic.com](http://www.gnoosic.com/)you put in three of your favorite bands/artists, and it will recommend similar stuff that you most likely haven't listened to.
 
-And you will come back and thank me. You are welcome. 
+And then you will come back and thank me. You are welcome!
+
+
+
+Stay safe.

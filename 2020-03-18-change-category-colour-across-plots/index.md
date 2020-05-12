@@ -7,11 +7,11 @@
 
 Self-quarantine gets me nerd-out on small things that I usually googled again and again.
 
-For example, very often I need to plot multiple plots sharing the same category, where it's better to keep color match is consistent across plots.
+For example, very often I need to plot multiple plots sharing the same category, where it's better to keep colors across categories  consistent for all the plots.
 
 The easiest solution to make sure to have the same colors for the same categories in different plots would be to manually specify the colors at plot creation.
 
-We can use a **list** of colors or a **dictionary** to map colors onto categories. I will be using dictionary in the following example.
+Alternatively, we can use a **list** of colors or a **dictionary** to map colors onto categories. I will be using dictionary in the following example.
 
 The example is to plot New York City housing price and rental price across boroughs.
 
