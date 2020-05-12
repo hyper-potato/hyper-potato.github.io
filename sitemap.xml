@@ -15,10 +15,9 @@
             <loc>https://hyper-potato.github.io/about/</loc><lastmod>2020-04-02T20:00:29-05:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/</loc><lastmod>2020-04-02T20:00:29-05:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2020-03-18-change-category-colour-across-plots/</loc><lastmod>2020-03-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/categories/python/</loc><lastmod>2020-03-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/seaborn/</loc><lastmod>2020-03-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/tags/visualization/</loc><lastmod>2020-03-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/categories/visualization/</loc><lastmod>2020-03-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/tags/visualization/</loc><lastmod>2020-03-18T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/causal-inference/</loc><lastmod>2020-03-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/sample-size/</loc><lastmod>2020-03-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/categories/statistical-modeling/</loc><lastmod>2020-03-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
@@ -33,16 +32,16 @@
             <loc>https://hyper-potato.github.io/2020-01-20-the-good-bad-ugly-of-r-square/</loc><lastmod>2020-01-20T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2019-11-28-cat-or-dog-classification-dnn/</loc><lastmod>2019-11-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/classification/</loc><lastmod>2019-11-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/tags/machine-learning/</loc><lastmod>2019-11-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/categories/machine-learning/</loc><lastmod>2019-11-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/neural-network/</loc><lastmod>2019-11-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/categories/predictive-modeling/</loc><lastmod>2019-11-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/tags/transfer-learning/</loc><lastmod>2019-11-28T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/tags/machine-learning/</loc><lastmod>2019-11-12T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/</loc><lastmod>2019-11-12T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/regression/</loc><lastmod>2019-11-12T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/time-series-forecasting/</loc><lastmod>2019-11-12T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/association-rules/</loc><lastmod>2019-11-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2019-11-02-money-ball-with-arules/</loc><lastmod>2019-11-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/tags/unsupervised-learning/</loc><lastmod>2019-11-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/categories/unsupervised-learning/</loc><lastmod>2019-11-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/tags/unsupervised-learning/</loc><lastmod>2019-11-02T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2019-10-06-car-evaluation-using-machine-learning/</loc><lastmod>2019-10-06T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2019-08-27-hi-there/</loc><lastmod>2019-08-27T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url></urlset>

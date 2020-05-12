@@ -3,7 +3,16 @@
 
 # Nina.
 
-I'm a graduate student from University of Minnesota. This blog is to document my 🎒analytics study journey, and mostly, shower thoughts. Read with caution. 
+This person is currently..Is currently…
+
+- :walking_woman:: Lightning Wires
+
+- :woman_cook:: Burning the kitchen
+- 📺: Babylon Berlin
+
+
+
+I'm a graduate student from University of Minnesota (Class 2020). This blog is to document my 🎒analytics study journey, and mostly, shower thoughts. Read with caution. 
 
 <br>
 
@@ -16,13 +25,23 @@ I'm a graduate student from University of Minnesota. This blog is to document my
 <br>
 
 
+
+### So... how was this site built?
+
+With blood and tears. :grimacing:
+
+This is a ~~[Jekyll](http://jekyllrb.com/)~~ [Hugo](https://gohugo.io/) site, hosted on [GitHub Pages](https://pages.github.com/). I am working on migrating it to [Netlify](https://www.netlify.com/) though. It was built  after months of procrastination and hours upon hours of pressing ⌘-⇧-R, resizing windows ploughing through documentation, googling and of course, some actual coding. 
+
+
+
+
 ## find me on 🖖
 
 💻[github](https://github.com/hyper-potato)
 🐦[twitter](https://twitter.com/mandy_nii)
 👬[facebook](https://www.facebook.com/hypergorillaz)
 💼[linkedin](https://www.linkedin.com/in/xue-nina/)
-📧xueni.nina@gmail.com
+📧[email](xueni.nina@gmail.com)
 
 <br>
 
