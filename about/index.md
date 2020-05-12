@@ -34,8 +34,7 @@ This is a ~~[Jekyll](http://jekyllrb.com/)~~ [Hugo](https://gohugo.io/) site, ho
 
 
 
-
-## find me on 🖖
+## You can find me almost ERRYWURRR 🖖
 
 💻[github](https://github.com/hyper-potato)
 🐦[twitter](https://twitter.com/mandy_nii)
