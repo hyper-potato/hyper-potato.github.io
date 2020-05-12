@@ -396,12 +396,6 @@ history_vgg16 = model_transfer.fit(X_train, y_train,
 model_transfer.evaluate(X_test, y_test)
 ```
 
-    5000/5000 [==============================] - 7s 1ms/step
-
-
-
-
-
     [0.27564358766500857, 0.9672]
 
 
@@ -437,10 +431,11 @@ plt.show()
 
 <img src='/images/cat-dog/output_33_0.png'>
 
-
 ## Test
 
-We will convert the predict category back into our generator classes by using train_generator.class_indices. It is the classes that image generator map while converting data into computer vision
+<img src='/images/cat-dog/691562942251.jpeg' width = '400'>
+
+We will convert the predict category back into our generator classes by using train_generator.class_indices. It is the classes that image generator map while converting data into computer vision.
 
 
 ```python
@@ -527,11 +522,10 @@ for i in range(0,10):
 
 
 
-
-My submission and score on Kaggle:
-![image.png](https://i.loli.net/2019/11/24/9mMD6XVxj82ckqT.png)
-
-
-
 codes available on [GitHub]( https://github.com/hyper-potato/cat-or-dog-deep-learning-keras)
+
+
+
+
+
 

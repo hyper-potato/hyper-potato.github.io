@@ -1,6 +1,8 @@
 # A boring look into my Spotify playlist
 
 
+
+
 __Sit tight and listen to music__
 
 For the past weeks, I’ve taken breaks from staring blankly into the middle distance to dip deeper into my playlists than I have in years.
@@ -341,7 +343,7 @@ tracks_w_features_encoded_product \
 
 I'll use cluster to bucket my favorite tracks when I get really bored.
 
-<img src='/images/google cute.jpeg'>
+<img src='/images/spotify/google cute.jpeg'>
 
 # TL; DR
 

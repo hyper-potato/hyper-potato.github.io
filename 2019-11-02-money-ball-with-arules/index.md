@@ -635,7 +635,7 @@ The most import finding from our analysis is that strategies do impact game outc
 
 ### Recommendations
 
-![](/imgages/post-moneyball)
+<img src='/imgages/post-moneyball/Jonah.jpg'>
 
 We believe that the only way for a club to get the top spot in the league is to score as many points as possible either through wins or ties. Given the fact that we have a dominant team FC Bayern Munich who always has much more budget than Dortmund and can easily sign the best
 players, it is difficult to beat them by forming a team with better skills than FC Bayern Munich. Instead, the best approach to achieve success is to pick the best strategy each game especially against weaker opponents since that is where we can get most points.

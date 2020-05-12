@@ -21,7 +21,7 @@
 <meta name="application-name" content="Hyper Potato&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Hyper Potato&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/" /><link rel="prev" href="https://hyper-potato.github.io/2020-01-30-im-fine-with-whatever/" /><link rel="next" href="https://hyper-potato.github.io/2020-02-29-swimmer-performance-vs-lane-placement/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hyper-potato.github.io/2020-02-17-effectiveness-of-online-advertising/" /><link rel="prev" href="https://hyper-potato.github.io/2020-01-30-im-fine-with-whatever/" /><link rel="next" href="https://hyper-potato.github.io/2020-02-23-swimmer-performance-vs-lane-placement/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -422,8 +422,8 @@ The measurement method of impressions may be problematic to some extent as we do
 <p>Interaction term is an <strong>effect</strong> on <strong>effect</strong>, not effect of a variable on another variable.</p>
 <p>Effect X(treatment) on Y: We believe that changing x by some amount, Y will change by some corresponding amount.</p>
 <p>Interaction effect: We believe the causal relationship between X and Y depends on the magnitude of Z.</p>
-<p><img src="/images/Causal Inference-2.jpg" style="zoom:20%;" /></p>
-<p><img src="/assets/Causal Inference-3.jpg" style="zoom:20%;" /></p>
+<p><img src="/images/causal-inference/Causal Inference-2.jpg" style="zoom:20%;" /></p>
+<p><img src="/images/causal-inference/Causal Inference-3.jpg" style="zoom:20%;" /></p>
 <p>In this case, for question 2, we should use interaction effect even though the question is imbiguous to start with. I not only care about the effect of showing an advertising versus a charitable advertising on purchase, but also how does the strength of effect depends on how frequently I show you the advertising.</p>
 <h4 id="interaction-vs-subsample-analysis">Interaction vs subsample analysis</h4>
 <p>What about we do a sub-sample regression? Just taking out the group that made purchase is somehow problematic.</p>
@@ -433,7 +433,7 @@ The measurement method of impressions may be problematic to some extent as we do
 <p>In this case, maybe StarDigital ad is counterproductive, we will not see that if we don&rsquo;t compare it with the baseline.</p>
 <h3 id="baseline-of-treatment-issue">Baseline of treatment issue</h3>
 <p>What if we omit $\beta_1 X$ term?</p>
-<p><img src="/assets/img/Causal Inference-4.jpg" style="zoom:33%;" /></p>
+<p><img src="/images/causal-inference/Causal Inference-4.jpg" style="zoom:33%;" /></p>
 <p>In this case, if we omit the X term, for one, there will be omit variable problem for sure.</p>
 <p>For two, it implies that we believe if we show zero advertising, the treatment effect of star digital ad equals zero, which is not a ridiculous hypothesis to make. But in practice, why make this assumption when we don&rsquo;t have to.</p>
 <p>General practice, run the full-fledged regression. Put in the isolated treatment term ($\beta_1 X$).</p>
@@ -446,7 +446,7 @@ The measurement method of impressions may be problematic to some extent as we do
 <p>Log odds (actual dependent variable): log[P(purchase)/(1-P(purchase))]</p>
 <p>Describing changes in odds, not probability: One unit change in X, leads to one unit change in log odds.</p>
 <p>When we want to convert it back, we want a baseline conversion probability. In this particular case, we can get that conversion probability in the control group.</p>
-<p><img src="/assets/img/log_odds.png" style="zoom:20%;" /></p>
+<p><img src="/images/causal-inference/log_odds.png" style="zoom:20%;" /></p>
 <h3 id="marginal-effect-of-logistic-regression">Marginal effect of logistic regression</h3>
 <p>Decreasing margin of effect?</p>
 <p>We we observe the decreasing marginal effect from X on Y, means they don&rsquo;t have linear relationship, then we might want to include X square term.</p>
@@ -474,7 +474,7 @@ The measurement method of impressions may be problematic to some extent as we do
     </div>
 
     <div class="post-nav"><a href="/2020-01-30-im-fine-with-whatever/" class="prev" rel="prev" title="I&#39;m fine with whatever"><i class="fas fa-angle-left fa-fw"></i>I&#39;m fine with whatever</a>
-            <a href="/2020-02-29-swimmer-performance-vs-lane-placement/" class="next" rel="next" title="Swimmer Performance vs Lane Placement Analysis">Swimmer Performance vs Lane Placement Analysis<i class="fas fa-angle-right fa-fw"></i></a></div>
+            <a href="/2020-02-23-swimmer-performance-vs-lane-placement/" class="next" rel="next" title="Swimmer Performance vs Lane Placement Analysis">Swimmer Performance vs Lane Placement Analysis<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 </article></div>
             </main><footer class="footer">

@@ -7,8 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
         <title>Predicting Visitors for Restaurants - Hyper Potato&#39;s Blog</title>
         <meta name="Description" content="Hi, here is Nina"><meta property="og:title" content="Predicting Visitors for Restaurants" />
-<meta property="og:description" content="For Suckers for Sashimi Like Me!
-1. Project Definition &amp; Introduction When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.
+<meta property="og:description" content="1. Project Definition &amp; Introduction When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.
 If restaurants can predict how many visitors will be in one day, it&rsquo;s easier for them to make the arrangement." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://hyper-potato.github.io/2019-11-12-restaurants-visitors-predictive-model/" />
@@ -19,8 +18,7 @@ If restaurants can predict how many visitors will be in one day, it&rsquo;s easi
 <meta name="twitter:image" content="https://hyper-potato.github.io/logo.png"/>
 
 <meta name="twitter:title" content="Predicting Visitors for Restaurants"/>
-<meta name="twitter:description" content="For Suckers for Sashimi Like Me!
-1. Project Definition &amp; Introduction When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.
+<meta name="twitter:description" content="1. Project Definition &amp; Introduction When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.
 If restaurants can predict how many visitors will be in one day, it&rsquo;s easier for them to make the arrangement."/>
 <meta name="application-name" content="Hyper Potato&#39;s Blog">
 <meta name="apple-mobile-web-app-title" content="Hyper Potato&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon/favicon.ico" />
@@ -39,7 +37,7 @@ If restaurants can predict how many visitors will be in one day, it&rsquo;s easi
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "machine learning, Time Series Forecasting, regression","wordcount":  5564 ,
+            },"genre": "posts","keywords": "machine learning, Time Series Forecasting, regression","wordcount":  5452 ,
         "url": "https:\/\/hyper-potato.github.io\/2019-11-12-restaurants-visitors-predictive-model\/","datePublished": "2019-11-12T00:00:00+00:00","dateModified": "2019-11-12T00:00:00+00:00","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -148,11 +146,11 @@ If restaurants can predict how many visitors will be in one day, it&rsquo;s easi
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading/normal.min.svg"
-        data-src="/images/post-sushi-set-japanese.jpg"
-        data-srcset="/images/post-sushi-set-japanese.jpg, /images/post-sushi-set-japanese.jpg 1.5x, /images/post-sushi-set-japanese.jpg 2x"
+        data-src="/images/sushi/post-sushi-set-japanese.jpg"
+        data-srcset="/images/sushi/post-sushi-set-japanese.jpg, /images/sushi/post-sushi-set-japanese.jpg 1.5x, /images/sushi/post-sushi-set-japanese.jpg 2x"
         data-sizes="auto"
-        alt="/images/post-sushi-set-japanese.jpg"
-        title="/images/post-sushi-set-japanese.jpg" /></div><div class="details toc" id="toc-static">
+        alt="/images/sushi/post-sushi-set-japanese.jpg"
+        title="/images/sushi/post-sushi-set-japanese.jpg" /></div><div class="details toc" id="toc-static">
                 <div class="details-summary toc-title">
                     <span>Contents</span>
                     <span><i class="details-icon fas fa-angle-right"></i></span>
@@ -188,7 +186,7 @@ If restaurants can predict how many visitors will be in one day, it&rsquo;s easi
           <ul>
             <li><a href="#motivation"><strong>Motivation</strong></a></li>
             <li><a href="#data-preparation"><strong>Data Preparation</strong></a></li>
-            <li><a href="#model"><strong>Model</strong></a></li>
+            <li><a href="#model">Model</a></li>
           </ul>
         </li>
         <li><a href="#evaluation">Evaluation</a></li>
@@ -196,11 +194,9 @@ If restaurants can predict how many visitors will be in one day, it&rsquo;s easi
     </li>
     <li><a href="#4-business-insight">4. Business Insight</a></li>
     <li><a href="#5-limitations--next-steps">5. Limitations &amp; Next Steps</a></li>
-    <li><a href="#references">References</a></li>
   </ul>
 </nav></div>
-            </div><div class="content" id="content"><p><strong>For Suckers for Sashimi Like Me!</strong></p>
-<h2 id="1-project-definition--introduction">1. Project Definition &amp; Introduction</h2>
+            </div><div class="content" id="content"><h2 id="1-project-definition--introduction">1. Project Definition &amp; Introduction</h2>
 <p>When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.</p>
 <p>If restaurants can predict how many visitors will be in one day, it&rsquo;s easier for them to make the arrangement. However, forecasting the number of visits is hard because it might be influenced by countless factors  (eg weather, holiday, and location). It&rsquo;s even harder for new restaurants with little historical data to make accurate predictions.</p>
 <p>We are going to use reservation and visitation data to predict the total number of visitors to a restaurant for future dates. This information will help restaurants be more efficient and allow them to focus on creating an enjoyable dining experience for their customers.</p>
@@ -216,65 +212,54 @@ If restaurants can predict how many visitors will be in one day, it&rsquo;s easi
 <p>Note that the test set intentionally spans a holiday week in Japan called the <code>Golden Week</code>.&rdquo; Also there are days in both training and test set where the restaurant were closed and had no visitors. The training set omits days where the restaurants were closed, and in testing set, they are ignored in scoring.</p>
 <h3 id="file-descriptions">File Descriptions</h3>
 <p>As mentioned above, there are datasets from two separate systems. Each file is prefaced with the source (either<code>air</code> or <code>hpg</code>) to indicate its origin. Each restaurant is associated with a unique <code>air_store_id</code> and <code>hpg_store_id</code>. Note that not all restaurants are covered by both systems, and that we have been provided data beyond restaurants for which we make predictions on. Latitudes and Longitudes are not exact to discourage de-identification of restaurants. (The file description details are from the <a href="https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/data" target="_blank" rel="noopener noreffer">website</a> introduction)</p>
-<p><strong>air_reserve.csv</strong></p>
-<p>This file contains reservations made in the air system.</p>
+<ol>
+<li><strong>air_reserve.csv</strong> This file contains reservations made in the air system.</li>
+</ol>
 <ul>
 <li><code>air_store_id</code> - the restaurant&rsquo;s id in the air system</li>
 <li><code>visit_datetime</code> - the date and time of the visit for the reservation</li>
 <li><code>reserve_datetime</code> - the date and time a reservation was made</li>
 <li><code>reserve_visitors</code> - the number of visitors for that reservation</li>
 </ul>
-<p><strong>hpg_reserve.csv</strong></p>
-<p>This file contains reservations made in the hpg system.</p>
+<ol start="2">
+<li><strong>hpg_reserve.csv</strong> This file contains reservations made in the hpg system.</li>
+</ol>
 <ul>
 <li><code>hpg_store_id</code> - the restaurant&rsquo;s id in the hpg system</li>
 <li><code>visit_datetime</code> - the date and time of visit for the reservation</li>
 <li><code>reserve_datetime</code> - the date and time a reservation was made</li>
 <li><code>reserve_visitors</code> - the number of visitors for that reservation</li>
 </ul>
-<p><strong>air_store_info.csv</strong></p>
-<p>This file contains stores information in the air system. Column names and contents are self-explanatory. Note the latitude and longitude are geographical information of the area to which the store belongs.</p>
-<ul>
-<li><code>air_store_id</code></li>
-<li><code>air_genre_name</code></li>
-<li><code>air_area_name</code></li>
-<li><code>latitude</code></li>
-<li><code>longitude</code></li>
-</ul>
-<p><strong>hpg_store_info.csv</strong></p>
-<p>This file contains stores information in the hpg system. Column names and contents are self-explanatory. Note: latitude and longitude are the latitude and longitude of the area to which the store belongs.</p>
-<ul>
-<li><code>hpg_store_id</code></li>
-<li><code>hpg_genre_name</code></li>
-<li><code>hpg_area_name</code></li>
-<li><code>latitude</code></li>
-<li><code>longitude</code></li>
-</ul>
-<p><strong>store_id_relation.csv</strong></p>
-<p>This file allows you to join select restaurants that have both the air and hpg system. ‌</p>
-<ul>
-<li><code>hpg_store_id</code></li>
-<li><code>air_store_id</code></li>
-</ul>
-<p><strong>air_visit_data.csv</strong></p>
-<p>This file contains historical visit data for the air restaurants.</p>
+<ol start="3">
+<li><strong>air_store_info.csv</strong> This file contains stores information in the air system. Column names and contents are self-explanatory. Note the latitude and longitude are geographical information of the area to which the store belongs.</li>
+</ol>
+<p><code>air_store_id</code>, <code>air_genre_name</code>, <code>air_area_name</code>, <code>latitude</code>, <code>longitude</code></p>
+<p><strong>4. hpg_store_info.csv</strong> This file contains stores information in the hpg system. Column names and contents are self-explanatory. Note: latitude and longitude are the latitude and longitude of the area to which the store belongs.</p>
+<p><code>hpg_store_id</code></p>
+<p><code>hpg_genre_name</code></p>
+<p><code>hpg_area_name</code></p>
+<p><code>latitude</code></p>
+<p><code>longitude</code></p>
+<ol start="5">
+<li>
+<p><strong>store_id_relation.csv</strong> This file allows you to join select restaurants that have both the air and hpg system. ‌</p>
+</li>
+<li>
+<p><strong>air_visit_data.csv</strong> This file contains historical visit data for the air restaurants.</p>
+</li>
+</ol>
 <ul>
 <li><code>air_store_id</code></li>
 <li><code>visit_date</code> - the date</li>
 <li><code>visitors</code> - the number of visitors to the restaurant on the date</li>
 </ul>
-<p><strong>date_info.csv</strong></p>
-<p>This file shows a submission in the correct format, including the days for which you must forecast.</p>
+<ol start="7">
+<li><strong>date_info.csv</strong> This file shows a submission in the correct format, including the days for which you must forecast.</li>
+</ol>
 <ul>
 <li><code>calendar_date</code></li>
 <li><code>day_of_week</code></li>
 <li><code>holiday_flg</code> - is the day a holiday in Japan</li>
-</ul>
-<p><strong>sample_submission.csv</strong></p>
-<p>This file shows a submission in the correct format, including the days for which you must forecast.</p>
-<ul>
-<li><code>id</code> - the id is formed by concatenating the air_store_id and visit_date with an underscore</li>
-<li><code>visitors</code>- the number of visitors forecasted for the store and date combination</li>
 </ul>
 <h3 id="model-summary">Model Summary</h3>
 <table>
@@ -711,7 +696,6 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 <span class="n">t_minus</span> <span class="o">=</span> <span class="n">t_minus</span><span class="p">[:,:,</span><span class="mi">1</span><span class="p">:]</span>
 <span class="k">print</span> <span class="p">(</span><span class="s2">&#34;t_minus shape&#34;</span><span class="p">,</span> <span class="n">t_minus</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-
 <span class="c1"># split X_all into training and test data</span>
 <span class="n">X_lstm</span> <span class="o">=</span> <span class="n">X_all_lstm</span><span class="p">[:,:</span><span class="o">-</span><span class="n">n_test_dates</span><span class="p">,:]</span>
 <span class="n">X_lstm_test</span> <span class="o">=</span> <span class="n">X_all_lstm</span><span class="p">[:,</span><span class="o">-</span><span class="n">n_test_dates</span><span class="p">:,:]</span>
@@ -725,7 +709,7 @@ After looking at the plot below, we are doubtful that restaurant type plays much
 
 <span class="n">X_val</span> <span class="o">=</span> <span class="n">X_lstm</span><span class="p">[:,</span><span class="o">-</span><span class="mi">140</span><span class="p">:,:]</span>
 <span class="n">Y_val</span> <span class="o">=</span> <span class="n">Y_lstm</span><span class="p">[:,</span><span class="o">-</span><span class="mi">140</span><span class="p">:,:]</span>
-</code></pre></div><h4 id="model"><strong>Model</strong></h4>
+</code></pre></div><h4 id="model">Model</h4>
 <p><strong>1) Model Structure Building</strong></p>
 <p>The encoder takes input features of 39 days (t<em>1, t</em>2 … t39) and encode their hidden states through LSTM neural network. Then it pass the hidden states to decoder. Decoder use them with the features of 39 days shifted 1 day forward (t<em>2, t</em>3 … T40) to predict number of visitors per each of 829 restaurants in t_40.</p>
 <p>Methods used to address overfitting: we applied dropout and recurrent dropout regularization in all RNN layers and adjust the epoch size to prevent overfitting.</p>
@@ -976,8 +960,6 @@ a_i is the actual number of visitors</p>
 <p>To address the limitations of our predictive models, we could focus on the following dimensions to improve model performance.</p>
 <p><strong>Feature Improvement</strong></p>
 <p>We could pay more attention to feature engineering. We could include weather data in our model since the weather condition is likely to affect restaurant traffic.  In addition, the distance of a restaurant to the busiest area might also contribute to the prediction of visiting frequency. Restaurants in busy areas are likely to have more traffic than those in suburb areas.  We could also improve upon the feature selection process. The light GBM method provides the  importance of each feature. Using this information, we are able to either remove unimportant features or add additional features that are similar to important features.</p>
-<p><strong>Modeling Improvement</strong></p>
-<p>We also could improve the modeling process. In order to improve the performance of RNN models such as LSTM, we could choose to apply attention mechanisms to current RNN models. Besides, when using ensembling method, we could try to combine more diverse models so that the performance of ensembling model is better than the performance of individual models.</p>
 <p><strong>Expand the Timespan</strong></p>
 <p>Our current model is trained on data of 2-year time period. If we are able to collect data of longer time span and train our model on the enriched dataset, our model might be able to generate more accurate predictions.</p>
 <p><img
@@ -988,7 +970,8 @@ a_i is the actual number of visitors</p>
         data-sizes="auto"
         alt="https://images.unsplash.com/photo-1557395714-5177be073e2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1587&q=80"
         title="https://images.unsplash.com/photo-1557395714-5177be073e2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1587&q=80" /></p>
-<h2 id="references">References</h2>
+<hr>
+<p>References</p>
 <p><a href="https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html">https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html</a>
 <a href="https://github.com/Arturus/kaggle-web-traffic">https://github.com/Arturus/kaggle-web-traffic</a>
 <a href="https://github.com/MaxHalford/kaggle-recruit-restaurant/blob/master/Solution.ipynb">https://github.com/MaxHalford/kaggle-recruit-restaurant/blob/master/Solution.ipynb</a>

@@ -35,7 +35,7 @@
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "neural network, classification, transfer learning","wordcount":  1425 ,
+            },"genre": "posts","keywords": "neural network, classification, transfer learning","wordcount":  1414 ,
         "url": "https:\/\/hyper-potato.github.io\/2019-11-28-cat-or-dog-classification-dnn\/","datePublished": "2019-11-28T00:00:00+00:00","dateModified": "2019-11-28T00:00:00+00:00","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -144,8 +144,8 @@
         </div><div class="featured-image"><img
         class="lazyload"
         src="/svg/loading/normal.min.svg"
-        data-src="/images/post-cat-dog.jpg"
-        data-srcset="/images/post-cat-dog.jpg, /images/post-cat-dog.jpg 1.5x, /images/post-cat-dog.jpg 2x"
+        data-src="/images/cat-dog/post-cat-dog.jpg"
+        data-srcset="/images/cat-dog/post-cat-dog.jpg, /images/cat-dog/post-cat-dog.jpg 1.5x, /images/cat-dog/post-cat-dog.jpg 2x"
         data-sizes="auto"
         alt="Binary Image Classification with Keras and Transfer Learning"
         title="Binary Image Classification with Keras and Transfer Learning" /></div><div class="details toc" id="toc-static">
@@ -454,13 +454,7 @@ _________________________________________________________________
                               <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div><h3 id="performance-of-transfer-learning-model">Performance of transfer learning model</h3>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
-</code></pre></div><pre><code>5000/5000 [==============================] - 7s 1ms/step
-
-
-
-
-
-[0.27564358766500857, 0.9672]
+</code></pre></div><pre><code>[0.27564358766500857, 0.9672]
 </code></pre>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">model_transfer</span><span class="o">.</span><span class="n">save_weights</span><span class="p">(</span><span class="s1">&#39;model_transfer_weights.h5&#39;</span><span class="p">)</span>
 <span class="n">model_transfer</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;model_transfer.h5&#39;</span><span class="p">)</span>
@@ -485,7 +479,8 @@ _________________________________________________________________
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div><img src='/images/cat-dog/output_33_0.png'>
 <h2 id="test">Test</h2>
-<p>We will convert the predict category back into our generator classes by using train_generator.class_indices. It is the classes that image generator map while converting data into computer vision</p>
+<img src='/images/cat-dog/691562942251.jpeg' width = '400'>
+<p>We will convert the predict category back into our generator classes by using train_generator.class_indices. It is the classes that image generator map while converting data into computer vision.</p>
 <div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">test_images</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">test_filenames</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">test_dir</span><span class="p">):</span>
@@ -531,15 +526,6 @@ _________________________________________________________________
 <img src='/images/cat-dog/output_41_9.png' width="200">
 <pre><code>I am 100.000% sure this is a Dog
 </code></pre>
-<p>My submission and score on Kaggle:
-<img
-        class="lazyload"
-        src="/svg/loading/small.min.svg"
-        data-src="https://i.loli.net/2019/11/24/9mMD6XVxj82ckqT.png"
-        data-srcset="https://i.loli.net/2019/11/24/9mMD6XVxj82ckqT.png, https://i.loli.net/2019/11/24/9mMD6XVxj82ckqT.png 1.5x, https://i.loli.net/2019/11/24/9mMD6XVxj82ckqT.png 2x"
-        data-sizes="auto"
-        alt="image.png"
-        title="image.png" /></p>
 <p>codes available on <a href="https://github.com/hyper-potato/cat-or-dog-deep-learning-keras" target="_blank" rel="noopener noreffer">GitHub</a></p>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">

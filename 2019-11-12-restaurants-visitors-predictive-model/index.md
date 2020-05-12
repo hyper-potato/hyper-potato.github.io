@@ -3,10 +3,6 @@
 
 
 
-**For Suckers for Sashimi Like Me!**
-
-
-
 ## 1. Project Definition & Introduction
 
 When someone opens a restaurant, their focus is likely on making high-quality food that will make their customers happy. However, this does not cover all the problems they encounter. How do they effectively schedule the staff? How do they know the quantity of ingredients to order? If restaurants cannot solve these problems, their business will be hurt.
@@ -36,73 +32,49 @@ Note that the test set intentionally spans a holiday week in Japan called the `G
 
 As mentioned above, there are datasets from two separate systems. Each file is prefaced with the source (either`air` or `hpg`) to indicate its origin. Each restaurant is associated with a unique `air_store_id` and `hpg_store_id`. Note that not all restaurants are covered by both systems, and that we have been provided data beyond restaurants for which we make predictions on. Latitudes and Longitudes are not exact to discourage de-identification of restaurants. (The file description details are from the [website](https://www.kaggle.com/c/recruit-restaurant-visitor-forecasting/data) introduction)
 
-**air_reserve.csv**
-
-This file contains reservations made in the air system.
+1. **air_reserve.csv** This file contains reservations made in the air system.
 
 - `air_store_id` - the restaurant's id in the air system
 - `visit_datetime` - the date and time of the visit for the reservation
 - `reserve_datetime` - the date and time a reservation was made
 - `reserve_visitors` - the number of visitors for that reservation
 
-**hpg_reserve.csv**
-
-This file contains reservations made in the hpg system.
+2. **hpg_reserve.csv** This file contains reservations made in the hpg system.
 
 - `hpg_store_id` - the restaurant's id in the hpg system
 - `visit_datetime` - the date and time of visit for the reservation
 - `reserve_datetime` - the date and time a reservation was made
 - `reserve_visitors` - the number of visitors for that reservation
 
-**air_store_info.csv**
+3. **air_store_info.csv** This file contains stores information in the air system. Column names and contents are self-explanatory. Note the latitude and longitude are geographical information of the area to which the store belongs.
 
-This file contains stores information in the air system. Column names and contents are self-explanatory. Note the latitude and longitude are geographical information of the area to which the store belongs.
+`air_store_id`, `air_genre_name`, `air_area_name`, `latitude`, `longitude`
 
-* `air_store_id`
-* `air_genre_name`
-* `air_area_name`
-* `latitude`
-* `longitude`
+**4. hpg_store_info.csv** This file contains stores information in the hpg system. Column names and contents are self-explanatory. Note: latitude and longitude are the latitude and longitude of the area to which the store belongs.
 
-**hpg_store_info.csv**
+`hpg_store_id`
 
-This file contains stores information in the hpg system. Column names and contents are self-explanatory. Note: latitude and longitude are the latitude and longitude of the area to which the store belongs.
+`hpg_genre_name`
 
-* `hpg_store_id`
-* `hpg_genre_name`
-* `hpg_area_name`
-* `latitude`
-* `longitude`
+`hpg_area_name`
 
-**store_id_relation.csv**
+`latitude`
 
-This file allows you to join select restaurants that have both the air and hpg system. ‌
+`longitude`
 
-* `hpg_store_id`
-* `air_store_id`
+5. **store_id_relation.csv** This file allows you to join select restaurants that have both the air and hpg system. ‌
 
-**air_visit_data.csv**
-
-This file contains historical visit data for the air restaurants.
+6. **air_visit_data.csv** This file contains historical visit data for the air restaurants.
 
 * `air_store_id`
 * `visit_date` - the date
 * `visitors` - the number of visitors to the restaurant on the date
 
-**date_info.csv**
-
-This file shows a submission in the correct format, including the days for which you must forecast.
+7. **date_info.csv** This file shows a submission in the correct format, including the days for which you must forecast.
 
 * `calendar_date`
 * `day_of_week`
 * `holiday_flg` - is the day a holiday in Japan
-
-**sample_submission.csv**
-
-This file shows a submission in the correct format, including the days for which you must forecast.
-
-* `id` - the id is formed by concatenating the air_store_id and visit_date with an underscore
-* `visitors`- the number of visitors forecasted for the store and date combination
 
 
 
@@ -586,8 +558,6 @@ df_to_reshape[columns_list] = scaler.transform(df_to_reshape[columns_list])
 
 **5) Reshape data structure for Neural Network and Encoder/Decoder**
 
-
-
 ```python
 # reshape X into (samples, timesteps, features)
 X_all_lstm = df_to_reshape.values[:,2:].reshape(len(ids),
@@ -628,7 +598,6 @@ for i in range(1,8):
 t_minus = t_minus[:,:,1:]
 print ("t_minus shape", t_minus.shape)
 
-
 # split X_all into training and test data
 X_lstm = X_all_lstm[:,:-n_test_dates,:]
 X_lstm_test = X_all_lstm[:,-n_test_dates:,:]
@@ -648,7 +617,7 @@ Y_val = Y_lstm[:,-140:,:]
 
 
 
-#### **Model**
+#### Model
 
 **1) Model Structure Building**
 
@@ -939,10 +908,6 @@ To address the limitations of our predictive models, we could focus on the follo
 
 We could pay more attention to feature engineering. We could include weather data in our model since the weather condition is likely to affect restaurant traffic.  In addition, the distance of a restaurant to the busiest area might also contribute to the prediction of visiting frequency. Restaurants in busy areas are likely to have more traffic than those in suburb areas.  We could also improve upon the feature selection process. The light GBM method provides the  importance of each feature. Using this information, we are able to either remove unimportant features or add additional features that are similar to important features.
 
-**Modeling Improvement**
-
-We also could improve the modeling process. In order to improve the performance of RNN models such as LSTM, we could choose to apply attention mechanisms to current RNN models. Besides, when using ensembling method, we could try to combine more diverse models so that the performance of ensembling model is better than the performance of individual models.
-
 **Expand the Timespan**
 
 Our current model is trained on data of 2-year time period. If we are able to collect data of longer time span and train our model on the enriched dataset, our model might be able to generate more accurate predictions.
@@ -951,7 +916,9 @@ Our current model is trained on data of 2-year time period. If we are able to co
 
 ![](https://images.unsplash.com/photo-1557395714-5177be073e2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1587&q=80)
 
-## References
+---
+
+References
 
 https://blog.keras.io/a-ten-minute-introduction-to-sequence-to-sequence-learning-in-keras.html
 https://github.com/Arturus/kaggle-web-traffic

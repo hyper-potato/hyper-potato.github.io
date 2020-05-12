@@ -331,11 +331,11 @@ Effect X(treatment) on Y: We believe that changing x by some amount, Y will chan
 
 Interaction effect: We believe the causal relationship between X and Y depends on the magnitude of Z.
 
-<img src="/images/Causal Inference-2.jpg" style="zoom:20%;" />
+<img src="/images/causal-inference/Causal Inference-2.jpg" style="zoom:20%;" />
 
 
 
-<img src="/assets/Causal Inference-3.jpg" style="zoom:20%;" />
+<img src="/images/causal-inference/Causal Inference-3.jpg" style="zoom:20%;" />
 
 In this case, for question 2, we should use interaction effect even though the question is imbiguous to start with. I not only care about the effect of showing an advertising versus a charitable advertising on purchase, but also how does the strength of effect depends on how frequently I show you the advertising.
 
@@ -365,7 +365,7 @@ What if we omit $\beta_1 X$ term?
 
 
 
-<img src="/assets/img/Causal Inference-4.jpg" style="zoom:33%;" />
+<img src="/images/causal-inference/Causal Inference-4.jpg" style="zoom:33%;" />
 
 
 
@@ -390,7 +390,7 @@ Describing changes in odds, not probability: One unit change in X, leads to one 
 
 When we want to convert it back, we want a baseline conversion probability. In this particular case, we can get that conversion probability in the control group.
 
-<img src="/assets/img/log_odds.png" style="zoom:20%;" />
+<img src="/images/causal-inference/log_odds.png" style="zoom:20%;" />
 
 ### Marginal effect of logistic regression
 
