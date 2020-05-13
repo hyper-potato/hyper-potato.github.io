@@ -5,7 +5,7 @@
 
 This person is currently..Is currently…
 
-- :walking_woman:: Lightning Wires
+- :walking_woman:: Roaming around
 
 - :woman_cook:: Burning the kitchen
 - 📺: Babylon Berlin
@@ -20,7 +20,7 @@ I'm a graduate student from University of Minnesota (Class 2020). This blog is t
 
 <img src="pi.jpeg" width="300" >
 
-~~Roaming around.~~
+
 
 <br>
 
