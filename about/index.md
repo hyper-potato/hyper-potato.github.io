@@ -3,14 +3,15 @@
 
 # Nina.
 
-This person is currently..Is currently…
+This person is currently...
 
-- :walking_woman:: Roaming around
+🚶‍♀️: Roaming around
 
-- :woman_cook:: Burning the kitchen
-- 📺: Babylon Berlin
+👩‍🍳: Burning the kitchen
 
+📺 : Babylon Berlin
 
+<br>
 
 I'm a graduate student from University of Minnesota (Class 2020). This blog is to document my 🎒analytics study journey, and mostly, shower thoughts. Read with caution. 
 
@@ -28,7 +29,7 @@ I'm a graduate student from University of Minnesota (Class 2020). This blog is t
 
 ### So... how was this site built?
 
-With blood and tears. :grimacing:
+With blood and tears. 😬
 
 This is a ~~[Jekyll](http://jekyllrb.com/)~~ [Hugo](https://gohugo.io/) site, hosted on [GitHub Pages](https://pages.github.com/). I am working on migrating it to [Netlify](https://www.netlify.com/) though. It was built  after months of procrastination and hours upon hours of pressing ⌘-⇧-R, resizing windows ploughing through documentation, googling and of course, some actual coding. 
 
