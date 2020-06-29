@@ -1,24 +1,26 @@
 ---
 layout:     post
-title:      Predictive models on used car evaluation
-subtitle:   Hit the road
+title:      Beginner's guide for predictive models 
+subtitle:   on used car evaluation 
 date:       2019-10-06
 author:     Nina
-featuredImage: "/images/patrick-tomasso-QMDap1TAu0g-unsplash.jpg"
+featuredImage: "/images/car_value/patrick-tomasso-QMDap1TAu0g-unsplash.jpg"
 toc:
   enable: true
   auto: true
 tags: ["classification", "machine learning"]
-categories: [machine learning, predictive modeling]
+categories: [Machine learning]
 ---
 
 
 
-In this post, I will deploy decision tree, k-NN, logistic regression, NB, SVM to predict the evaluation of the cars based on their characteristics.
+In this post, I will apply decision tree, k-NN, SVM to predict the evaluation of the cars based on their characteristics. Dataset is from [UCI ML Repository](https://archive.ics.uci.edu/ml/datasets/Car+Evaluation).
 
 More specifically, I will explore how well these techniques perform for several different parameter values.
 
 Present a brief overview of the predictive modeling process, explorations, and discuss my results. Then I will present the final model and discuss its performance in a comprehensive manner (overall accuracy; per-class performance, i.e., whether this model predicts all classes equally well, or if there some classes for which it does much better than others; etc.)
+
+Let's hit the road. 
 
 ## Data Exploration
 
@@ -50,8 +52,6 @@ cars = pd.read_csv('car.data', names =  ['buying', 'maint', 'doors','capacity','
 #Taking an overview of data
 cars.sample(10)
 ```
-
-
 
 
 <div>
@@ -307,7 +307,7 @@ sns.countplot(cars['class'])
 
 
 
-![png](/assets/img/car_value/output_11_1.png)
+![png](/images/car_value/output_11_1.png)
 
 
 As we can see, our target varible is highly skewed
@@ -408,7 +408,7 @@ buy.plot.bar(stacked=True)
 
 
 
-![png](/assets/img/car_value/output_17_1.png)
+![png](/images/car_value/output_17_1.png)
 
 
 
@@ -417,7 +417,7 @@ maint.plot.bar(stacked=True)
 ```
 
 
-![png](/assets/img/car_value/output_18_1.png)
+![png](/images/car_value/output_18_1.png)
 
 
 
@@ -427,7 +427,7 @@ drs.plot(kind='bar',stacked=True)
 
 
 
-![png](/assets/img/car_value/output_19_1.png)
+![png](/images/car_value/output_19_1.png)
 
 
 
@@ -438,7 +438,7 @@ sfty.plot.bar(stacked=True)
 
 
 
-![png](/assets/img/car_value/output_20_1.png)
+![png](/images/car_value/output_20_1.png)
 
 ## Encoding and Data Spliting
 
@@ -475,8 +475,8 @@ ax=sns.heatmap(cars1.corr(),center=0,vmax=.3,cmap="YlGnBu",
 ![output_24_1.png](https://i.loli.net/2020/02/27/21gvpwnOc6FZaQ4.png)
 
 
-Ignoring the diagonal values, it can be seen that most of the columns shows very weak correlation with 'class'.
-'safety' column is having a correlation with 'class'.
+
+Ignoring the diagonal values, it can be seen that most of the columns shows very weak correlation with 'class'. 'safety' column is having a correlation with 'class'.
 
 
 ```python
@@ -508,233 +508,7 @@ X3_train, X3_test, y3_train, y3_test = train_test_split(X3, y3, test_size = 0.3,
 
 ## Model Building
 
-
-```python
-import warnings
-import sklearn.exceptions
-warnings.filterwarnings("ignore", category=sklearn.exceptions.UndefinedMetricWarning)
-```
-
-## Logistic Regression
-
-### Tuning parameter - GridSearchCV
-
-
-```python
-from sklearn.metrics import classification_report
-from sklearn.model_selection import GridSearchCV
-
-from sklearn.linear_model import LogisticRegression
-
-# Set the parameters by cross-validation
-parameters = [{'C': np.logspace(-5, 6, 15)}]
-
-logistic = LogisticRegression(solver='newton-cg', penalty='l2') # when 'car class' is not binary
-
-scores = ['precision', 'recall']
-
-for score in scores:
-    print("# Tuning hyper-parameters for %s\n" % score)
-
-    lg_gscv = GridSearchCV(logistic, parameters, cv=5, scoring='%s_micro' % score)
-    lg_gscv.fit(X1_train, y1_train)
-
-    print("Best parameters set found on development set:\n")
-
-    print(lg_gscv.best_params_)
-    print("\nGrid scores on development set:\n")
-
-    means = lg_gscv.cv_results_['mean_test_score']
-    stds = lg_gscv.cv_results_['std_test_score']
-
-    print("\nDetailed classification report:")
-    print("\nThe model is trained on the full development set.")
-    print("\nThe scores are computed on the full evaluation set.\n")
-
-    y_true, y_pred = y1_test, lg_gscv.predict(X1_test)
-    print(classification_report(y_true, y_pred))
-```
-
-    # Tuning hyper-parameters for precision
-    
-    Best parameters set found on development set:
-    
-    {'C': 19.306977288832496}
-    
-    Grid scores on development set:
-
-
-​    
-​    Detailed classification report:
-​    
-​    The model is trained on the full development set.
-​    
-​    The scores are computed on the full evaluation set.
-​    
-​                  precision    recall  f1-score   support
-​    
-​               1       0.87      0.95      0.91       358
-​               2       0.62      0.58      0.60       118
-​               3       0.50      0.21      0.30        19
-​               4       0.83      0.42      0.56        24
-​    
-​        accuracy                           0.81       519
-​       macro avg       0.71      0.54      0.59       519
-​    weighted avg       0.80      0.81      0.80       519
-​    
-​    # Tuning hyper-parameters for recall
-​    
-​    Best parameters set found on development set:
-
-    {'C': 19.306977288832496}
-    
-    Grid scores on development set:
-
-
-​    
-​    Detailed classification report:
-​    
-​    The model is trained on the full development set.
-​    
-​    The scores are computed on the full evaluation set.
-​    
-​                  precision    recall  f1-score   support
-​    
-​               1       0.87      0.95      0.91       358
-​               2       0.62      0.58      0.60       118
-​               3       0.50      0.21      0.30        19
-​               4       0.83      0.42      0.56        24
-​    
-​        accuracy                           0.81       519
-​       macro avg       0.71      0.54      0.59       519
-​    weighted avg       0.80      0.81      0.80       519
-
-
-
-
-```python
-from sklearn.model_selection import cross_val_score, validation_curve
-
-print("Cross-Validation Score :{0:.3f}".format(np.mean(cross_val_score(lg_gscv.best_estimator_, X1, y1, cv=5))))
-```
-
-    Cross-Validation Score :0.778
-
-
-For C value, use a wider range of np.logspace(-5, 6, 15) to get a rough value, which ends up with 19 in this case. Then zoom in to a narrower range of C = np.linspace(20,40, num=15) to find a better value. Let's look at the validation curve to find a final C in the model.
-
-### Tuning parameter - Validation curve
-
-
-```python
-from sklearn.model_selection import cross_val_score, validation_curve
-
-C=np.linspace(1,30, num=30)
-curve = validation_curve(logistic,X1_train,y1_train, cv=5,param_name='C',param_range=C)
-
-n=len(C)
-train_score=[curve[0][i].mean() for i in range (0,n)]
-test_score=[curve[1][i].mean() for i in range (0,n)]
-
-fig=plt.figure(figsize=(8,6))
-#plt.ylim(.85,.9)
-plt.plot(C,train_score,color='blue', label='training')
-plt.plot(C,test_score,color='orange', label='testing')
-plt.legend()
-plt.xticks=C
-plt.title('validation_curve with different C')
-```
-
-
-
-
-    Text(0.5, 1.0, 'validation_curve with different C')
-
-
-
-
-![png](/assets/img/car_value/output_37_1.png)
-
-
-### Fit the model
-
-
-```python
-from sklearn.metrics import precision_recall_fscore_support, f1_score,confusion_matrix
-# Multi-class
-lgc=LogisticRegression(solver='newton-cg',C=15)
-lgc.fit(X1_train,y1_train)
-y1_pred = lgc.predict(X1_test)
-
-f1_LR = f1_score(y1_test,y1_pred, average='micro')
-
-print("Training Accuracy: ",lgc.score(X1_train, y1_train))
-print("Testing Accuracy: ", lgc.score(X1_test, y1_test))
-print("Cross-Validation Score :{0:.3f}".format(np.mean(cross_val_score(lgc, X1, y1, cv=5))))
-
-cm = confusion_matrix(y1_test, y1_pred)
-print(cm)
-print(classification_report(y1_test,y1_pred))
-```
-
-    Training Accuracy:  0.8354011579818031
-    Testing Accuracy:  0.8111753371868978
-    Cross-Validation Score :0.778
-    [[340  14   2   2]
-     [ 48  68   2   0]
-     [  1  15   3   0]
-     [  0  14   0  10]]
-                  precision    recall  f1-score   support
-    
-               1       0.87      0.95      0.91       358
-               2       0.61      0.58      0.59       118
-               3       0.43      0.16      0.23        19
-               4       0.83      0.42      0.56        24
-    
-        accuracy                           0.81       519
-       macro avg       0.69      0.53      0.57       519
-    weighted avg       0.80      0.81      0.80       519
-
-
-
-
-```python
-from sklearn.model_selection import learning_curve
-
-plt.figure()
-plt.xlabel("Training examples")
-plt.ylabel("Score")
-train_sizes, train_scores, test_scores = learning_curve(
-        lgc, X1_train, y1_train, cv=5,n_jobs=1)
-
-train_scores_mean = np.mean(train_scores, axis=1)
-train_scores_std = np.std(train_scores, axis=1)
-test_scores_mean = np.mean(test_scores, axis=1)
-test_scores_std = np.std(test_scores, axis=1)
-
-plt.grid()
-plt.title("Learning Curves (Logistic regression, C=15)")
-plt.fill_between(train_sizes, train_scores_mean - train_scores_std,
-                     train_scores_mean + train_scores_std, alpha=0.1,
-                     color="r")
-plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
-                     test_scores_mean + test_scores_std, alpha=0.1, color="g")
-plt.plot(train_sizes, train_scores_mean, 'o-', color="r",label="Training score")
-plt.plot(train_sizes, test_scores_mean, 'o-', color="g", label="Cross-validation score")
-
-plt.legend(loc="best")
-
-
-plt.show()
-```
-
-
-![png](/assets/img/car_value/output_40_0.png)
-
-
-## K-NN
-
-### Hypertuning using GridSearchCV
+### KNN
 
 
 ```python
@@ -749,7 +523,6 @@ from sklearn.neighbors import KNeighborsClassifier
 param_grid = {'n_neighbors': np.arange(1,15)}
 
 scores = ['precision', 'recall']
-
 for score in scores:
     print("# Tuning hyper-parameters for %s" % score)
     print()
@@ -771,27 +544,9 @@ for score in scores:
 
     y_true, y_pred = y1_test, knn_gscv.predict(X1_test)
     print(classification_report(y_true, y_pred))
-    print()
 ```
 
-    # Tuning hyper-parameters for precision
-    
-    Best parameters set found on development set:
-    
-    {'n_neighbors': 5}
-    
-    Grid scores on development set:
-
-
-​    Detailed classification report:
-​    
-​    The model is trained on the full development set.
-​    
-​    The scores are computed on the full evaluation set.
-​    
-​                  precision    recall  f1-score   support
-​    
-
+               		precision    recall  f1-score   support
                1       0.97      0.99      0.98       358
                2       0.90      0.88      0.89       118
                3       0.78      0.74      0.76        19
@@ -800,38 +555,6 @@ for score in scores:
         accuracy                           0.94       519
        macro avg       0.88      0.82      0.85       519
     weighted avg       0.94      0.94      0.94       519
-
-
-​    
-​    # Tuning hyper-parameters for recall
-​    
-​    Best parameters set found on development set:
-​    
-​    {'n_neighbors': 5}
-​    
-​    Grid scores on development set:
-
-
-​    
-​    Detailed classification report:
-​    
-​    The model is trained on the full development set.
-​    
-​    The scores are computed on the full evaluation set.
-​    
-​                  precision    recall  f1-score   support
-​    
-​               1       0.97      0.99      0.98       358
-​               2       0.90      0.88      0.89       118
-​               3       0.78      0.74      0.76        19
-​               4       0.89      0.67      0.76        24
-​    
-​        accuracy                           0.94       519
-​       macro avg       0.88      0.82      0.85       519
-​    weighted avg       0.94      0.94      0.94       519
-
-
-​    
 
 
 
@@ -848,24 +571,17 @@ plt.plot(range(2,15),avg_score)
 plt.xlabel("n_neighbours")
 plt.ylabel("accuracy")
 plt.title("K value vs Accuracy Plot")
-
-#plt.xticks(range(2,30,2))
 ```
 
 
 
 
-    Text(0.5, 1.0, 'K value vs Accuracy Plot')
-
-
-
-
-![png](/assets/img/car_value/output_44_1.png)
+![png](/images/car_value/output_44_1.png)
 
 
 Both grid search cross validation and plot show that neighbor = 5 is a potential good hyperparameter.
 
-### Fit the model
+
 
 
 ```python
@@ -880,36 +596,13 @@ f1_KNN = f1_score(y1_test,y1_pred, average='micro')
 print("Training Accuracy: ",knn.score(X1_train, y1_train))
 print("Testing Accuracy: ", knn.score(X1_test, y1_test))
 print("Cross-Validation Score :{0:.3f}".format(np.mean(cross_val_score(knn, X1, y1, cv=5))))
-cm = confusion_matrix(y1_test, y1_pred)
-print('\n',cm,'\n')
-print(classification_report(y1_test,y1_pred))
 ```
 
     Training Accuracy:  0.9818031430934657
     Testing Accuracy:  0.9421965317919075
     Cross-Validation Score :0.813
-    
-     [[355   3   0   0]
-     [ 12 104   1   1]
-     [  0   4  14   1]
-     [  0   5   3  16]]
-    
-                  precision    recall  f1-score   support
-    
-               1       0.97      0.99      0.98       358
-               2       0.90      0.88      0.89       118
-               3       0.78      0.74      0.76        19
-               4       0.89      0.67      0.76        24
-    
-        accuracy                           0.94       519
-       macro avg       0.88      0.82      0.85       519
-    weighted avg       0.94      0.94      0.94       519
 
-
-
-## SVM
-
-### Grid Search
+### SVM Grid Search
 
 
 ```python
@@ -926,7 +619,6 @@ parameters = [{'kernel': ['rbf'],
                'C': [0.1,  1, 10, 100, 1000]}]
 
 scores = ['precision', 'recall']
-
 for score in scores:
     print("# Tuning hyper-parameters for %s" % score)
     print()
@@ -942,18 +634,12 @@ for score in scores:
 
     means = svc_gscv.cv_results_['mean_test_score']
     stds = svc_gscv.cv_results_['std_test_score']
- #   for mean, std, params in zip(means, stds, svc_gscv.cv_results_['params']):
-        #print("%0.3f (+/-%0.03f) for %r" % (mean, std * 2, params))
-
-
     print("\nDetailed classification report:")
     print("\nThe model is trained on the full development set.")
     print("\nThe scores are computed on the full evaluation set.\n")
 
     y_true, y_pred = y1_test, svc_gscv.predict(X1_test)
     print(classification_report(y_true, y_pred))
-    print()
-
 ```
 
     # Tuning hyper-parameters for precision
@@ -963,60 +649,44 @@ for score in scores:
     {'C': 100, 'gamma': 0.1, 'kernel': 'rbf'}
     
     Grid scores on development set:
+    
+    Detailed classification report:
+        
+        The model is trained on the full development set.
+        
+        The scores are computed on the full evaluation set.
+        
+                      precision    recall  f1-score   support
+        
+                   1       0.99      0.99      0.99       358
+                   2       0.96      0.95      0.95       118
+                   3       0.85      0.89      0.87        19
+                   4       0.92      0.92      0.92        24
+        
+            accuracy                           0.97       519
+           macro avg       0.93      0.94      0.93       519
+        weighted avg       0.98      0.97      0.98       519
+    
+    # Tuning hyper-parameters for recall   
+        Best parameters set found on development set:    
+        {'C': 100, 'gamma': 0.1, 'kernel': 'rbf'}
+     
+     Grid scores on development set:
+      
+     Detailed classification report:
+                      precision    recall  f1-score   support
+                   1       0.99      0.99      0.99       358
+                   2       0.96      0.95      0.95       118
+                   3       0.85      0.89      0.87        19
+                   4       0.92      0.92      0.92        24
+        
+            accuracy                           0.97       519
+           macro avg       0.93      0.94      0.93       519
+        weighted avg       0.98      0.97      0.98       519
 
+ 
 
-​    
-​    Detailed classification report:
-​    
-​    The model is trained on the full development set.
-​    
-​    The scores are computed on the full evaluation set.
-​    
-​                  precision    recall  f1-score   support
-​    
-​               1       0.99      0.99      0.99       358
-​               2       0.96      0.95      0.95       118
-​               3       0.85      0.89      0.87        19
-​               4       0.92      0.92      0.92        24
-​    
-​        accuracy                           0.97       519
-​       macro avg       0.93      0.94      0.93       519
-​    weighted avg       0.98      0.97      0.98       519
-
-
-​    
-​    # Tuning hyper-parameters for recall
-​    
-​    Best parameters set found on development set:
-​    
-​    {'C': 100, 'gamma': 0.1, 'kernel': 'rbf'}
-​    
-​    Grid scores on development set:
-
-
-​    
-​    Detailed classification report:
-​    
-​    The model is trained on the full development set.
-​    
-​    The scores are computed on the full evaluation set.
-​    
-​                  precision    recall  f1-score   support
-​    
-​               1       0.99      0.99      0.99       358
-​               2       0.96      0.95      0.95       118
-​               3       0.85      0.89      0.87        19
-​               4       0.92      0.92      0.92        24
-​    
-​        accuracy                           0.97       519
-​       macro avg       0.93      0.94      0.93       519
-​    weighted avg       0.98      0.97      0.98       519
-
-
-​    
-
-
-### Fit rbf SVC Model
+### Fit SVC rbf
 
 From the GridSearch result, we find that with `kernel = 'rbf', C = 100, gamma = 0.1`, the model can achive best performance with respect to recall and accuracy. Since the unbalanced label of our target, I decide to go with recall, intuitively because we want to capture as many cars that will not be accepted as possible.
 
@@ -1033,34 +703,15 @@ print("Training Accuracy: ",svc_rbf.score(X1_train, y1_train))
 print("Testing Accuracy: ", svc_rbf.score(X1_test, y1_test))
 print("Cross-Validation Score :{0:.3f}".format(np.mean(cross_val_score(svc_rbf, X1, y1, cv=5))))
 
-cm = confusion_matrix(y1_test, y1_pred)
-print('\n',cm,'\n')
-print(classification_report(y1_test,y1_pred))
 ```
 
     Training Accuracy:  0.9983457402812241
     Testing Accuracy:  0.9749518304431599
     Cross-Validation Score :0.877
-    
-     [[355   3   0   0]
-     [  3 112   2   1]
-     [  0   1  17   1]
-     [  0   1   1  22]]
-    
-                  precision    recall  f1-score   support
-    
-               1       0.99      0.99      0.99       358
-               2       0.96      0.95      0.95       118
-               3       0.85      0.89      0.87        19
-               4       0.92      0.92      0.92        24
-    
-        accuracy                           0.97       519
-       macro avg       0.93      0.94      0.93       519
-    weighted avg       0.98      0.97      0.98       519
 
 
 
-### Learning curve
+#### Learning curve
 
 
 ```python
@@ -1090,75 +741,15 @@ plt.plot(train_sizes, test_scores_mean, 'o-', color="g", label="Cross-validation
 
 plt.legend(loc="best")
 
-
 plt.show()
 ```
 
 
-![png](/assets/img/car_value/output_55_0.png)
+![png](/images/car_value/output_55_0.png)
 
+### Decision Tree
 
-## NB
-
-
-```python
-#Using NB classifier
-from sklearn.naive_bayes import GaussianNB
-nb = GaussianNB()
-nb.fit(X1_train, y1_train)
-```
-
-
-
-
-    GaussianNB(priors=None, var_smoothing=1e-09)
-
-
-
-
-```python
-from sklearn.naive_bayes import GaussianNB
-gnb = GaussianNB()
-y1_pred = gnb.fit(X1_train, y1_train).predict(X1_test)
-f1_gnb = f1_score(y1_test,y1_pred, average='micro')
-
-print("Number of mislabeled points out of a total {0} points :{1}".format(X1_test.shape[0],(y1_test != y1_pred).sum()))
-
-print("Training Accuracy: ",gnb.score(X1_train, y1_train))
-print("Testing Accuracy: ", gnb.score(X1_test, y1_test))
-print("Cross-Validation Score :{0:.3f}".format(np.mean(cross_val_score(gnb, X1, y1, cv=5))))
-
-cm = confusion_matrix(y1_test, y1_pred)
-print('\n',cm,'\n')
-print(classification_report(y1_test,y1_pred))
-```
-
-    Number of mislabeled points out of a total 519 points :123
-    Training Accuracy:  0.7766749379652605
-    Testing Accuracy:  0.7630057803468208
-    Cross-Validation Score :0.754
-    
-     [[332  17   1   8]
-     [ 36  36   5  41]
-     [  1   5   4   9]
-     [  0   0   0  24]]
-    
-                  precision    recall  f1-score   support
-    
-               1       0.90      0.93      0.91       358
-               2       0.62      0.31      0.41       118
-               3       0.40      0.21      0.28        19
-               4       0.29      1.00      0.45        24
-    
-        accuracy                           0.76       519
-       macro avg       0.55      0.61      0.51       519
-    weighted avg       0.79      0.76      0.75       519
-
-
-
-## Decision Tree
-
-### Find Hyperparameter
+1. ind Hyperparameter
 
 
 ```python
@@ -1182,23 +773,17 @@ plt.plot(range(2,11), avg_test, color="g", label="Test score")
 plt.legend()
 plt.xlabel("max_depth")
 plt.ylabel("accuracy")
-
 ```
 
 
 
 
-    Text(0, 0.5, 'accuracy')
-
-
-
-
-![png](/assets/img/car_value/output_61_1.png)
+![png](/images/car_value/output_61_1.png)
 
 
 Max depth of 9 looks to be a balanced cutoff point
 
-### Fit the model
+2. Fit the model
 
 
 ```python
@@ -1206,18 +791,6 @@ Max depth of 9 looks to be a balanced cutoff point
 dtree = DecisionTreeClassifier(random_state = 0, max_depth=9)
 dtree.fit(X1_train, y1_train)
 ```
-
-
-
-
-    DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=9,
-                           max_features=None, max_leaf_nodes=None,
-                           min_impurity_decrease=0.0, min_impurity_split=None,
-                           min_samples_leaf=1, min_samples_split=2,
-                           min_weight_fraction_leaf=0.0, presort=False,
-                           random_state=0, splitter='best')
-
-
 
 
 ```python
@@ -1229,33 +802,14 @@ print("Testing Accuracy: ", dtree.score(X1_test, y1_test))
 
 cm = confusion_matrix(y1_test, y1_pred)
 print('\n',cm,'\n')
-print(classification_report(y1_test,y1_pred))
 ```
 
     Training Accuracy:  0.9842845326716294
     Testing Accuracy:  0.9556840077071291
-    
-     [[352   6   0   0]
-     [  6 105   6   1]
-     [  0   0  17   2]
-     [  0   0   2  22]]
-    
-                  precision    recall  f1-score   support
-    
-               1       0.98      0.98      0.98       358
-               2       0.95      0.89      0.92       118
-               3       0.68      0.89      0.77        19
-               4       0.88      0.92      0.90        24
-    
-        accuracy                           0.96       519
-       macro avg       0.87      0.92      0.89       519
-    weighted avg       0.96      0.96      0.96       519
 
+### Random Forest
 
-
-## Random Forest
-
-### Try a Basic Model
+####  Baseline Model
 
 
 ```python
@@ -1273,17 +827,15 @@ print("Testing Accuracy: ", rfc.score(X1_test, y1_test))
     Training Accuracy:  1.0
     Testing Accuracy:  0.9402697495183044
 
-
 So, the basic model of RFC is giving 94% accuracy, but training score is clearly overfit. Now, check the effect of n_estimators on the model
 
-### Fine Tune Hyperparameter
+#### Fine Tune Hyperparameter
 
 
 ```python
 # Plot number of trees vs accuracy
 n_tree=[10,25,50,100]
-curve = validation_curve(rfc,X1_train,y1_train,cv=5,param_name='n_estimators',
-                         param_range=n_tree)
+curve = validation_curve(rfc,X1_train,y1_train,cv=5,param_name='n_estimators',    param_range=n_tree)
 train_score=[curve[0][i].mean() for i in range (0,len(n_tree))]
 test_score=[curve[1][i].mean() for i in range (0,len(n_tree))]
 
@@ -1295,19 +847,11 @@ plt.xticks=n_tree
 plt.xlabel("n_estimators")
 plt.ylabel("accuracy")
 plt.title("number of trees vs Accuracy Plot")
-#ax.set_ylim(0.8,1.1)
-
 ```
 
 
 
-
-    Text(0.5, 1.0, 'number of trees vs Accuracy Plot')
-
-
-
-
-![png](/assets/img/car_value/output_71_1.png)
+<img src='/images/car_value/output_71_1.png' width="200")
 
 
 So, with the increasing n_estimators, test accuracy is increasing. Model is evaluating best at n_estimators=50. After n_estimators = 50, model starts overfitting.
@@ -1322,19 +866,6 @@ rfc.fit(X1_train,y1_train)
 ```
 
 
-
-
-    RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
-                           max_depth=None, max_features='auto', max_leaf_nodes=None,
-                           min_impurity_decrease=0.0, min_impurity_split=None,
-                           min_samples_leaf=1, min_samples_split=2,
-                           min_weight_fraction_leaf=0.0, n_estimators=50,
-                           n_jobs=None, oob_score=False, random_state=51, verbose=0,
-                           warm_start=False)
-
-
-
-
 ```python
 param_range=range(1,len(X1.columns)+1)
 curve=validation_curve(RandomForestClassifier(n_estimators=50,random_state=51),X1_train,y1_train,cv=5,
@@ -1346,7 +877,6 @@ f, ax = plt.subplots(1,figsize=(5,5))
 plt.plot(param_range,train_score, label='training')
 plt.plot(param_range,test_score,label='test')
 plt.xticks=param_range
-#ax.set_ylim(0.96,1.01)
 plt.legend()
 plt.title('validation_curve of random forest with 50 trees')
 ```
@@ -1354,13 +884,9 @@ plt.title('validation_curve of random forest with 50 trees')
 
 
 
-    Text(0.5, 1.0, 'validation_curve of random forest with 50 trees')
+![png](/images/car_value/output_75_1.png)
 
-
-
-
-![png](/assets/img/car_value/output_75_1.png)
-
+#### Deal with overfitting
 
 From above graph, it is clear that model is giving best resut for max_features=5. Still the model is overfitting.
 
@@ -1385,8 +911,6 @@ print(grid.best_score_)
 F1_rfc = f1_score(y1_test,grid.fit(X1_train,y1_train).predict(X1_test), average='micro')
 ```
 
-
-
     {'criterion': 'entropy', 'max_depth': 20, 'max_features': 6, 'max_leaf_nodes': None}
     0.9859387923904053
 
@@ -1410,17 +934,17 @@ plt.plot(size,train_score)
 plt.plot(size,test_score)
 ```
 
+![png](/images/car_value/output_80_1.png)
 
 
 
+Model is overfitting as train accuracy is 1 ,but test accuracy is much less.
 
-![png](/assets/img/car_value/output_80_1.png)
-
-
-##### Model is overfitting as train accuracy is 1 ,but test accuracy is much less.
 I've already tried changing RFC parameters to tackle overfitting. But, still it is not reduced.To reduce variance, we can
 1. Increase number of samples. (It is clear from above graph that incresing number of samples will improve model)
 2. Reduce number of features
+
+
 
 #### Feature Reduction
 
@@ -1450,11 +974,8 @@ X1_train_new, X1_test_new, y1_train_new, y1_test_new = train_test_split(
 rfc1=RandomForestClassifier(n_estimators=50,criterion='entropy',max_features=4,max_depth=10,random_state=51,
     max_leaf_nodes=None)
 rfc1.fit(X1_train_new,y1_train_new)
-
 rfc1.score(X1_test_new,y1_test_new)
 ```
-
-
 
 
     0.930635838150289
@@ -1475,7 +996,7 @@ max_leaf_nodes: None
 
 We are able to achieve 98.6% accuracy with this model
 
-## Model Evaluation
+## Model Comparison 
 
 
 ```python
@@ -1489,16 +1010,12 @@ plt.show()
 ```
 
 
-![png](/assets/img/car_value/output_90_0.png)
-
-
+![png](/images/car_value/output_90_0.png)
 
 ```python
 score = pd.DataFrame([f1],columns=models)
 score
 ```
-
-
 
 
 <div>
@@ -1507,18 +1024,11 @@ score
         vertical-align: middle;
     }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-    
-    .dataframe thead th {
-        text-align: right;
-    }
+
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
-      <th></th>
+    <tr style="text-align: left;">
       <th>rbf SVC</th>
       <th>Logistic Regression</th>
       <th>Decision Tree</th>
@@ -1528,22 +1038,26 @@ score
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>0.974952</td>
-      <td>0.811175</td>
-      <td>0.955684</td>
-      <td>0.763006</td>
-      <td>0.971098</td>
+      <td>0.974</td>
+      <td>0.81</td>
+      <td>0.96</td>
+      <td>0.76</td>
+      <td>0.986</td>
     </tr>
   </tbody>
 </table>
+
 </div>
 
 
 
 __Conclusion__
-rbf SVM Classifier and Random Forest Classifier are roughly equally suitable models for this classification context, however, be aware that Random Forest tends to show overfitting, and accuracy won't get better with trees growing or features reduction.
+SVM rbf Classifier and Random Forest are roughly equally suitable models for this classification context, however, be aware that Random Forest tends to show overfitting, and accuracy won't get better with trees growing or features reduction.
 
-We are able to achieve 98.6% weighted accuracy with this model
+We are able to achieve 98.6% weighted accuracy with this model.
+
+
+
+
 
 -- END --

@@ -16,6 +16,13 @@ theme = "LoveIt" #"sam" #
 
 [menu]
   [[menu.main]]
+    identifier = "about"
+    pre = ""
+    name = "About"
+    url = "/about/"
+    title = ""
+    weight = 1
+  [[menu.main]]
     identifier = "posts"
     # you can add extra information before the name (HTML format is allowed), such as icons
     pre = ""
@@ -23,22 +30,29 @@ theme = "LoveIt" #"sam" #
     url = "/posts/"
     # title will be shown when you hover on this menu link
     title = ""
-    weight = 1
-  [[menu.main]]
-    identifier = "tags"
-    pre = ""
-    name = "Tags"
-    url = "/tags/"
-    title = ""
     weight = 2
   [[menu.main]]
-    identifier = "about"
+    identifier = "categories"
     pre = ""
-    name = "About"
-    url = "/about/"
+    name = "Categories"
+    url = "/categories/"
     title = ""
     weight = 3
+  [[menu.main]]
+    identifier = "leetcode"
+    pre = ""
+    name = "Leetcode"
+    url = "/leetcode/"
+    title = ""
+    weight = 4
 
+  [[menu.main]]
+      identifier = "home"
+      pre = ""
+      name = "Home"
+      url = "/"
+      title = ""
+      weight = 5
 
 
 [params]
@@ -209,7 +223,7 @@ theme = "LoveIt" #"sam" #
     #  whether to hide a page from search results
     hiddenFromSearch = false
     #  whether to enable twemoji
-    twemoji = false
+    twemoji = true
     # whether to enable lightgallery
     lightgallery = false
     #  whether to enable the ruby extended syntax
@@ -296,7 +310,7 @@ theme = "LoveIt" #"sam" #
 
     #  Comment config
     [params.page.comment]
-      enable = false
+      enable = true
       # Disqus comment config
       [params.page.comment.disqus]
         enable = true

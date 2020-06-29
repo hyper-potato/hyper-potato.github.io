@@ -9,7 +9,7 @@ toc:
   enable: true
   auto: true
 tags: [metric, causal inference]
-categories: [statistical modeling]
+categories: [Statistical modeling]
 ---
 
 
