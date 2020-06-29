@@ -2,13 +2,17 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
+            <loc>https://hyper-potato.github.io/tags/blog/</loc><lastmod>2020-06-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/2020-06-29-blog-with-github-hugo/</loc><lastmod>2020-06-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/categories/</loc><lastmod>2020-06-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/tags/hugo/</loc><lastmod>2020-06-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/posts/</loc><lastmod>2020-06-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/tags/</loc><lastmod>2020-06-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
+            <loc>https://hyper-potato.github.io/categories/website/</loc><lastmod>2020-06-19T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2020-06-04-deal-with-categorical-variable/</loc><lastmod>2020-06-04T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/categories/</loc><lastmod>2020-06-04T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/feature-engineering/</loc><lastmod>2020-06-04T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/categories/machine-learning/</loc><lastmod>2020-06-04T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/machine-learning/</loc><lastmod>2020-06-04T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/posts/</loc><lastmod>2020-06-04T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
-            <loc>https://hyper-potato.github.io/tags/</loc><lastmod>2020-06-04T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/2020-05-11-isolation/</loc><lastmod>2020-05-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/categories/shower-thought/</loc><lastmod>2020-05-11T00:00:00&#43;00:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
             <loc>https://hyper-potato.github.io/tags/data-analysis/</loc><lastmod>2020-05-09T03:36:29-05:00</lastmod><changefreq>weekly</changefreq><priority>0.5</priority></url><url>
