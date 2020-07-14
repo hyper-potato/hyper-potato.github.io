@@ -153,7 +153,7 @@ Take the maximum of gross and net conversion, hence the required pageview is  68
 
 
 
-<img src="/static/images/post-abtesting2.jpg" />
+<img src="/images/AB-testing/post-abtesting2.jpg">
 
 ## Experiment Analysis
 
@@ -234,4 +234,4 @@ My recomendation is not to launch. We can design a follow-up experiment at this 
 
 This experiment was designed to determine whether filtering students as a function of study time commitment would improve the overall student experience without significantly reducing the number of students who continue past the free trial. A statistically and practically signficant decrease in Gross Conversion was observed but with not in Net Conversion. This translates to a decrease in enrollment not coupled to an increase in students staying for 14 days boundary to trigger payment.
 
-<img src="/static/images/post-abtesting3.png" />
+<img src="/images/AB-testing/post-abtesting3.png">
