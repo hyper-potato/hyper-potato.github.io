@@ -315,14 +315,14 @@ theme = "LoveIt" #"sam" #
       [params.page.comment.disqus]
         enable = true
         # Disqus shortname to use Disqus in posts
-        shortname = "xueni-me"
+        shortname = "http-www-xueni-me"
       # Gitalk comment config
       [params.page.comment.gitalk]
-        enable = false
-        owner = ""
-        repo = ""
-        clientId = ""
-        clientSecret = ""
+        enable = true
+        owner = "hyper-potato"
+        repo = "hyper-potato.github.io"
+        clientId = "a5ebd9864158ca89c447"
+        clientSecret = "e4c3675b3e4bc89c117e8ccd49987eb6ee6846e1"
       # Valine comment config
       [params.page.comment.valine]
         enable = false
@@ -371,6 +371,7 @@ theme = "LoveIt" #"sam" #
         label = ""
         lightTheme = "github-light"
         darkTheme = "github-dark"
+
     #  SEO config
     [params.page.seo]
       # Publisher info

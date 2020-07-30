@@ -11,6 +11,8 @@ toc:
   auto: true
 tags: [neural network, classification, transfer learning]
 categories: [machine learning]
+comment: 
+  enable: true
 ---
 
 

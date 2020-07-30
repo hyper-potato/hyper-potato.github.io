@@ -9,6 +9,8 @@ featuredImage: "/images/62zCH7I.png"
 categories: [shower thought]
 toc:
   enable: false
+comment: 
+  enable: true
 ---
 
 

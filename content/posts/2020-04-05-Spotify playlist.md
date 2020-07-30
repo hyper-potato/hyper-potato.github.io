@@ -10,6 +10,8 @@ toc:
 featuredImage: "/images/spotify/pornography-thecure.jpeg"
 tags: ["EDA", "Python", 'music', data analysis]
 categories: [EDA]
+comment: 
+  enable: true
 ---
 
 
