@@ -3,8 +3,6 @@
 
 
 
-<img src='/images/google 狗子1.jpeg'>
-
 Self-quarantine gets me nerd-out on small things that I usually googled again and again.
 
 For example, very often I need to plot multiple plots sharing the same category, where it's better to keep colors across categories  consistent for all the plots.
