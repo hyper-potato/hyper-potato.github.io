@@ -19,6 +19,7 @@ hugo
 cd $publicPath
 
 #添加所有修改
+git checkout master
 git add -A .
 
 # 设置提交说明，格式为 Site updated: 2006-01-02 15:04:05

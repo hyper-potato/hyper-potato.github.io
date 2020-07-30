@@ -4,6 +4,8 @@ title:      Change category colour across plots in Seaborn
 subtitle:  This world deserves prettier plots
 date:       2020-03-18
 author:     Nina
+
+featuredImage: "/images/google dog.jpeg"
 math:
   enable: true
 toc:
@@ -14,8 +16,6 @@ categories: [Visualization]
 ---
 
 
-
-<img src='/images/google 狗子1.jpeg'>
 
 Self-quarantine gets me nerd-out on small things that I usually googled again and again.
 

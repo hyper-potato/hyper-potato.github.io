@@ -6,13 +6,7 @@ languageCode = "en"
 title = "Hyper Potato's Blog"
 
 # Change the default theme to be use when building the site with Hugo
-theme = "LoveIt" #"sam" #
-
-
-# For sam theme
-# pygmentsStyle            = "monokai"                        # https://help.farbox.com/pygments.html
-# pygmentsCodefences       = true
-
+theme = "LoveIt"
 
 [menu]
   [[menu.main]]
@@ -313,35 +307,32 @@ theme = "LoveIt" #"sam" #
       enable = true
       # Disqus comment config
       [params.page.comment.disqus]
-        enable = true
+        enable = false
         # Disqus shortname to use Disqus in posts
         shortname = "http-www-xueni-me"
       # Gitalk comment config
       [params.page.comment.gitalk]
-        enable = true
+        enable = false
         owner = "hyper-potato"
         repo = "hyper-potato.github.io"
         clientId = "a5ebd9864158ca89c447"
         clientSecret = "e4c3675b3e4bc89c117e8ccd49987eb6ee6846e1"
       # Valine comment config
       [params.page.comment.valine]
-        enable = false
-        appId = ""
-        appKey = ""
-        placeholder = ""
-        avatar = "mp"
+        enable = true
+        appId = "F8HmOGVGm360dSg6NtfRe7KX-MdYXbMMI"
+        appKey = "s7rpAsBOm4p9ePoIzx1x6oMn"
+        placeholder = "Welcome to comment"
+        avatar = "monsterid"
         meta= ""
         pageSize = 10
-        lang = ""
-        visitor = true
-        recordIP = true
-        highlight = true
-        enableQQ = false
-        serverURLs = ""
+        notify = false  # mail notifier , https://github.com/xCss/Valine/wiki
+        verify = false # Verification code
+        visitor = false
         #  emoji config file name, default is "facebook.yml"
         # ("apple.yml", "google.yml", "facebook.yml", "twitter.yml")
         # located in "assets/data/emoji/" directory, where you can put your config file
-        emoji = ""
+        emoji = "facebook.yml"
       # Facebook comment config
       [params.page.comment.facebook]
         enable = false

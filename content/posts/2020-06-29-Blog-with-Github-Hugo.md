@@ -7,9 +7,7 @@ author: "Nina"
 tags: [blog, Hugo]
 categories: [website]
 hiddenFromHomePage: false
-
 featuredImage: "/images/2013-12-11_11h47_17.jpg"
-featuredImagePreview: ""
 Toc:
   enable: true
 math:
