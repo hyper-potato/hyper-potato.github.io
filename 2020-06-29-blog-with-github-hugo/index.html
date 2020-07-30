@@ -39,7 +39,7 @@ Assumptions  You know how to open and run simple lines in the macOS or Windows t
                 "url": "https:\/\/hyper-potato.github.io\/cover.png",
                 "width":  800 ,
                 "height":  600 
-            },"genre": "posts","keywords": "blog, Hugo","wordcount":  990 ,
+            },"genre": "posts","keywords": "blog, Hugo","wordcount":  1020 ,
         "url": "https:\/\/hyper-potato.github.io\/2020-06-29-blog-with-github-hugo\/","datePublished": "2020-06-19T00:00:00+00:00","dateModified": "2020-06-19T00:00:00+00:00","publisher": {
                 "@type": "Organization",
                 "name": "xxxx",
@@ -157,6 +157,7 @@ Assumptions  You know how to open and run simple lines in the macOS or Windows t
         <li><a href="#2--initialize-the-blog-folder">2)  Initialize the blog folder</a></li>
         <li><a href="#3-publish-the-public-folder">3) Publish the public folder</a></li>
         <li><a href="#4-back-up-source-code">4) Back up source code</a></li>
+        <li><a href="#4-back-up-source-code-on-recurring-basis">4+) Back up source code on recurring basis</a></li>
       </ul>
     </li>
     <li><a href="#have-fun">Have Fun!</a></li>
@@ -286,6 +287,12 @@ git push origin master
 <p>One solution to this is to push only <code>public</code> directory to <code>master</code> branch, but create a <code>hugo</code> branch in the same repo to place source code.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="nb">cd</span> .. <span class="c1"># back to root directory</span>
 git checkout -b hugo 
+git add .
+git commit -m <span class="s2">&#34;commit source code&#34;</span>
+git push -u origin hugo
+</code></pre></div><h3 id="4-back-up-source-code-on-recurring-basis">4+) Back up source code on recurring basis</h3>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="c1"># in the root directory</span>
+git checkout hugo 
 git add .
 git commit -m <span class="s2">&#34;commit source code&#34;</span>
 git push -u origin hugo

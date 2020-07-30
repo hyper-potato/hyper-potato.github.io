@@ -226,7 +226,23 @@ git commit -m "commit source code"
 git push -u origin hugo
 ```
 
+
+
+### 4+) Back up source code on recurring basis
+
+```bash
+# in the root directory
+git checkout hugo 
+git add .
+git commit -m "commit source code"
+git push -u origin hugo
+```
+
+
+
 <img src="https://i.loli.net/2020/06/29/TZQBEqFN2waVCJ9.png" alt="image.png" style="zoom:50%;" />
+
+
 
 
 
