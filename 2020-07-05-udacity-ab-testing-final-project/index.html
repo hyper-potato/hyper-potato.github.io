@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Udacity A/B testing final project - Hyper Potato&#39;s Blog</title><meta name="Description" content="Hi, here is Nina"><meta property="og:title" content="Udacity A/B testing final project" />
+<meta property="og:description" content="At the time of this experiment, Udacity courses currently have two options on the course overview page: &ldquo;start free trial&rdquo;, and &ldquo;access course materials&rdquo;.
+ If the student clicks &ldquo;start free trial&rdquo;, they will be asked to enter their credit card information, and then they will be enrolled in a free trial for the paid version of the course. After 14 days, they will automatically be charged unless they cancel first." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://hyper-potato.github.io/2020-07-05-udacity-ab-testing-final-project/" />
+<meta property="og:image" content="https://hyper-potato.github.io/logo.png"/>
+<meta property="article:published_time" content="2020-07-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2020-07-05T00:00:00+00:00" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://hyper-potato.github.io/logo.png"/>
+
+<meta name="twitter:title" content="Udacity A/B testing final project"/>
+<meta name="twitter:description" content="At the time of this experiment, Udacity courses currently have two options on the course overview page: &ldquo;start free trial&rdquo;, and &ldquo;access course materials&rdquo;.
+ If the student clicks &ldquo;start free trial&rdquo;, they will be asked to enter their credit card information, and then they will be enrolled in a free trial for the paid version of the course. After 14 days, they will automatically be charged unless they cancel first."/>
+<meta name="application-name" content="Hyper Potato&#39;s Blog">
+<meta name="apple-mobile-web-app-title" content="Hyper Potato&#39;s Blog"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="https://hyper-potato.github.io/2020-07-05-udacity-ab-testing-final-project/" /><link rel="prev" href="https://hyper-potato.github.io/2020-06-29-blog-with-github-hugo/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Udacity A/B testing final project",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "https:\/\/hyper-potato.github.io\/2020-07-05-udacity-ab-testing-final-project\/"
+        },"genre": "posts","keywords": "A\/B testing, Statistical modeling","wordcount":  1486 ,
+        "url": "https:\/\/hyper-potato.github.io\/2020-07-05-udacity-ab-testing-final-project\/","datePublished": "2020-07-05T00:00:00+00:00","dateModified": "2020-07-05T00:00:00+00:00","publisher": {
+            "@type": "Organization",
+            "name": "xxxx"},"author": {
+                "@type": "Person",
+                "name": "Nina"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Hyper Potato&#39;s Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/me/robot.png"
+        data-srcset="/images/me/robot.png, /images/me/robot.png 1.5x, /images/me/robot.png 2x"
+        data-sizes="auto"
+        alt="/images/me/robot.png"
+        title="/images/me/robot.png" /><span class="header-title-pre"> </span>Hyper Potato&#39;s Blog</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/about/"> About </a><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/categories/"> Categories </a><a class="menu-item" href="/leetcode/"> Leetcode </a><a class="menu-item" href="/"> Home </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Hyper Potato&#39;s Blog"><img
+        class="lazyload logo"
+        src="/svg/loading.min.svg"
+        data-src="/images/me/robot.png"
+        data-srcset="/images/me/robot.png, /images/me/robot.png 1.5x, /images/me/robot.png 2x"
+        data-sizes="auto"
+        alt="/images/me/robot.png"
+        title="/images/me/robot.png" /><span class="header-title-pre"> </span>Hyper Potato&#39;s Blog</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/about/" title="">About</a><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/categories/" title="">Categories</a><a class="menu-item" href="/leetcode/" title="">Leetcode</a><a class="menu-item" href="/" title="">Home</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Udacity A/B testing final project</h1><h2 class="single-subtitle">I finally finished this course</h2><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Nina</a></span>&nbsp;<span class="post-category">included in <a href="/categories/statistical-modeling/"><i class="far fa-folder fa-fw"></i>Statistical modeling</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-07-05">2020-07-05</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1486 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="featured-image"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="/images/AB-testing/post-abtesting.jpg"
+        data-srcset="/images/AB-testing/post-abtesting.jpg, /images/AB-testing/post-abtesting.jpg 1.5x, /images/AB-testing/post-abtesting.jpg 2x"
+        data-sizes="auto"
+        alt="/images/AB-testing/post-abtesting.jpg"
+        title="/images/AB-testing/post-abtesting.jpg" /></div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#experiment-description">Experiment Description</a>
+      <ul>
+        <li><a href="#hypothesis">Hypothesis</a></li>
+      </ul>
+    </li>
+    <li><a href="#experiment-setup">Experiment Setup</a>
+      <ul>
+        <li><a href="#metric-choice">Metric Choice</a></li>
+        <li><a href="#measuring-variability-standard-error">Measuring Variability (Standard error)</a></li>
+        <li><a href="#sizing">Sizing</a></li>
+        <li><a href="#gross-conversion">Gross Conversion</a></li>
+        <li><a href="#net-conversion">Net Conversion</a></li>
+      </ul>
+    </li>
+    <li><a href="#experiment-analysis">Experiment Analysis</a>
+      <ul>
+        <li><a href="#sanity-check">Sanity Check</a></li>
+        <li><a href="#effect-size-tests">Effect Size Tests</a></li>
+        <li><a href="#sign-test">Sign Test</a></li>
+      </ul>
+    </li>
+    <li><a href="#summary">Summary</a></li>
+    <li><a href="#recommendation">Recommendation</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p>At the time of this experiment, Udacity courses currently have two options on the course overview page: &ldquo;start free trial&rdquo;, and &ldquo;access course materials&rdquo;.</p>
+<ul>
+<li>If the student clicks &ldquo;start free trial&rdquo;, they will be asked to enter their credit card information, and then they will be enrolled in a free trial for the paid version of the course. After 14 days, they will automatically be charged unless they cancel first.</li>
+<li>If the student clicks &ldquo;access course materials&rdquo;, they will be able to view the videos and take the quizzes for free, but they will not receive coaching support or a verified certificate, and they will not submit their final project for feedback.</li>
+</ul>
+<h2 id="experiment-description">Experiment Description</h2>
+<p>In the experiment, Udacity tested a change where if the student clicked &ldquo;start free trial&rdquo;, they were asked how much time they had available to devote to the course.</p>
+<ul>
+<li>If the student indicated 5 or more hours per week, they would be taken through the checkout process as usual.</li>
+<li>If they indicated fewer than 5 hours per week, a message would appear indicating that Udacity courses usually require a greater time commitment for successful completion, and suggesting that the student might like to access the course materials for free. At this point, the student would have the option to continue enrolling in the free trial, or access the course materials for free instead.</li>
+</ul>
+<p><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://i.loli.net/2020/07/12/eh9sTMD48Lbvrmt.png"
+        data-srcset="https://i.loli.net/2020/07/12/eh9sTMD48Lbvrmt.png, https://i.loli.net/2020/07/12/eh9sTMD48Lbvrmt.png 1.5x, https://i.loli.net/2020/07/12/eh9sTMD48Lbvrmt.png 2x"
+        data-sizes="auto"
+        alt="https://i.loli.net/2020/07/12/eh9sTMD48Lbvrmt.png"
+        title="Final Project_ Experiment Screenshot.png" /></p>
+<h3 id="hypothesis">Hypothesis</h3>
+<p><strong>Null Hypothesis :</strong> This approach might not make a significant change and might not be effective in reducing the early Udacity course cancellation.</p>
+<p><strong>Alternative Hypothesis :</strong> It might reduce the number of frustrated students who left the free trial because they didn&rsquo;t have enough time, without significantly reducing the number of students to continue past the free trial and eventually complete the course.</p>
+<h2 id="experiment-setup">Experiment Setup</h2>
+<p>The unit of diversion is a <strong>cookie</strong>, although if the student enrolls in the free trial, they are tracked by user-id from that point forward. The same user-id cannot enroll in the free trial twice. For users that do not enroll, their user-id is not tracked in the experiment, even if they were signed in when they visited the course overview page.</p>
+<h3 id="metric-choice">Metric Choice</h3>
+<ul>
+<li>
+<p>Invariant Metrics</p>
+<ul>
+<li><strong>number of cookies</strong>: number of unique cookies to <strong>view</strong> the course overview page. This is the unit of diversion and even distribution amongst the control and experiment groups is expected.</li>
+<li><strong>Number of clicks</strong>:  number of unique cookies to <strong>click the &ldquo;Start free trial&rdquo; button</strong> (which happens before the free trial screener is trigger).</li>
+</ul>
+</li>
+<li>
+<p>Evaluation Metrics</p>
+<ul>
+<li><strong>Gross conversion:</strong> number of user-ids to complete <strong>checkout</strong> and <strong>enroll</strong> in the free trial divided by number of unique cookies to click the &ldquo;Start free trial&rdquo; button. (dmin= 0.01)</li>
+<li><strong>Net conversion:</strong> number of user-ids to <strong>remain enrolled</strong> past the 14-day boundary (and thus make at least one payment) divided by the number of unique cookies to <strong>click</strong> the &ldquo;Start free trial&rdquo; button. (dmin= 0.0075)</li>
+</ul>
+</li>
+</ul>
+<p>We should decide whether to roll out the change by decreased gross conversion coupled to increase in net conversion, i.e, less students enrolling in free trial but more students staying beyound the free trial.</p>
+<h3 id="measuring-variability-standard-error">Measuring Variability (Standard error)</h3>
+<p>For each of the metrics the standard deviation is calculated for a sample size of 5000 unique cookies visiting the course overview page. It is asked to calculate the variability of the metrics, i.e. standard deviation of them. It is probably the “standard deviation of the sampling distribution” or standard error(SE), rather than the simple SD.</p>
+<p>Baseline values to calculate SE</p>
+<table>
+<thead>
+<tr>
+<th>Baseline</th>
+<th>Abbr</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Unique cookies to view page / day</td>
+<td>$N_{C}$</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>Unique cookies to click “Start free trial” / day</td>
+<td>$N_{CT}$</td>
+<td>3200</td>
+</tr>
+<tr>
+<td>Enrollments / day</td>
+<td>$N_{E}$</td>
+<td>660</td>
+</tr>
+<tr>
+<td>Click-through-probability on “Start free trial”</td>
+<td>CTR</td>
+<td>0.08</td>
+</tr>
+<tr>
+<td>Probability of enrolling, given click</td>
+<td>$P_{GC}$</td>
+<td>0.2063</td>
+</tr>
+<tr>
+<td>Probability of payment, given enroll</td>
+<td>$P_{GC}$</td>
+<td>0.53</td>
+</tr>
+<tr>
+<td>Probability of payment, given click</td>
+<td>$P_{NC}$</td>
+<td>0.1093</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li>Gross conversion</li>
+</ol>
+<p>$$ P_{GC}  = \displaystyle \frac {\text {# enrollments}} {\text {# clicks of &lsquo;Start free trial&rsquo;}} =N_E/N_{CT}= 0.2063$$</p>
+<p>When sample size N=5000, $N_{GC}=5000×CTR=400$.  Assuming it follows binomial distribution, its standard error is:</p>
+<p>$$SE_{GC}=\sqrt{\frac{P_{GC}×(1-P_{GC})}{N_{GC}}}=0.0202$$</p>
+<ol start="2">
+<li>Net conversion</li>
+</ol>
+<p>Similarly,</p>
+<p>$$P_{NC} = \displaystyle \frac{\text{# user-ids to remain enrolled}} { \text{#clicks of &lsquo;Start free trial&rsquo;}}=0.1093$$</p>
+<p>$N_{NC}=5000 * CTR=400$</p>
+<p>$SE_{NC}=\sqrt{\frac{P_{NC}×(1-P_{NC})}{N_{NC}}}=0.0156$</p>
+<h3 id="sizing">Sizing</h3>
+<p>Based on the distribution of the metric, the sample size is a function of some parameters such as alpha, i.e. significance level, beta, false negative probability or type II error, baseline conversion, practical significance and so.</p>
+<h3 id="gross-conversion">Gross Conversion</h3>
+<ul>
+<li>
+<p>Baseline conversion rate: 20.625%</p>
+</li>
+<li>
+<p>Minimum detectable effect: 1%</p>
+</li>
+<li>
+<p>alpha: 5%</p>
+</li>
+<li>
+<p>beta: 20%</p>
+<p>1 - beta: 80%</p>
+</li>
+<li>
+<p>sample size = 25,835 enrollments per group</p>
+</li>
+<li>
+<p>total sample size = 51,670 enrollments</p>
+</li>
+<li>
+<p>click through rate = .08</p>
+</li>
+<li>
+<p>therefore, pageviews = 645,875</p>
+</li>
+</ul>
+<h3 id="net-conversion">Net Conversion</h3>
+<ul>
+<li>
+<p>Baseline conversion rate: 10.9313%</p>
+</li>
+<li>
+<p>Minimum detectable effect: .75%</p>
+</li>
+<li>
+<p>alpha: 5%</p>
+</li>
+<li>
+<p>beta: 20%</p>
+<p>1 - beta: 80%</p>
+</li>
+<li>
+<p>sample size = 27,413 enrollments per group</p>
+</li>
+<li>
+<p>total sample size = 54,826 enrollments</p>
+</li>
+<li>
+<p>click through rate = .08</p>
+</li>
+<li>
+<p>therefore, pageviews = 685,325</p>
+</li>
+</ul>
+<p>Take the maximum of gross and net conversion, hence the required pageview is  685,325.</p>
+<img src="/images/AB-testing/post-abtesting2.jpg">
+<h2 id="experiment-analysis">Experiment Analysis</h2>
+<h3 id="sanity-check">Sanity Check</h3>
+<p>There are some metrics that are expected to have more or less identical values in the both experiment and control groups. I choose <strong>the number of cookies</strong>, <strong>number of clicks</strong>, and <strong>click-through probability</strong> as invariant metrics.</p>
+<p>Taking number of cookies (Pageviews) as an example:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Pageviews</th>
+<th>Clicks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N_control​</td>
+<td>345543</td>
+<td>28378</td>
+</tr>
+<tr>
+<td>N_experiment</td>
+<td>344660</td>
+<td>28325</td>
+</tr>
+<tr>
+<td>N_total</td>
+<td>690203</td>
+<td>56703</td>
+</tr>
+<tr>
+<td>p</td>
+<td>0.5</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>$\hat{p}$=  N_control / N_total</td>
+<td>0.5006</td>
+<td>0.5005</td>
+</tr>
+<tr>
+<td>$SE= \sqrt{p×(1−p) /N_{total}}$</td>
+<td>0.0006</td>
+<td>0.0021</td>
+</tr>
+<tr>
+<td>margin=1.96×SE  (α=0.05)</td>
+<td>0.0012</td>
+<td>0.0041</td>
+</tr>
+<tr>
+<td>Lower bound=p−margin</td>
+<td>0.4988</td>
+<td>0.4959</td>
+</tr>
+<tr>
+<td>Upper bound=p+margin</td>
+<td>0.5012</td>
+<td>0.5041</td>
+</tr>
+</tbody>
+</table>
+<p>Therefor, the result of sanity check is</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Pageviews</th>
+<th>Clicks</th>
+<th>CTR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lower-bound</td>
+<td>0.4988</td>
+<td>0.4959</td>
+<td>-0.00013</td>
+</tr>
+<tr>
+<td>Upper-bound</td>
+<td>0.5012</td>
+<td>0.5041</td>
+<td>+0.00013</td>
+</tr>
+<tr>
+<td>Observed</td>
+<td>0.5006</td>
+<td>0.5005</td>
+<td>+0.000057</td>
+</tr>
+<tr>
+<td>Passes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="effect-size-tests">Effect Size Tests</h3>
+<p>As all sanity checks were passed, and the experiment data is validated to some extent, we can go forward and analyze the evaluation metrics.</p>
+<p>What we want to do is assessing whether the differences between evaluation metric values of the control and experiment groups are significant or not. Use 95% Confidence interval for the difference between the experiment and control group for evaluation metrics. The result is satistically significant only when the 95% confidence interval does not include zero.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>dmin</th>
+<th>Observed Difference</th>
+<th>CI Lower Bound</th>
+<th>CI Upper Bound</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gross Conversion</td>
+<td>0.01</td>
+<td>-0.0205</td>
+<td>-.0291</td>
+<td>-.0120</td>
+<td>Satistically and Practically Significant</td>
+</tr>
+<tr>
+<td>Net Conversion</td>
+<td>0.0075</td>
+<td>-0.0048</td>
+<td>-0.0116</td>
+<td>0.0019</td>
+<td>Neither Statistically nor Practically Significant</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sign-test">Sign Test</h3>
+<p>Sign test is basically checking whether the signs, either positive or negative, of the differences of the metrics between two groups are meaningfully distributed over the days of the experiment or not. For instance, if in every single day of the experiment the gross conversion rate is lower in the experiment group comparing to the control group, then being so assures us further that this metric is significantly reduced due to the experiment.</p>
+<p>The <strong>null hypothesis</strong> is the proportion of negative signs to the number of experiment days is a random and insignificant value. Thus, this is a one sample proportion test. For the net conversion rate sign test, I consider being negative as the baseline, and I check whether the observed number of negative values is statsitically significant or not.</p>
+<p>Sign test is just an another method to validate the result obtained above. The sensitivity of sign test is lower than that of the above test.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>p-value for sign test</th>
+<th>Statistically Significant (alpha = .05)?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Gross Conversion</td>
+<td>0.0026</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Net Conversion</td>
+<td>0.6776</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h2 id="summary">Summary</h2>
+<p>An experiment was conducted in which potential Udacity students were diverted by cookie into two groups, experiment and control. The experiment group was asked to input the amount of time they are willing to devote to study, after clicking a &ldquo;start free trial button&rdquo;, whereas the control group was not.</p>
+<p>Three invariant metrics (Number of Cookies, Number of clicks on &ldquo;start free trial&rdquo;, and Click-Through-Probability) were chosen for purposes of validation and sanity checking while Gross Conversion (enrollment/cookie) and Net Conversion (payments/cookie) served as evaluation metrics.</p>
+<p>The null hypothesis is that there is no difference in the evaluation metrics between the groups, futhermore, a practical signifcance threshold was set for each metric.</p>
+<p>Analysis showed the expected equal distribution of cookies into the control and experimental groups at the 95% CI. A difference in gross conversion was found to be statistically signficant at the 95% CI, and the null hypothesis was rejected. Gross conversion also met the practical signficance threshold. Net Conversion was found to be neither statistically nor practically signficant at the 95% CI.</p>
+<h2 id="recommendation">Recommendation</h2>
+<p>My recomendation is not to launch. We can design a follow-up experiment at this point.</p>
+<p>This experiment was designed to determine whether filtering students as a function of study time commitment would improve the overall student experience without significantly reducing the number of students who continue past the free trial. A statistically and practically signficant decrease in Gross Conversion was observed but with not in Net Conversion. This translates to a decrease in enrollment not coupled to an increase in students staying for 14 days boundary to trigger payment.</p>
+<img src="/images/AB-testing/post-abtesting3.png"></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-07-05</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="https://hyper-potato.github.io/2020-07-05-udacity-ab-testing-final-project/" data-title="Udacity A/B testing final project" data-hashtags="A/B testing,Statistical modeling"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="https://hyper-potato.github.io/2020-07-05-udacity-ab-testing-final-project/" data-hashtag="A/B testing"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on Linkedin" data-sharer="linkedin" data-url="https://hyper-potato.github.io/2020-07-05-udacity-ab-testing-final-project/"><i class="fab fa-linkedin fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/a/b-testing/">A/B testing</a>,&nbsp;<a href="/tags/statistical-modeling/">statistical modeling</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/2020-06-29-blog-with-github-hugo/" class="prev" rel="prev" title="Build your blog with Github &#43; Hugo Part 1"><i class="fas fa-angle-left fa-fw"></i>Build your blog with Github &#43; Hugo Part 1</a></div>
+</div>
+<div id="comments"><div id="valine" class="comment"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://valine.js.org/">Valine</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Nina</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/valine/valine.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><script type="text/javascript" src="/lib/valine/Valine.min.js"></script><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":10},"comment":{"valine":{"appId":"F8HmOGVGm360dSg6NtfRe7KX-MdYXbMMI","appKey":"s7rpAsBOm4p9ePoIzx1x6oMn","avatar":"monsterid","el":"#valine","emojiCDN":"https://cdn.jsdelivr.net/npm/emoji-datasource-facebook@5.0.1/img/facebook/64/","emojiMaps":{"100":"1f4af.png","alien":"1f47d.png","anger":"1f4a2.png","angry":"1f620.png","anguished":"1f627.png","astonished":"1f632.png","black_heart":"1f5a4.png","blue_heart":"1f499.png","blush":"1f60a.png","bomb":"1f4a3.png","boom":"1f4a5.png","broken_heart":"1f494.png","brown_heart":"1f90e.png","clown_face":"1f921.png","cold_face":"1f976.png","cold_sweat":"1f630.png","confounded":"1f616.png","confused":"1f615.png","cry":"1f622.png","crying_cat_face":"1f63f.png","cupid":"1f498.png","dash":"1f4a8.png","disappointed":"1f61e.png","disappointed_relieved":"1f625.png","dizzy":"1f4ab.png","dizzy_face":"1f635.png","drooling_face":"1f924.png","exploding_head":"1f92f.png","expressionless":"1f611.png","face_vomiting":"1f92e.png","face_with_cowboy_hat":"1f920.png","face_with_hand_over_mouth":"1f92d.png","face_with_head_bandage":"1f915.png","face_with_monocle":"1f9d0.png","face_with_raised_eyebrow":"1f928.png","face_with_rolling_eyes":"1f644.png","face_with_symbols_on_mouth":"1f92c.png","face_with_thermometer":"1f912.png","fearful":"1f628.png","flushed":"1f633.png","frowning":"1f626.png","ghost":"1f47b.png","gift_heart":"1f49d.png","green_heart":"1f49a.png","grimacing":"1f62c.png","grin":"1f601.png","grinning":"1f600.png","hankey":"1f4a9.png","hear_no_evil":"1f649.png","heart":"2764-fe0f.png","heart_decoration":"1f49f.png","heart_eyes":"1f60d.png","heart_eyes_cat":"1f63b.png","heartbeat":"1f493.png","heartpulse":"1f497.png","heavy_heart_exclamation_mark_ornament":"2763-fe0f.png","hole":"1f573-fe0f.png","hot_face":"1f975.png","hugging_face":"1f917.png","hushed":"1f62f.png","imp":"1f47f.png","innocent":"1f607.png","japanese_goblin":"1f47a.png","japanese_ogre":"1f479.png","joy":"1f602.png","joy_cat":"1f639.png","kiss":"1f48b.png","kissing":"1f617.png","kissing_cat":"1f63d.png","kissing_closed_eyes":"1f61a.png","kissing_heart":"1f618.png","kissing_smiling_eyes":"1f619.png","laughing":"1f606.png","left_speech_bubble":"1f5e8-fe0f.png","love_letter":"1f48c.png","lying_face":"1f925.png","mask":"1f637.png","money_mouth_face":"1f911.png","nauseated_face":"1f922.png","nerd_face":"1f913.png","neutral_face":"1f610.png","no_mouth":"1f636.png","open_mouth":"1f62e.png","orange_heart":"1f9e1.png","partying_face":"1f973.png","pensive":"1f614.png","persevere":"1f623.png","pleading_face":"1f97a.png","pouting_cat":"1f63e.png","purple_heart":"1f49c.png","rage":"1f621.png","relaxed":"263a-fe0f.png","relieved":"1f60c.png","revolving_hearts":"1f49e.png","right_anger_bubble":"1f5ef-fe0f.png","robot_face":"1f916.png","rolling_on_the_floor_laughing":"1f923.png","scream":"1f631.png","scream_cat":"1f640.png","see_no_evil":"1f648.png","shushing_face":"1f92b.png","skull":"1f480.png","skull_and_crossbones":"2620-fe0f.png","sleeping":"1f634.png","sleepy":"1f62a.png","slightly_frowning_face":"1f641.png","slightly_smiling_face":"1f642.png","smile":"1f604.png","smile_cat":"1f638.png","smiley":"1f603.png","smiley_cat":"1f63a.png","smiling_face_with_3_hearts":"1f970.png","smiling_imp":"1f608.png","smirk":"1f60f.png","smirk_cat":"1f63c.png","sneezing_face":"1f927.png","sob":"1f62d.png","space_invader":"1f47e.png","sparkling_heart":"1f496.png","speak_no_evil":"1f64a.png","speech_balloon":"1f4ac.png","star-struck":"1f929.png","stuck_out_tongue":"1f61b.png","stuck_out_tongue_closed_eyes":"1f61d.png","stuck_out_tongue_winking_eye":"1f61c.png","sunglasses":"1f60e.png","sweat":"1f613.png","sweat_drops":"1f4a6.png","sweat_smile":"1f605.png","thinking_face":"1f914.png","thought_balloon":"1f4ad.png","tired_face":"1f62b.png","triumph":"1f624.png","two_hearts":"1f495.png","unamused":"1f612.png","upside_down_face":"1f643.png","weary":"1f629.png","white_frowning_face":"2639-fe0f.png","white_heart":"1f90d.png","wink":"1f609.png","woozy_face":"1f974.png","worried":"1f61f.png","yawning_face":"1f971.png","yellow_heart":"1f49b.png","yum":"1f60b.png","zany_face":"1f92a.png","zipper_mouth_face":"1f910.png","zzz":"1f4a4.png"},"enableQQ":null,"highlight":true,"lang":"en","pageSize":10,"placeholder":"Welcome to comment","recordIP":null,"visitor":false}},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
